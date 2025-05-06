@@ -41,8 +41,8 @@ public class Kayttoliittyma extends Application {
     private TextField tfAsiakasPuh = new TextField();
     private TextField tfAsiakasSynty = new TextField();
 
-    private TextField varauksenAlku = new TextField("Alkupäivä");
-    private TextField varauksenLoppu = new TextField("Loppupäivä");
+    private TextField varauksenAlku = new TextField();
+    private TextField varauksenLoppu = new TextField();
     private ComboBox<String> cbMokkitaso = new ComboBox<>();
     private Button Haebutton = new Button("Hae");
     private TextField saatavuus = new TextField();
@@ -64,8 +64,8 @@ public class Kayttoliittyma extends Application {
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
         pane.add(tfhenkilokuntaID,1,0);
         pane.add(button,0,1);
-        pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 1);
-        pane.add(varauksenAlku,0,2);
+        pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 2);
+        pane.add(varauksenAlku,1,2);
         pane.add(varauksenLoppu,0,3);
         pane.add(tfAsiakkaanimi,0,4);
         pane.add(tfAsiakasGmail,0,5);
@@ -87,6 +87,11 @@ public class Kayttoliittyma extends Application {
         alkuikkuna.show();
 
     }
+
+    HBox hb = new HBox(40);
+        hb.setAlignment(Pos.CENTER);
+        hb.getChildren().addAll(taulukko, kategoriatTaulukko);
+
     public static void main(String[] args) {
         launch(args);
     }
