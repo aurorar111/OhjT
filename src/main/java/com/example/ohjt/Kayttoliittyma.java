@@ -61,9 +61,10 @@ public class Kayttoliittyma extends Application {
         pane.setHgap(5);
         pane.setVgap(5);
         pane.setPadding(new javafx.geometry.Insets(20));
-        pane.add(new Label("Henkilökunta ID"), 0, 0);
+        pane.add(new Label("Henkilökunta ID:"), 0, 0);
         pane.add(tfhenkilokuntaID,1,0);
         pane.add(button,0,1);
+        pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 1);
         pane.add(varauksenAlku,0,2);
         pane.add(varauksenLoppu,0,3);
         pane.add(tfAsiakkaanimi,0,4);
