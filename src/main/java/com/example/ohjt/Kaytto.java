@@ -26,10 +26,29 @@ import static javafx.collections.FXCollections.*;
 
 public class Kaytto extends Application {
     /** tekstikenttä menon syöttämiseen */
+    private TextField tfhenkilokuntaID = new TextField();
+    private Button button = new Button("Kirjaudu");
+
     private TextField tfAsiakkaanimi = new TextField();
     private TextField tfAsiakasGmail = new TextField();
     private TextField tfAsiakasPuh = new TextField();
     private TextField tfAsiakasSynty = new TextField();
+
+    private TextField tfAlkupva = new TextField();
+    private TextField tfLoppupva = new TextField();
+    private ComboBox<String> cbMokkitaso = new ComboBox<>();
+    private Button Haebutton = new Button("Hae");
+    private TextField saatavuus = new TextField();
+    private TextField hinta = new TextField();
+
+
+    private TextField laskuID = new TextField();
+    private TextField lasku = new TextField();
+    private TextField maksuntila = new TextField();
+
+
+
+
 
     /** Valikko kategorian valitsemiseen*/
     private ComboBox<String> cbKategoria = new ComboBox<>();
