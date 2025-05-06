@@ -1,4 +1,4 @@
-package com.example.ohjt;
+/*package com.example.ohjt;
 
 import java.io.*;
 import java.util.Scanner;
@@ -31,4 +31,4 @@ public class Tiedosto {
             throw new RuntimeException(e);
         }
     }
-}
+}*/
