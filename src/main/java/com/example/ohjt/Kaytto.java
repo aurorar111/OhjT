@@ -26,7 +26,11 @@ import static javafx.collections.FXCollections.*;
 
 public class Kaytto extends Application {
     /** tekstikenttä menon syöttämiseen */
-    private TextField tfMenoMaara = new TextField();
+    private TextField tfAsiakkaanimi = new TextField();
+    private TextField tfAsiakasGmail = new TextField();
+    private TextField tfAsiakasPuh = new TextField();
+    private TextField tfAsiakasSynty = new TextField();
+
     /** Valikko kategorian valitsemiseen*/
     private ComboBox<String> cbKategoria = new ComboBox<>();
     /** tekstikenttä päivämäärän syöttämiseen*/
