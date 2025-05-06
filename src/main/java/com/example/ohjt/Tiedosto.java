@@ -14,6 +14,7 @@ public class Tiedosto {
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
             kTiedosto.write();
             kTiedosto.close();
+            System.out.println("Tiedosto tallennettu");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
