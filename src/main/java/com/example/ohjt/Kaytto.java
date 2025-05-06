@@ -22,12 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.beans.property.SimpleStringProperty;
 import static javafx.collections.FXCollections.*;
 
-/**
- * Käyttöliittumä luokka javafx:llä toimii käyttäjän ja ohjelman vuorovaikutuksen välissä olevana käyttöliittymänä
- * Menojen kirjaus ja graafinen ohjelma mahdollistaa menojen seuraamisen
- * @version 1.0
- * @author H.E.
- */
+
 
 public class Kaytto extends Application {
     /** tekstikenttä menon syöttämiseen */
@@ -57,9 +52,7 @@ public class Kaytto extends Application {
     /** Taulukko jossa kategorian menomäärä*/
     private TableView kategoriatTaulukko = new TableView<>();
 
-    /** Ohjelman käynnistus ja käyttöliittymän luominen
-     * @param stage On ohjelman pääikkuna jossa käyttöliittymä
-     */
+
     @Override
     public void start(Stage stage) {
         menot = TiedostonKasittely.lataaMenot();
