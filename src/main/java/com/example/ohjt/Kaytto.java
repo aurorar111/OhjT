@@ -40,7 +40,7 @@ public class Kaytto extends Application {
     /** Tekstialue jossa kulut kategorioittain*/
     private TextArea taMenotKategoriat = new TextArea();
     /** Lista kaikista menoista*/
-    private List<BudjetointiTyokalu> menot;
+    //private List<BudjetointiTyokalu> menot;
     /** Lista jossa menot*/
     private ObservableList menoTiedot = observableArrayList();
     /** Lista jossa kategoriat*/
@@ -106,11 +106,11 @@ public class Kaytto extends Application {
         btNollaa.setOnAction(e-> nollaaTiedot());
 
         // ensimmäisen taulukon tekeminen jossa näkyy menotapahtumat yksittäisinä tapahtumina
-        TableColumn<BudjetointiTyokalu, Double> summaColumn = new TableColumn<>("Summa €");
+        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
-        TableColumn<BudjetointiTyokalu, String> kategoriaColumn = new TableColumn<>("Kategoria");
+        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
         kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
-        TableColumn<BudjetointiTyokalu, String> paivaColumn = new TableColumn<>("Päivämäärä");
+        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
 
         // päivitetän taulukkoon tietoja ja värit
@@ -164,11 +164,11 @@ public class Kaytto extends Application {
                 tfYhteensa.setText("Täytä kaikki kentät!");
                 return;
             }
-            if (!BudjetointiTyokalu.PaivaValidator.isValidDate(paivamaara)) {
+            if (!OlioLuokka.PaivaValidator.isValidDate(paivamaara)) {
                 tfYhteensa.setText("Virheellinen päivämäärä!");
                 return;
             }
-            BudjetointiTyokalu uusiMeno = new BudjetointiTyokalu(maara, kategoria, paivamaara);
+            OlioLuokka uusiMeno = new OlioLuokka(maara, kategoria, paivamaara);
             menot.add(uusiMeno);
             menoTiedot.add(uusiMeno);
             summa += maara;
@@ -193,7 +193,7 @@ public class Kaytto extends Application {
     private void paivitaMenotKategoriat() {
 
         double ruokaSumma = 0, asuminenSumma = 0, viihdeSumma = 0, muutSumma = 0;
-        for (BudjetointiTyokalu menot : menot) {
+        for (OlioLuokka menot : menot) {
             if ("Ruoka".equals(menot.getKategoria())) {
                 ruokaSumma += menot.getSumma();
             } else if ("Asuminen".equals(menot.getKategoria())) {
