@@ -1,4 +1,4 @@
-package com.example.ohjt;
+/*package com.example.ohjt;
 
 public class sql {// Java program to illustrate
 // Connecting to the Database
@@ -30,4 +30,4 @@ import java.sql.*;
         }
     }
 
-}
+}*/

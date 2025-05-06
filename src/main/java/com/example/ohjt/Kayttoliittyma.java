@@ -2,15 +2,56 @@ package com.example.ohjt;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import java.util.List;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.beans.property.SimpleStringProperty;
+import static javafx.collections.FXCollections.*;
 
 public class Kayttoliittyma extends Application {
     private TextField henkilokuntaG = new TextField("");
-    private TextField varauksenAlku = new TextField("Alku");
-    private TextField varauksenLoppu = new TextField("Loppu");
+
+    private TextField tfhenkilokuntaID = new TextField();
+    private Button button = new Button("Kirjaudu");
+
+    private TextField tfAsiakkaanimi = new TextField();
+    private TextField tfAsiakasGmail = new TextField();
+    private TextField tfAsiakasPuh = new TextField();
+    private TextField tfAsiakasSynty = new TextField();
+
+    private TextField varauksenAlku = new TextField("Alkupäivä");
+    private TextField varauksenLoppu = new TextField("Loppupäivä");
+    private ComboBox<String> cbMokkitaso = new ComboBox<>();
+    private Button Haebutton = new Button("Hae");
+    private TextField saatavuus = new TextField();
+    private TextField hinta = new TextField();
+
+
+    private TextField laskuID = new TextField();
+    private TextField lasku = new TextField();
+    private TextField maksuntila = new TextField();
 
     @Override
     public void start(Stage alkuikkuna){
@@ -19,9 +60,25 @@ public class Kayttoliittyma extends Application {
 
         pane.setHgap(5);
         pane.setVgap(5);
-        pane.add(henkilokuntaG,0,0);
-        pane.add(varauksenAlku,0,1);
+        pane.setPadding(new javafx.geometry.Insets(20));
+        pane.add(new Label("Henkilökunta ID"), 0, 0);
+        pane.add(tfhenkilokuntaID,1,0);
+        pane.add(button,0,1);
+        pane.add(varauksenAlku,0,2);
         pane.add(varauksenLoppu,0,3);
+        pane.add(tfAsiakkaanimi,0,4);
+        pane.add(tfAsiakasGmail,0,5);
+        pane.add(tfAsiakasPuh,0,6);
+        pane.add(tfAsiakasSynty,0,7);
+        pane.add(cbMokkitaso,0,8);
+        pane.add(Haebutton,0,9);
+        pane.add(saatavuus,0,10);
+        pane.add(hinta,0,11);
+        pane.add(laskuID,0,12);
+        pane.add(lasku,0,13);
+        pane.add(maksuntila,0,14);
+
+
 
         Scene kehys = new Scene(pane, 600, 500);
         alkuikkuna.setTitle("Varausjärjestelmä");
