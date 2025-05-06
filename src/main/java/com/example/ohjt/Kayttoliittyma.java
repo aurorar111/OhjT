@@ -53,6 +53,8 @@ public class Kayttoliittyma extends Application {
     private TextField lasku = new TextField();
     private TextField maksuntila = new TextField();
 
+    private TableView taulukko = new TableView<>();
+
     @Override
     public void start(Stage alkuikkuna){
 
@@ -86,11 +88,30 @@ public class Kayttoliittyma extends Application {
         alkuikkuna.setScene(kehys);
         alkuikkuna.show();
 
+        HBox hb = new HBox(40);
+        hb.setAlignment(Pos.CENTER);
+        hb.getChildren().addAll(pane);
+
+        // ensimmäisen taulukon tekeminen jossa näkyy menotapahtumat yksittäisinä tapahtumina
+        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
+        summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
+        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
+        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
+        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+
+        // päivitetän taulukkoon tietoja ja värit
+        taulukko.getColumns().clear();
+        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
+        //taulukko.setItems(menoTiedot);
+        taulukko.setPrefHeight(250);
+        taulukko.setPrefWidth(250);
+        taulukko.setStyle("-fx-background-color:#D5E5D5;");
+        taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
+
     }
 
-    HBox hb = new HBox(40);
-        hb.setAlignment(Pos.CENTER);
-        hb.getChildren().addAll(taulukko, kategoriatTaulukko);
+
 
     public static void main(String[] args) {
         launch(args);
