@@ -93,16 +93,16 @@ public class Kayttoliittyma extends Application {
         hb.getChildren().addAll(pane);
 
         // ensimmäisen taulukon tekeminen jossa näkyy menotapahtumat yksittäisinä tapahtumina
-        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
-        summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
-        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
+        TableColumn<OlioLuokka, Double> vierasColumn = new TableColumn<>("Vieras");
+        vierasColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
+        TableColumn<OlioLuokka, String> mokkiColumn = new TableColumn<>("Mökki");
+        mokkiColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
-        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
+        taulukko.getColumns().addAll(vierasColumn, mokkiColumn, paivaColumn);
         //taulukko.setItems(menoTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
