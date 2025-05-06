@@ -82,7 +82,6 @@ public class Kayttoliittyma extends Application {
         pane.add(maksuntila,0,14);
 
 
-
         Scene kehys = new Scene(pane, 600, 500);
         alkuikkuna.setTitle("Varausjärjestelmä");
         alkuikkuna.setScene(kehys);
@@ -109,6 +108,8 @@ public class Kayttoliittyma extends Application {
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
 
+        button.setOnAction(e -> kirjaudu());
+        Haebutton.setOnAction(e-> haeTiedot());
     }
 
 
