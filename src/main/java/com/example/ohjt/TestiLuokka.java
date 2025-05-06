@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 
 //toimiiko
 
+//terve
+
 public class TestiLuokka extends Application {
 
     public static void main(String[] args) {
