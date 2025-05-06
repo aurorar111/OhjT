@@ -86,11 +86,12 @@ public class Kayttoliittyma extends Application {
         alkuikkuna.setScene(kehys);
         alkuikkuna.show();
 
+        HBox hb = new HBox(40);
+        hb.setAlignment(Pos.CENTER);
+        hb.getChildren().addAll(pane);
     }
 
-    HBox hb = new HBox(40);
-        hb.setAlignment(Pos.CENTER);
-        hb.getChildren().addAll(taulukko, kategoriatTaulukko);
+
 
     public static void main(String[] args) {
         launch(args);
