@@ -45,7 +45,7 @@ public class Kayttoliittyma extends Application {
     private DatePicker loppuDate = new DatePicker();
 
     @Override
-    public void start(Stage alkuikkuna){
+    public void start(Stage alkuikkuna) {
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 800, 800);
         alkuikkuna.setTitle("Varausjärjestelmä");
@@ -59,36 +59,36 @@ public class Kayttoliittyma extends Application {
         pane.setPadding(new javafx.geometry.Insets(20));
         //Vasen
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
-        pane.add(tfhenkilokuntaID,1,0);
-        pane.add(button,0,1);
-        pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 3);
-        pane.add(alkuDate,1,3);
-        pane.add(new Label ("Varauksen loppu päivämäärä:"), 0, 4);
-        pane.add(loppuDate,1,4);
-        pane.add(new Label ("Asiakkaan nimi:"), 0, 5);
-        pane.add(tfAsiakkaanimi,1,5);
-        pane.add(new Label ("Asiakkaan gmail:"), 0, 6);
-        pane.add(tfAsiakasGmail,1,6);
-        pane.add(new Label ("Asiakkaan Puhelinnumero:"), 0, 7);
-        pane.add(tfAsiakasPuh,1,7);
-        pane.add(new Label ("Asiakkaan Syntymäpäivä:"), 0, 8);
-        pane.add(tfAsiakasSynty,1,8);
-        pane.add(cbMokkitaso,0,9);
-        pane.add(Haebutton,0,10);
-        pane.add(new Label("Saatavuus:"),0,11);
-        pane.add(saatavuus,1,11);
-        pane.add(new Label ("Generoitu asiakas ID:"),0,12);
-        pane.add(tfAsiakasID,1,12);
+        pane.add(tfhenkilokuntaID, 1, 0);
+        pane.add(button, 0, 1);
+        pane.add(new Label("Varauksen alkupäivämäärä:"), 0, 3);
+        pane.add(alkuDate, 1, 3);
+        pane.add(new Label("Varauksen loppu päivämäärä:"), 0, 4);
+        pane.add(loppuDate, 1, 4);
+        pane.add(new Label("Asiakkaan nimi:"), 0, 5);
+        pane.add(tfAsiakkaanimi, 1, 5);
+        pane.add(new Label("Asiakkaan gmail:"), 0, 6);
+        pane.add(tfAsiakasGmail, 1, 6);
+        pane.add(new Label("Asiakkaan Puhelinnumero:"), 0, 7);
+        pane.add(tfAsiakasPuh, 1, 7);
+        pane.add(new Label("Asiakkaan Syntymäpäivä:"), 0, 8);
+        pane.add(tfAsiakasSynty, 1, 8);
+        pane.add(cbMokkitaso, 0, 9);
+        pane.add(Haebutton, 0, 10);
+        pane.add(new Label("Saatavuus:"), 0, 11);
+        pane.add(saatavuus, 1, 11);
+        pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
+        pane.add(tfAsiakasID, 1, 12);
 
         //Oikea
-        pane.add(new Label ("Hinta:"),5,3);
-        pane.add(hinta,6,3);
-        pane.add(new Label ("Laskun ID:"),5,4);
-        pane.add(laskuID,6,4);
-        pane.add(new Label ("Lasku eräpäivä:"),5,5);
-        pane.add(laskuPva,6,5);
-        pane.add(new Label ("Maksuntila:"),5,6);
-        pane.add(maksuntila,6,6);
+        pane.add(new Label("Hinta:"), 5, 3);
+        pane.add(hinta, 6, 3);
+        pane.add(new Label("Laskun ID:"), 5, 4);
+        pane.add(laskuID, 6, 4);
+        pane.add(new Label("Lasku eräpäivä:"), 5, 5);
+        pane.add(laskuPva, 6, 5);
+        pane.add(new Label("Maksuntila:"), 5, 6);
+        pane.add(maksuntila, 6, 6);
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
@@ -96,13 +96,34 @@ public class Kayttoliittyma extends Application {
 
         alkuDate.setDisable(true);
         loppuDate.setDisable(true);
-        tfhenkilokuntaID.textProperty().addListener((obs,vanha,uusi) -> {
-            if (!uusi.trim().isEmpty()) {
-                alkuDate.setDisable(false);
-                loppuDate.setDisable(false);
-            }
+        tfAsiakkaanimi.setDisable(true);
+        tfAsiakasGmail.setDisable(true);
+        tfAsiakasPuh.setDisable(true);
+        tfAsiakasSynty.setDisable(true);
+        saatavuus.setDisable(true);
+        tfAsiakasID.setDisable(true);
+        hinta.setDisable(true);
+        laskuID.setDisable(true);
+        laskuPva.setDisable(true);
+        maksuntila.setDisable(true);
+
+        button.setOnAction(e -> {
+
+            tfAsiakkaanimi.setDisable(false);
+            tfAsiakasGmail.setDisable(false);
+            tfAsiakasPuh.setDisable(false);
+            tfAsiakasSynty.setDisable(false);
+            saatavuus.setDisable(false);
+            tfAsiakasID.setDisable(false);
+            hinta.setDisable(false);
+            laskuID.setDisable(false);
+            laskuPva.setDisable(false);
+            maksuntila.setDisable(false);
+
+
 
         });
+
 
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
