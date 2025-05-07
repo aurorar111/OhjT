@@ -13,6 +13,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.DatePicker;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
 
 
 public class Kayttoliittyma extends Application {
@@ -156,6 +160,12 @@ public class Kayttoliittyma extends Application {
         taulukkoMaksut.setStyle("-fx-background-color:#D5E5D5;");
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
         //toimiikoo nyt
+
+        Image kuva1 = new Image("file:kuva/cozy spot logo.png");
+        ImageView iv1 = new ImageView(kuva1);
+        iv1.setFitHeight(100);
+        iv1.setFitWidth(100);
+        //pohja.getChildren().add(iv1);
 
     }
     public static void main(String[] args) {
