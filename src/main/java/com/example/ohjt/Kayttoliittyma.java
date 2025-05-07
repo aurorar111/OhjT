@@ -86,13 +86,14 @@ public class Kayttoliittyma extends Application {
         pane.add(laskuPva,1,14);
         pane.add(new Label ("Maksuntila:"),0,15);
         pane.add(maksuntila,1,15);
+        pane.add(new Label ("Varauksen loppu:"),0,16);
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
 
-        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
+        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
         kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
