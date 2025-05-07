@@ -170,7 +170,7 @@ public class Kayttoliittyma extends Application {
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
         //toimiikoo nyt
 
-        Image kuva1 = new Image(getClass().getResource("/kuva/cozy_spot_logo.png").toExternalForm());
+        Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
         iv1.setFitHeight(20);
         iv1.setFitWidth(20);
