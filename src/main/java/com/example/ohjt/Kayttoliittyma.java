@@ -162,13 +162,12 @@ public class Kayttoliittyma extends Application {
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
         //toimiikoo nyt
 
-        Image kuva1 = new Image("file:kuva/cozy spot logo.png");
+        Image kuva1 = new Image(getClass().getResource("/kuva/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
-        iv1.setFitHeight(100);
-        iv1.setFitWidth(100);
+        iv1.setFitHeight(20);
+        iv1.setFitWidth(20);
         pane.add(iv1, 3,2,2,1);
 
-        pohja.getChildren().add(iv1);
 
     }
     public static void main(String[] args) {
