@@ -88,7 +88,7 @@ public class Kayttoliittyma extends Application {
         alkuikkuna.show();
 
         HBox hb = new HBox(40);
-        hb.setAlignment(Pos.CENTER);
+        hb.setAlignment(Pos.CENTER_RIGHT);
         hb.getChildren().addAll(pane);
 
         // ensimmäisen taulukon tekeminen jossa näkyy menotapahtumat yksittäisinä tapahtumina
@@ -108,8 +108,8 @@ public class Kayttoliittyma extends Application {
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
 
-        button.setOnAction(e -> kirjaudu());
-        Haebutton.setOnAction(e-> haeTiedot());
+        //button.setOnAction(e -> kirjaudu());
+        //Haebutton.setOnAction(e-> haeTiedot());
     }
 
 
