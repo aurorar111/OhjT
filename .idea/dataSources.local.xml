@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-      <secret-storage>master_key</secret-storage>
+  <component name="dataSourceStorageLocal" created-in="IU-243.26053.27">
+    <data-source name="mokki@localhost" uuid="679ad05e-7c33-45f9-b604-f4f15b2d1725">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <schema-mapping />
     </data-source>
   </component>
 </project>

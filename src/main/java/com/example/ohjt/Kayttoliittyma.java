@@ -8,11 +8,27 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+import java.util.List;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.beans.property.SimpleStringProperty;
+import static javafx.collections.FXCollections.*;
 
 public class Kayttoliittyma extends Application {
     private TextField henkilokuntaG = new TextField("");
@@ -42,12 +58,13 @@ public class Kayttoliittyma extends Application {
     @Override
     public void start(Stage alkuikkuna){
         Pane pohja = new Pane();
-        Scene kehys = new Scene(pohja, 600, 500);
+        Scene kehys = new Scene(pohja, 800, 800);
         alkuikkuna.setTitle("Varausjärjestelmä");
         alkuikkuna.setScene(kehys);
         alkuikkuna.show();
 
         GridPane pane = new GridPane();
+
         pane.setHgap(5);
         pane.setVgap(5);
         pane.setPadding(new javafx.geometry.Insets(20));
@@ -56,10 +73,15 @@ public class Kayttoliittyma extends Application {
         pane.add(button,0,1);
         pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 2);
         pane.add(varauksenAlku,1,2);
-        pane.add(varauksenLoppu,0,3);
-        pane.add(tfAsiakkaanimi,0,4);
+        pane.add(new Label ("Varauksen loppu päivämäärä:"), 0, 3);
+        pane.add(varauksenLoppu,1,3);
+        pane.add(new Label ("Asiakkaan nimi:"), 0, 4);
+        pane.add(tfAsiakkaanimi,1,4);
+        pane.add(new Label ("Asiakkaan gmail:"), 0, 5);
         pane.add(tfAsiakasGmail,0,5);
+        pane.add(new Label ("Asiakkaan Puhelinnumero:"), 0, 6);
         pane.add(tfAsiakasPuh,0,6);
+        pane.add(new Label ("Asiakkaan Syntymäpäivä:"), 0, 7);
         pane.add(tfAsiakasSynty,0,7);
         pane.add(cbMokkitaso,0,8);
         pane.add(Haebutton,0,9);
@@ -70,6 +92,9 @@ public class Kayttoliittyma extends Application {
         pane.add(maksuntila,0,14);
         pohja.getChildren().add(pane);
 
+        cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
+        cbMokkitaso.setValue("Valitse");
+
 
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
@@ -78,7 +103,7 @@ public class Kayttoliittyma extends Application {
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
-        pane.add(taulukko, 1,3,2,10);
+        pane.add(taulukko, 2,3,2,10);
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
@@ -90,6 +115,8 @@ public class Kayttoliittyma extends Application {
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
 
     }
+
+
 
     public static void main(String[] args) {
         launch(args);
