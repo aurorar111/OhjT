@@ -96,35 +96,13 @@ public class Kayttoliittyma extends Application {
 
         alkuDate.setDisable(true);
         loppuDate.setDisable(true);
-        tfAsiakkaanimi.setDisable(true);
-        tfAsiakasGmail.setDisable(true);
-        tfAsiakasPuh.setDisable(true);
-        tfAsiakasSynty.setDisable(true);
-        saatavuus.setDisable(true);
-        tfAsiakasID.setDisable(true);
-        hinta.setDisable(true);
-        laskuID.setDisable(true);
-        laskuPva.setDisable(true);
-        maksuntila.setDisable(true);
-
-        button.setOnAction(e-> {
-            alkuDate.setDisable(false);
-            loppuDate.setDisable(false);
-            tfAsiakkaanimi.setDisable(false);
-            tfAsiakasGmail.setDisable(false);
-            tfAsiakasPuh.setDisable(false);
-            tfAsiakasSynty.setDisable(false);
-            saatavuus.setDisable(false);
-            tfAsiakasID.setDisable(false);
-            hinta.setDisable(false);
-            laskuID.setDisable(false);
-            laskuPva.setDisable(false);
-            maksuntila.setDisable(false);
-
-        });
-
+        tfhenkilokuntaID.textProperty().addListener((obs,vanha,uusi) -> {
+            if (!uusi.trim().isEmpty()) {
+                alkuDate.setDisable(false);
+                loppuDate.setDisable(false);
             }
 
+        });
 
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
@@ -143,10 +121,6 @@ public class Kayttoliittyma extends Application {
         erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
         pane.add(taulukkoMaksut, 5,20,2,1);
-
-
-
-
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
