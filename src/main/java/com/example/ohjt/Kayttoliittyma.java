@@ -82,33 +82,34 @@ public class Kayttoliittyma extends Application {
         pane.add(maksuntila,0,14);
 
 
-
         Scene kehys = new Scene(pane, 600, 500);
         alkuikkuna.setTitle("Varausjärjestelmä");
         alkuikkuna.setScene(kehys);
         alkuikkuna.show();
 
         HBox hb = new HBox(40);
-        hb.setAlignment(Pos.CENTER);
+        hb.setAlignment(Pos.CENTER_RIGHT);
         hb.getChildren().addAll(pane);
 
         // ensimmäisen taulukon tekeminen jossa näkyy menotapahtumat yksittäisinä tapahtumina
-        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
-        summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
-        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
+        TableColumn<OlioLuokka, Double> vierasColumn = new TableColumn<>("Vieras");
+        vierasColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
+        TableColumn<OlioLuokka, String> mokkiColumn = new TableColumn<>("Mökki");
+        mokkiColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
-        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
+        taulukko.getColumns().addAll(vierasColumn, mokkiColumn, paivaColumn);
         //taulukko.setItems(menoTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
 
+        //button.setOnAction(e -> kirjaudu());
+        //Haebutton.setOnAction(e-> haeTiedot());
     }
 
 
