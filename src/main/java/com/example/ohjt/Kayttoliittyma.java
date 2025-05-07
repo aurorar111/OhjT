@@ -53,7 +53,6 @@ public class Kayttoliittyma extends Application {
         alkuikkuna.show();
 
         GridPane pane = new GridPane();
-
         pane.setHgap(5);
         pane.setVgap(5);
         pane.setPadding(new javafx.geometry.Insets(20));
@@ -78,15 +77,16 @@ public class Kayttoliittyma extends Application {
         pane.add(saatavuus,1,10);
         pane.add(new Label ("Generoitu asiakas ID:"),0,11);
         pane.add(tfAsiakasID,1,11);
-        pane.add(new Label ("Hinta:"),0,12);
-        pane.add(hinta,1,12);
-        pane.add(new Label ("Laskun ID:"),0,13);
-        pane.add(laskuID,1,13);
-        pane.add(new Label ("Lasku eräpäivä:"),0,14);
-        pane.add(laskuPva,1,14);
-        pane.add(new Label ("Maksuntila:"),0,15);
-        pane.add(maksuntila,1,15);
-       // pane.add(new Label ("Varauksen loppu:"),0,16);
+
+
+        pane.add(new Label ("Hinta:"),5,2);
+        pane.add(hinta,6,2);
+        pane.add(new Label ("Laskun ID:"),5,3);
+        pane.add(laskuID,6,3);
+        pane.add(new Label ("Lasku eräpäivä:"),5,4);
+        pane.add(laskuPva,6,4);
+        pane.add(new Label ("Maksuntila:"),5,5);
+        pane.add(maksuntila,6,5);
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
@@ -100,7 +100,7 @@ public class Kayttoliittyma extends Application {
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
-        pane.add(taulukko, 2,3,2,10);
+        pane.add(taulukko, 0,20,2,1);
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
@@ -110,11 +110,9 @@ public class Kayttoliittyma extends Application {
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
+        //toimiikoo
 
     }
-
-
-
     public static void main(String[] args) {
         launch(args);
     }
