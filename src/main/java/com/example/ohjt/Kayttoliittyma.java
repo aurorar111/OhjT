@@ -9,27 +9,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.geometry.Pos;
-import javafx.stage.Stage;
-import java.util.List;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.beans.property.SimpleStringProperty;
-import static javafx.collections.FXCollections.*;
+
 
 public class Kayttoliittyma extends Application {
     private TextField henkilokuntaG = new TextField("");
@@ -65,7 +49,6 @@ public class Kayttoliittyma extends Application {
         alkuikkuna.show();
 
         GridPane pane = new GridPane();
-
         pane.setHgap(5);
         pane.setVgap(5);
         pane.setPadding(new javafx.geometry.Insets(20));
@@ -109,8 +92,6 @@ public class Kayttoliittyma extends Application {
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
 
     }
-
-
 
     public static void main(String[] args) {
         launch(args);
