@@ -1,4 +1,5 @@
-/*package com.example.ohjt;
+/**
+package com.example.ohjt;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ import static javafx.collections.FXCollections.*;
 
 
 public class Kaytto extends Application {
-
+    /** tekstikenttä menon syöttämiseen
     private TextField tfhenkilokuntaID = new TextField();
     private Button button = new Button("Kirjaudu");
 
@@ -50,20 +51,29 @@ public class Kaytto extends Application {
 
 
 
-
-
+    /** Valikko kategorian valitsemiseen
     private ComboBox<String> cbKategoria = new ComboBox<>();
-
+    /** tekstikenttä päivämäärän syöttämiseen
     private TextField tfPaivamaara = new TextField();
+    /** Nappi menon lisäämistä varten
     private Button btLisaa = new Button("Lisää meno");
+    /** Nappi kaikkien tietojen tyhjentämiseen
     private Button btNollaa = new Button("Nollaa kaikki tiedot");
+    /** Tekstikenttä yhteissumman näyttämiseen
     private TextField tfYhteensa = new TextField();
+    /** Tekstialue jossa kulut kategorioittain
     private TextArea taMenotKategoriat = new TextArea();
+    /** Lista kaikista menoista
     //private List<BudjetointiTyokalu> menot;
+    /** Lista jossa menot
     private ObservableList menoTiedot = observableArrayList();
+    /** Lista jossa kategoriat
     private ObservableList kategoriaLista = observableArrayList();
+    /** Kokonaissumma
     private double summa = 0;
+    /** Taulukko meno tapahtumista
     private TableView taulukko = new TableView<>();
+    /** Taulukko jossa kategorian menomäärä
     private TableView kategoriatTaulukko = new TableView<>();
 
 
@@ -72,6 +82,7 @@ public class Kaytto extends Application {
         menot = TiedostonKasittely.lataaMenot();
         menoTiedot.addAll(menot);
 
+        /** Paneeli johon asetellaan menon syöttämiseen tarvittavat kentät vasempaan yläkulmaan
         GridPane paneeli = new GridPane();
         paneeli.setPadding(new javafx.geometry.Insets(20)); // irrottaa reunasta
         paneeli.setAlignment(Pos.TOP_LEFT);
@@ -161,6 +172,10 @@ public class Kaytto extends Application {
         stage.show();
     }
 
+    /**
+     * Lisää menon syötettävien tietojen pohjalta
+     * Tarkistaa että kaikki kentät täytetty oikein ja lisää menon listaan
+     * Taulukoiden näkymät päivittyy ja tiedot tallentuu
 
     private void lisaaMeno() {
         try {
@@ -195,6 +210,9 @@ public class Kaytto extends Application {
         }
     }
 
+    /**
+     * Päivittää menojen kategoriat ja niiden summat
+     * Laskee yhteen kategorioiden kokonaismenot ja näyttää toisessa taulukossa
 
     private void paivitaMenotKategoriat() {
 
@@ -235,6 +253,9 @@ public class Kaytto extends Application {
 
     }
 
+    /**
+     * Nollaa napin toiminnallisuus eli nollataan tiedot ja tyhjentää tallennetut menot
+     * Poistaa tiedot muistista ja tyhjentää näkymän
 
     private void nollaaTiedot() {
         menot.clear();
@@ -247,11 +268,12 @@ public class Kaytto extends Application {
         TiedostonKasittely.tyhjennaTiedosto(); //tiedoston tyhjentäminen
     }
 
+    /**
+     * Pääohjelman käynnistys
+     * @param args
 
     public static void main(String[] args) {
         launch(args);
     }
-}
-
-
 */
+
