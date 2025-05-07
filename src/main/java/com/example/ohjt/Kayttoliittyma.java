@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -41,7 +42,7 @@ public class Kayttoliittyma extends Application {
     private TextField tfAsiakasPuh = new TextField();
     private TextField tfAsiakasSynty = new TextField();
 
-    private TextField varauksenAlku = new TextField();
+    private TextField varauksenAlku = new TextField("pp/kk/vvvv");
     private TextField varauksenLoppu = new TextField();
     private ComboBox<String> cbMokkitaso = new ComboBox<>();
     private Button Haebutton = new Button("Hae");
@@ -73,6 +74,7 @@ public class Kayttoliittyma extends Application {
         pane.add(button,0,1);
         pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 2);
         pane.add(varauksenAlku,1,2);
+        varauksenAlku.setStyle("-fx-text-fill:gray;");
         pane.add(varauksenLoppu,0,3);
         pane.add(tfAsiakkaanimi,0,4);
         pane.add(tfAsiakasGmail,0,5);
