@@ -109,6 +109,8 @@ public class Kayttoliittyma extends Application {
 
         button.setOnAction(e -> {
 
+            alkuDate.setDisable(false);
+            loppuDate.setDisable(false);
             tfAsiakkaanimi.setDisable(false);
             tfAsiakasGmail.setDisable(false);
             tfAsiakasPuh.setDisable(false);
