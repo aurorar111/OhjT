@@ -16,7 +16,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
+import java.util.Random;
 
 
 public class Kayttoliittyma extends Application {
@@ -107,6 +107,8 @@ public class Kayttoliittyma extends Application {
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
+
+        // ei voi muokata tietoja ennen henkilökunta ID
         alkuDate.setDisable(true);
         loppuDate.setDisable(true);
         tfAsiakkaanimi.setDisable(true);
@@ -138,6 +140,17 @@ public class Kayttoliittyma extends Application {
             cbMokkitaso.setDisable(false);
 
         });
+
+        Haebutton.setOnAction(e-> {
+            int satunnainenID = new Random().nextInt(30000)+1;
+            tfAsiakasID.setText(String.valueOf(satunnainenID));
+            tfAsiakasID.setEditable(false);
+
+        });
+
+
+
+
 
 
         //Taulukko oikea
