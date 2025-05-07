@@ -110,7 +110,7 @@ public class Kayttoliittyma extends Application {
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
-        //toimiiko
+        //toimiikoo
 
     }
     public static void main(String[] args) {
