@@ -40,6 +40,7 @@ public class Kayttoliittyma extends Application {
     private TextField maksuntila = new TextField();
 
     private TableView taulukko = new TableView<>();
+    private TableView taulukkoMaksut = new TableView<>();
     private DatePicker alkuDate = new DatePicker();
     private DatePicker loppuDate = new DatePicker();
 
@@ -60,40 +61,51 @@ public class Kayttoliittyma extends Application {
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
         pane.add(tfhenkilokuntaID,1,0);
         pane.add(button,0,1);
-        pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 2);
-        pane.add(alkuDate,1,2);
-        pane.add(new Label ("Varauksen loppu päivämäärä:"), 0, 3);
-        pane.add(loppuDate,1,3);
-        pane.add(new Label ("Asiakkaan nimi:"), 0, 4);
-        pane.add(tfAsiakkaanimi,1,4);
-        pane.add(new Label ("Asiakkaan gmail:"), 0, 5);
-        pane.add(tfAsiakasGmail,1,5);
-        pane.add(new Label ("Asiakkaan Puhelinnumero:"), 0, 6);
-        pane.add(tfAsiakasPuh,1,6);
-        pane.add(new Label ("Asiakkaan Syntymäpäivä:"), 0, 7);
-        pane.add(tfAsiakasSynty,1,7);
-        pane.add(cbMokkitaso,0,8);
-        pane.add(Haebutton,0,9);
-        pane.add(new Label("Saatavuus:"),0,10);
-        pane.add(saatavuus,1,10);
-        pane.add(new Label ("Generoitu asiakas ID:"),0,11);
-        pane.add(tfAsiakasID,1,11);
+        pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 3);
+        pane.add(alkuDate,1,3);
+        pane.add(new Label ("Varauksen loppu päivämäärä:"), 0, 4);
+        pane.add(loppuDate,1,4);
+        pane.add(new Label ("Asiakkaan nimi:"), 0, 5);
+        pane.add(tfAsiakkaanimi,1,5);
+        pane.add(new Label ("Asiakkaan gmail:"), 0, 6);
+        pane.add(tfAsiakasGmail,1,6);
+        pane.add(new Label ("Asiakkaan Puhelinnumero:"), 0, 7);
+        pane.add(tfAsiakasPuh,1,7);
+        pane.add(new Label ("Asiakkaan Syntymäpäivä:"), 0, 8);
+        pane.add(tfAsiakasSynty,1,8);
+        pane.add(cbMokkitaso,0,9);
+        pane.add(Haebutton,0,10);
+        pane.add(new Label("Saatavuus:"),0,11);
+        pane.add(saatavuus,1,11);
+        pane.add(new Label ("Generoitu asiakas ID:"),0,12);
+        pane.add(tfAsiakasID,1,12);
 
         //Oikea
-        pane.add(new Label ("Hinta:"),5,2);
-        pane.add(hinta,6,2);
-        pane.add(new Label ("Laskun ID:"),5,3);
-        pane.add(laskuID,6,3);
-        pane.add(new Label ("Lasku eräpäivä:"),5,4);
-        pane.add(laskuPva,6,4);
-        pane.add(new Label ("Maksuntila:"),5,5);
-        pane.add(maksuntila,6,5);
+        pane.add(new Label ("Hinta:"),5,3);
+        pane.add(hinta,6,3);
+        pane.add(new Label ("Laskun ID:"),5,4);
+        pane.add(laskuID,6,4);
+        pane.add(new Label ("Lasku eräpäivä:"),5,5);
+        pane.add(laskuPva,6,5);
+        pane.add(new Label ("Maksuntila:"),5,6);
+        pane.add(maksuntila,6,6);
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
+        alkuDate.setDisable(true);
+        loppuDate.setDisable(true);
+        tfhenkilokuntaID.textProperty().addListener((obs,vanha,uusi) -> {
+            if (!uusi.trim().isEmpty()) {
+                alkuDate.setDisable(false);
+                loppuDate.setDisable(false);
+            }
 
+        });
+
+
+        //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
@@ -103,6 +115,18 @@ public class Kayttoliittyma extends Application {
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
 
+        //Taulukko vasen
+        TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Lasku");
+        laskuColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
+        TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
+        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+        taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
+        pane.add(taulukkoMaksut, 5,20,2,1);
+
+
+
+
+
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
@@ -111,6 +135,8 @@ public class Kayttoliittyma extends Application {
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
+        taulukkoMaksut.setStyle("-fx-background-color:#D5E5D5;");
+        taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
         //toimiikoo
 
     }
