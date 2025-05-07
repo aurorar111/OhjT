@@ -105,6 +105,7 @@ public class Kayttoliittyma extends Application {
         });
 
 
+        //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
@@ -114,12 +115,15 @@ public class Kayttoliittyma extends Application {
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
 
+        //Taulukko vasen
         TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Lasku");
         laskuColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
         erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
-        pane.add(taulukkoMaksut, 10,20,2,1);
+        pane.add(taulukkoMaksut, 5,20,2,1);
+
+
 
 
 
