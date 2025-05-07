@@ -13,6 +13,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.DatePicker;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
 
 
 public class Kayttoliittyma extends Application {
@@ -45,7 +49,7 @@ public class Kayttoliittyma extends Application {
     private DatePicker loppuDate = new DatePicker();
 
     @Override
-    public void start(Stage alkuikkuna){
+    public void start(Stage alkuikkuna) {
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 800, 800);
         alkuikkuna.setTitle("Varausjärjestelmä");
@@ -59,36 +63,37 @@ public class Kayttoliittyma extends Application {
         pane.setPadding(new javafx.geometry.Insets(20));
         //Vasen
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
-        pane.add(tfhenkilokuntaID,1,0);
-        pane.add(button,0,1);
-        pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 3);
-        pane.add(alkuDate,1,3);
-        pane.add(new Label ("Varauksen loppu päivämäärä:"), 0, 4);
-        pane.add(loppuDate,1,4);
-        pane.add(new Label ("Asiakkaan nimi:"), 0, 5);
-        pane.add(tfAsiakkaanimi,1,5);
-        pane.add(new Label ("Asiakkaan gmail:"), 0, 6);
-        pane.add(tfAsiakasGmail,1,6);
-        pane.add(new Label ("Asiakkaan Puhelinnumero:"), 0, 7);
-        pane.add(tfAsiakasPuh,1,7);
-        pane.add(new Label ("Asiakkaan Syntymäpäivä:"), 0, 8);
-        pane.add(tfAsiakasSynty,1,8);
-        pane.add(cbMokkitaso,0,9);
-        pane.add(Haebutton,0,10);
-        pane.add(new Label("Saatavuus:"),0,11);
-        pane.add(saatavuus,1,11);
-        pane.add(new Label ("Generoitu asiakas ID:"),0,12);
-        pane.add(tfAsiakasID,1,12);
+        pane.add(tfhenkilokuntaID, 1, 0);
+        pane.add(button, 0, 1);
+        pane.add(new Label("Varauksen alkupäivämäärä:"), 0, 3);
+        pane.add(alkuDate, 1, 3);
+        pane.add(new Label("Varauksen loppu päivämäärä:"), 0, 4);
+        pane.add(loppuDate, 1, 4);
+        pane.add(new Label("Asiakkaan nimi:"), 0, 5);
+        pane.add(tfAsiakkaanimi, 1, 5);
+        pane.add(new Label("Asiakkaan gmail:"), 0, 6);
+        pane.add(tfAsiakasGmail, 1, 6);
+        pane.add(new Label("Asiakkaan Puhelinnumero:"), 0, 7);
+        pane.add(tfAsiakasPuh, 1, 7);
+        pane.add(new Label("Asiakkaan Syntymäpäivä:"), 0, 8);
+        pane.add(tfAsiakasSynty, 1, 8);
+        pane.add(cbMokkitaso, 0, 9);
+        pane.add(Haebutton, 0, 10);
+        pane.add(new Label("Saatavuus:"), 0, 11);
+        pane.add(saatavuus, 1, 11);
+        pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
+        pane.add(tfAsiakasID, 1, 12);
 
         //Oikea
-        pane.add(new Label ("Hinta:"),5,3);
-        pane.add(hinta,6,3);
-        pane.add(new Label ("Laskun ID:"),5,4);
-        pane.add(laskuID,6,4);
-        pane.add(new Label ("Lasku eräpäivä:"),5,5);
-        pane.add(laskuPva,6,5);
-        pane.add(new Label ("Maksuntila:"),5,6);
-        pane.add(maksuntila,6,6);
+        pane.add(new Label("Hinta:"), 5, 3);
+        pane.add(hinta, 6, 3);
+        pane.add(new Label("Laskun ID:"), 5, 4);
+        pane.add(laskuID, 6, 4);
+        pane.add(new Label("Lasku eräpäivä:"), 5, 5);
+        pane.add(laskuPva, 6, 5);
+        pane.add(new Label("Maksuntila:"), 5, 6);
+        pane.add(maksuntila, 6, 6);
+
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
@@ -106,8 +111,10 @@ public class Kayttoliittyma extends Application {
         laskuID.setDisable(true);
         laskuPva.setDisable(true);
         maksuntila.setDisable(true);
+        cbMokkitaso.setDisable(true);
 
-        button.setOnAction(e-> {
+        button.setOnAction(e -> {
+
             alkuDate.setDisable(false);
             loppuDate.setDisable(false);
             tfAsiakkaanimi.setDisable(false);
@@ -120,10 +127,9 @@ public class Kayttoliittyma extends Application {
             laskuID.setDisable(false);
             laskuPva.setDisable(false);
             maksuntila.setDisable(false);
+            cbMokkitaso.setDisable(false);
 
         });
-
-            }
 
 
         //Taulukko oikea
@@ -144,10 +150,6 @@ public class Kayttoliittyma extends Application {
         taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
         pane.add(taulukkoMaksut, 5,20,2,1);
 
-
-
-
-
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
@@ -158,11 +160,19 @@ public class Kayttoliittyma extends Application {
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
         taulukkoMaksut.setStyle("-fx-background-color:#D5E5D5;");
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
-        //toimiikoo
+        //toimiikoo nyt
+
+        Image kuva1 = new Image(getClass().getResource("/kuva/cozy_spot_logo.png").toExternalForm());
+        ImageView iv1 = new ImageView(kuva1);
+        iv1.setFitHeight(20);
+        iv1.setFitWidth(20);
+        pane.add(iv1, 3,2,2,1);
+
 
     }
     public static void main(String[] args) {
         launch(args);
     }
+
 }
 
