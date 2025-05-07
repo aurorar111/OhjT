@@ -40,6 +40,7 @@ public class Kayttoliittyma extends Application {
     private TextField tfAsiakasGmail = new TextField();
     private TextField tfAsiakasPuh = new TextField();
     private TextField tfAsiakasSynty = new TextField();
+    private TextField tfAsiakasID = new TextField();
 
     private TextField varauksenAlku = new TextField();
     private TextField varauksenLoppu = new TextField();
@@ -87,14 +88,16 @@ public class Kayttoliittyma extends Application {
         pane.add(Haebutton,0,9);
         pane.add(new Label("Saatavuus:"),0,10);
         pane.add(saatavuus,1,10);
-        pane.add(new Label ("Hinta:"),0,11);
-        pane.add(hinta,1,11);
-        pane.add(new Label ("Laskun ID:"),0,12);
-        pane.add(laskuID,1,12);
-        pane.add(new Label ("Lasku eräpäivä:"),0,13);
-        pane.add(laskuPva,1,13);
-        pane.add(new Label ("Maksuntila:"),0,14);
-        pane.add(maksuntila,1,14);
+        pane.add(new Label ("Generoitu asiakas ID:"),0,11);
+        pane.add(tfAsiakasID,1,11);
+        pane.add(new Label ("Hinta:"),0,12);
+        pane.add(hinta,1,12);
+        pane.add(new Label ("Laskun ID:"),0,13);
+        pane.add(laskuID,1,13);
+        pane.add(new Label ("Lasku eräpäivä:"),0,14);
+        pane.add(laskuPva,1,14);
+        pane.add(new Label ("Maksuntila:"),0,15);
+        pane.add(maksuntila,1,15);
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
