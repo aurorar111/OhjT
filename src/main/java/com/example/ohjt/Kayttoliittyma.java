@@ -95,6 +95,7 @@ public class Kayttoliittyma extends Application {
         cbMokkitaso.setValue("Valitse");
 
 
+        //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
@@ -104,6 +105,7 @@ public class Kayttoliittyma extends Application {
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
 
+        //Taulukko vasen
         TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Lasku");
         laskuColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
