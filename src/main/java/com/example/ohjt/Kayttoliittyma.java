@@ -132,7 +132,7 @@ public class Kayttoliittyma extends Application {
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
         taulukkoMaksut.setStyle("-fx-background-color:#D5E5D5;");
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
-        //toimiikoo nyt
+        //toimiikoo nyttttt
 
     }
     public static void main(String[] args) {
