@@ -93,6 +93,7 @@ public class Kayttoliittyma extends Application {
         pane.add(laskuPva, 6, 5);
         pane.add(new Label("Maksuntila:"), 5, 6);
         pane.add(maksuntila, 6, 6);
+
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
@@ -165,7 +166,9 @@ public class Kayttoliittyma extends Application {
         ImageView iv1 = new ImageView(kuva1);
         iv1.setFitHeight(100);
         iv1.setFitWidth(100);
-        //pohja.getChildren().add(iv1);
+        pane.add(iv1, 3,2,2,1);
+
+        pohja.getChildren().add(iv1);
 
     }
     public static void main(String[] args) {
