@@ -92,7 +92,7 @@ public class Kayttoliittyma extends Application {
         cbMokkitaso.setValue("Valitse");
 
 
-        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
+        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
         kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
