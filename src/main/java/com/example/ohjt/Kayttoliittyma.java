@@ -109,7 +109,9 @@ public class Kayttoliittyma extends Application {
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
         erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
-        pane.add(taulukkoMaksut, 10,20,2,1);
+        pane.add(taulukkoMaksut, 5,20,2,1);
+
+
 
 
 
