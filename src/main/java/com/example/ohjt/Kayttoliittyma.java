@@ -94,12 +94,12 @@ public class Kayttoliittyma extends Application {
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
-        varauksenAlku.setDisable(true);
-        varauksenLoppu.setDisable(true);
+        alkuDate.setDisable(true);
+        loppuDate.setDisable(true);
         tfhenkilokuntaID.textProperty().addListener((obs,vanha,uusi) -> {
             if (!uusi.trim().isEmpty()) {
-                varauksenAlku.setDisable(false);
-                varauksenLoppu.setDisable(false);
+                alkuDate.setDisable(false);
+                loppuDate.setDisable(false);
             }
 
         });
