@@ -50,7 +50,7 @@ public class Kayttoliittyma extends Application {
 
 
     private TextField laskuID = new TextField();
-    private TextField lasku = new TextField();
+    private TextField laskuPva = new TextField();
     private TextField maksuntila = new TextField();
 
     private TableView taulukko = new TableView<>();
@@ -78,18 +78,23 @@ public class Kayttoliittyma extends Application {
         pane.add(new Label ("Asiakkaan nimi:"), 0, 4);
         pane.add(tfAsiakkaanimi,1,4);
         pane.add(new Label ("Asiakkaan gmail:"), 0, 5);
-        pane.add(tfAsiakasGmail,0,5);
+        pane.add(tfAsiakasGmail,1,5);
         pane.add(new Label ("Asiakkaan Puhelinnumero:"), 0, 6);
-        pane.add(tfAsiakasPuh,0,6);
+        pane.add(tfAsiakasPuh,1,6);
         pane.add(new Label ("Asiakkaan Syntymäpäivä:"), 0, 7);
-        pane.add(tfAsiakasSynty,0,7);
+        pane.add(tfAsiakasSynty,1,7);
         pane.add(cbMokkitaso,0,8);
         pane.add(Haebutton,0,9);
-        pane.add(saatavuus,0,10);
-        pane.add(hinta,0,11);
-        pane.add(laskuID,0,12);
-        pane.add(lasku,0,13);
-        pane.add(maksuntila,0,14);
+        pane.add(new Label("Saatavuus:"),0,10);
+        pane.add(saatavuus,1,10);
+        pane.add(new Label ("Hinta:"),0,11);
+        pane.add(hinta,1,11);
+        pane.add(new Label ("Laskun ID:"),0,12);
+        pane.add(laskuID,1,12);
+        pane.add(new Label ("Lasku eräpäivä:"),0,13);
+        pane.add(laskuPva,1,13);
+        pane.add(new Label ("Maksuntila:"),0,14);
+        pane.add(maksuntila,1,14);
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
