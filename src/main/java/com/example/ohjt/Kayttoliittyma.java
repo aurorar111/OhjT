@@ -40,6 +40,7 @@ public class Kayttoliittyma extends Application {
     private TextField maksuntila = new TextField();
 
     private TableView taulukko = new TableView<>();
+    private TableView taulukkoMaksut = new TableView<>();
     private DatePicker alkuDate = new DatePicker();
     private DatePicker loppuDate = new DatePicker();
 
@@ -102,6 +103,14 @@ public class Kayttoliittyma extends Application {
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
+
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
+        TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
+        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, erapaivaColumn);
+        pane.add(taulukko, 2,20,2,1);
+
+
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
