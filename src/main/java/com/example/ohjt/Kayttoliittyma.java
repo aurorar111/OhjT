@@ -57,6 +57,11 @@ public class Kayttoliittyma extends Application {
 
     @Override
     public void start(Stage alkuikkuna){
+        Pane pohja = new Pane();
+        Scene kehys = new Scene(pohja, 600, 500);
+        alkuikkuna.setTitle("Varausjärjestelmä");
+        alkuikkuna.setScene(kehys);
+        alkuikkuna.show();
 
         GridPane pane = new GridPane();
 
@@ -80,36 +85,27 @@ public class Kayttoliittyma extends Application {
         pane.add(laskuID,0,12);
         pane.add(lasku,0,13);
         pane.add(maksuntila,0,14);
+        pohja.getChildren().add(pane);
 
 
-        Scene kehys = new Scene(pane, 600, 500);
-        alkuikkuna.setTitle("Varausjärjestelmä");
-        alkuikkuna.setScene(kehys);
-        alkuikkuna.show();
-
-        HBox hb = new HBox(40);
-        hb.setAlignment(Pos.CENTER_RIGHT);
-        hb.getChildren().addAll(pane);
-
-        // ensimmäisen taulukon tekeminen jossa näkyy menotapahtumat yksittäisinä tapahtumina
-        TableColumn<OlioLuokka, Double> vierasColumn = new TableColumn<>("Vieras");
-        vierasColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
-        TableColumn<OlioLuokka, String> mokkiColumn = new TableColumn<>("Mökki");
-        mokkiColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
+        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Summa €");
+        summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
+        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
+        pane.add(taulukko, 1,3,2,10);
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
-        taulukko.getColumns().addAll(vierasColumn, mokkiColumn, paivaColumn);
+        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
         //taulukko.setItems(menoTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
 
-        //button.setOnAction(e -> kirjaudu());
-        //Haebutton.setOnAction(e-> haeTiedot());
     }
 
 
