@@ -104,11 +104,12 @@ public class Kayttoliittyma extends Application {
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
 
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
+        TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Lasku");
+        laskuColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
         erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
-        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, erapaivaColumn);
-        pane.add(taulukko, 2,20,2,1);
+        taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
+        pane.add(taulukkoMaksut, 10,20,2,1);
 
 
 
@@ -120,6 +121,8 @@ public class Kayttoliittyma extends Application {
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#D5E5D5;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
+        taulukkoMaksut.setStyle("-fx-background-color:#D5E5D5;");
+        taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
         //toimiikoo
 
     }
