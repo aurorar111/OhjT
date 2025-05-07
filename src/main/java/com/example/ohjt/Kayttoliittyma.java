@@ -106,6 +106,7 @@ public class Kayttoliittyma extends Application {
         laskuID.setDisable(true);
         laskuPva.setDisable(true);
         maksuntila.setDisable(true);
+        cbMokkitaso.setDisable(true);
 
         button.setOnAction(e -> {
 
@@ -121,8 +122,7 @@ public class Kayttoliittyma extends Application {
             laskuID.setDisable(false);
             laskuPva.setDisable(false);
             maksuntila.setDisable(false);
-
-
+            cbMokkitaso.setDisable(false);
 
         });
 
