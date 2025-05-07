@@ -50,6 +50,14 @@ public class Kayttoliittyma extends Application {
 
     @Override
     public void start(Stage alkuikkuna) {
+
+        tfhenkilokuntaID.setPromptText("syötä ID");
+        /*tfhenkilokuntaID.textProperty().addListener((observable, oldValue, newValue) -> {
+            button.setDisable(newValue.trim().isEmpty());
+        });
+        button.setDisable(tfhenkilokuntaID.getText().trim().isEmpty());*/
+
+
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 800, 800);
         alkuikkuna.setTitle("Varausjärjestelmä");
@@ -67,15 +75,15 @@ public class Kayttoliittyma extends Application {
         pane.add(button, 0, 1);
         pane.add(new Label("Varauksen alkupäivämäärä:"), 0, 3);
         pane.add(alkuDate, 1, 3);
-        pane.add(new Label("Varauksen loppu päivämäärä:"), 0, 4);
+        pane.add(new Label("Varauksen loppupäivämäärä:"), 0, 4);
         pane.add(loppuDate, 1, 4);
         pane.add(new Label("Asiakkaan nimi:"), 0, 5);
         pane.add(tfAsiakkaanimi, 1, 5);
-        pane.add(new Label("Asiakkaan gmail:"), 0, 6);
+        pane.add(new Label("Asiakkaan sähköposti:"), 0, 6);
         pane.add(tfAsiakasGmail, 1, 6);
-        pane.add(new Label("Asiakkaan Puhelinnumero:"), 0, 7);
+        pane.add(new Label("Asiakkaan puhelinnumero:"), 0, 7);
         pane.add(tfAsiakasPuh, 1, 7);
-        pane.add(new Label("Asiakkaan Syntymäpäivä:"), 0, 8);
+        pane.add(new Label("Asiakkaan syntymäpäivä:"), 0, 8);
         pane.add(tfAsiakasSynty, 1, 8);
         pane.add(cbMokkitaso, 0, 9);
         pane.add(Haebutton, 0, 10);
@@ -89,9 +97,9 @@ public class Kayttoliittyma extends Application {
         pane.add(hinta, 6, 3);
         pane.add(new Label("Laskun ID:"), 5, 4);
         pane.add(laskuID, 6, 4);
-        pane.add(new Label("Lasku eräpäivä:"), 5, 5);
+        pane.add(new Label("Laskun eräpäivä:"), 5, 5);
         pane.add(laskuPva, 6, 5);
-        pane.add(new Label("Maksuntila:"), 5, 6);
+        pane.add(new Label("Maksun tila:"), 5, 6);
         pane.add(maksuntila, 6, 6);
 
         pohja.getChildren().add(pane);
