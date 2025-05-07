@@ -86,7 +86,7 @@ public class Kayttoliittyma extends Application {
         pane.add(laskuPva,1,14);
         pane.add(new Label ("Maksuntila:"),0,15);
         pane.add(maksuntila,1,15);
-       // pane.add(new Label ("Varauksen loppu:"),0,16);
+        pane.add(new Label ("Varauksen loppu:"),0,16);
         pohja.getChildren().add(pane);
 
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
@@ -100,7 +100,7 @@ public class Kayttoliittyma extends Application {
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
-        pane.add(taulukko, 2,3,2,10);
+        pane.add(taulukko, 0,20,2,1);
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
