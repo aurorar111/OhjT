@@ -94,6 +94,16 @@ public class Kayttoliittyma extends Application {
         cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
+        varauksenAlku.setDisable(true);
+        varauksenLoppu.setDisable(true);
+        tfhenkilokuntaID.textProperty().addListener((obs,vanha,uusi) -> {
+            if (!uusi.trim().isEmpty()) {
+                varauksenAlku.setDisable(false);
+                varauksenLoppu.setDisable(false);
+            }
+
+        });
+
 
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
