@@ -8,27 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.geometry.Pos;
-import javafx.stage.Stage;
-import java.util.List;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.beans.property.SimpleStringProperty;
-import static javafx.collections.FXCollections.*;
+import javafx.scene.control.DatePicker;
+
 
 public class Kayttoliittyma extends Application {
     private TextField henkilokuntaG = new TextField("");
@@ -55,6 +40,8 @@ public class Kayttoliittyma extends Application {
     private TextField maksuntila = new TextField();
 
     private TableView taulukko = new TableView<>();
+    private DatePicker alkuDate = new DatePicker();
+    private DatePicker loppuDate = new DatePicker();
 
     @Override
     public void start(Stage alkuikkuna){
@@ -62,6 +49,7 @@ public class Kayttoliittyma extends Application {
         Scene kehys = new Scene(pohja, 800, 800);
         alkuikkuna.setTitle("Varausjärjestelmä");
         alkuikkuna.setScene(kehys);
+        pohja.setStyle("-fx-background-color:#e0f6e0;");
         alkuikkuna.show();
 
         GridPane pane = new GridPane();
@@ -73,9 +61,9 @@ public class Kayttoliittyma extends Application {
         pane.add(tfhenkilokuntaID,1,0);
         pane.add(button,0,1);
         pane.add(new Label ("Varauksen alkupäivämäärä:"), 0, 2);
-        pane.add(varauksenAlku,1,2);
+        pane.add(alkuDate,1,2);
         pane.add(new Label ("Varauksen loppu päivämäärä:"), 0, 3);
-        pane.add(varauksenLoppu,1,3);
+        pane.add(loppuDate,1,3);
         pane.add(new Label ("Asiakkaan nimi:"), 0, 4);
         pane.add(tfAsiakkaanimi,1,4);
         pane.add(new Label ("Asiakkaan gmail:"), 0, 5);
