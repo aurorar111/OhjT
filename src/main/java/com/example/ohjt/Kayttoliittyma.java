@@ -56,6 +56,7 @@ public class Kayttoliittyma extends Application {
         pane.setHgap(5);
         pane.setVgap(5);
         pane.setPadding(new javafx.geometry.Insets(20));
+        //Vasen
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
         pane.add(tfhenkilokuntaID,1,0);
         pane.add(button,0,1);
@@ -78,7 +79,7 @@ public class Kayttoliittyma extends Application {
         pane.add(new Label ("Generoitu asiakas ID:"),0,11);
         pane.add(tfAsiakasID,1,11);
 
-
+        //Oikea
         pane.add(new Label ("Hinta:"),5,2);
         pane.add(hinta,6,2);
         pane.add(new Label ("Laskun ID:"),5,3);
