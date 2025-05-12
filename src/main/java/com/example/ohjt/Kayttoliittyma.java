@@ -88,7 +88,7 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasSynty, 1, 8);
         pane.add(cbMokkitaso, 0, 9);
         pane.add(Haebutton, 0, 10);
-        pane.add(paivita, 1, 10);
+        pane.add(paivita, 1, 10); //Paivita button
         pane.add(new Label("Saatavuus:"), 0, 11);
         pane.add(saatavuus, 1, 11);
         pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
@@ -181,8 +181,8 @@ public class Kayttoliittyma extends Application {
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
         taulukkoMaksut.setStyle("-fx-background-color:#D5E5D5;");
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
-        //toimiikoo nyt
 
+        //toimiikoo nyt
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
         iv1.setFitHeight(140);
