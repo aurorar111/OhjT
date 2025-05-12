@@ -88,6 +88,7 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasSynty, 1, 8);
         pane.add(cbMokkitaso, 0, 9);
         pane.add(Haebutton, 0, 10);
+        pane.add(paivita, 1, 10);
         pane.add(new Label("Saatavuus:"), 0, 11);
         pane.add(saatavuus, 1, 11);
         pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
