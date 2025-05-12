@@ -16,8 +16,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.sql.*;
 import java.util.Random;
-
 
 public class Kayttoliittyma extends Application {
     private TextField henkilokuntaG = new TextField("");
@@ -56,7 +56,6 @@ public class Kayttoliittyma extends Application {
             button.setDisable(newValue.trim().isEmpty());
         });
         button.setDisable(tfhenkilokuntaID.getText().trim().isEmpty());*/
-
 
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 800, 800);
@@ -195,7 +194,24 @@ public class Kayttoliittyma extends Application {
     }
     public static void main(String[] args) {
         launch(args);
-    }
 
+        try{
+            Connection conn = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/ot", // vaihda tietokannan nimi
+            "root", // oma käyttäjänimesi
+            "salasana123" // oma salasanasi
+            );
+
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("username"));
+                System.out.println(resultSet.getString("password"));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+    }
 }
 
