@@ -63,10 +63,12 @@ public class Kayttoliittyma extends Application {
         button.setDisable(tfhenkilokuntaID.getText().trim().isEmpty());*/
 
         Pane pohja = new Pane();
-        Scene kehys = new Scene(pohja, 800, 800);
+        Scene kehys = new Scene(pohja, 1000, 900);
         alkuikkuna.setTitle("Varausjärjestelmä");
         alkuikkuna.setScene(kehys);
-        pohja.setStyle("-fx-background-color:#e0f6e0;");
+        pohja.setStyle("-fx-background-color:#faf5f1;");
+        button.setStyle("-fx-background-color:#ef6a9d;");
+
         alkuikkuna.show();
 
         GridPane pane = new GridPane();
@@ -111,7 +113,7 @@ public class Kayttoliittyma extends Application {
 
         pohja.getChildren().add(pane);
 
-        cbMokkitaso.getItems().addAll("Perus", "Parempi", "Erinomainen", "TOP tier");
+        cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
 
@@ -153,6 +155,11 @@ public class Kayttoliittyma extends Application {
             tfAsiakasID.setText(String.valueOf(satunnainenID));
             tfAsiakasID.setEditable(false);
 
+            int satunnainenLaskunID = new Random().nextInt(30000)+2000;
+            laskuID.setText(String.valueOf(satunnainenLaskunID));
+            laskuID.setEditable(false);
+            laskuID.setText("L" + satunnainenLaskunID);
+
         });
 
 
@@ -180,9 +187,9 @@ public class Kayttoliittyma extends Application {
         //taulukko.setItems(menoTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
-        taulukko.setStyle("-fx-background-color:#D5E5D5;");
+        taulukko.setStyle("-fx-background-color:#3a4a3d;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
-        taulukkoMaksut.setStyle("-fx-background-color:#D5E5D5;");
+        taulukkoMaksut.setStyle("-fx-background-color:#3a4a3d;");
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
 
         //toimiikoo nyt
@@ -199,17 +206,17 @@ public class Kayttoliittyma extends Application {
 
         try{
             Connection conn = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/ot", // vaihda tietokannan nimi
-            "root", // oma käyttäjänimesi
-            "salasana123" // oma salasanasi
+            "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
+            "root", // käyttäjänimi
+            "salasana123" // salasana (lotan)
             );
 
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
             while(resultSet.next()){
-                System.out.println(resultSet.getString("henkilökunta_id"));
-                System.out.println(resultSet.getString("sähköposti"));
-                System.out.println(resultSet.getString("puhelinnumero"));
+                System.out.println("henkilökunta ID: " + resultSet.getString("henkilökunta_id"));
+                System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
+                System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
             }
         }catch(SQLException e){
             e.printStackTrace();
