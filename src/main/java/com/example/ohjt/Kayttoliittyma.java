@@ -152,10 +152,6 @@ public class Kayttoliittyma extends Application {
         });
 
 
-
-
-
-
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
