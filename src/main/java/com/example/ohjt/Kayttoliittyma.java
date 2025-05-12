@@ -92,6 +92,8 @@ public class Kayttoliittyma extends Application {
         pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
         pane.add(tfAsiakasID, 1, 12);
 
+        Haebutton.setPrefWidth(100);
+
         //Oikea
         pane.add(new Label("Hinta:"), 5, 3);
         pane.add(hinta, 6, 3);
@@ -185,9 +187,9 @@ public class Kayttoliittyma extends Application {
 
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
-        iv1.setFitHeight(20);
-        iv1.setFitWidth(20);
-        pane.add(iv1, 3,2,2,1);
+        iv1.setFitHeight(140);
+        iv1.setFitWidth(140);
+        pane.add(iv1, 6,0,1,1);
 
 
     }
