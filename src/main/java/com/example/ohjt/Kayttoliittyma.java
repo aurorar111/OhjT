@@ -199,17 +199,17 @@ public class Kayttoliittyma extends Application {
 
         try{
             Connection conn = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/ot", // vaihda tietokannan nimi
-            "root", // oma käyttäjänimesi
-            "salasana123" // oma salasanasi
+            "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
+            "root", // käyttäjänimi
+            "salasana123" // salasana (lotan)
             );
 
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
             while(resultSet.next()){
-                System.out.println(resultSet.getString("henkilökunta_id"));
-                System.out.println(resultSet.getString("sähköposti"));
-                System.out.println(resultSet.getString("puhelinnumero"));
+                System.out.println("henkilökunta ID: " + resultSet.getString("henkilökunta_id"));
+                System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
+                System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
             }
         }catch(SQLException e){
             e.printStackTrace();
