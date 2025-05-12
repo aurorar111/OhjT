@@ -20,7 +20,7 @@ import java.sql.*;
 import java.util.Random;
 
 public class Kayttoliittyma extends Application {
-    private TextField henkilokuntaG = new TextField("");
+    public TextField henkilokuntaG = new TextField("");
 
     public TextField tfhenkilokuntaID = new TextField();
     public Button button = new Button("Kirjaudu");
