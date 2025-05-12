@@ -22,31 +22,31 @@ import java.util.Random;
 public class Kayttoliittyma extends Application {
     private TextField henkilokuntaG = new TextField("");
 
-    private TextField tfhenkilokuntaID = new TextField();
-    private Button button = new Button("Kirjaudu");
+    public TextField tfhenkilokuntaID = new TextField();
+    public Button button = new Button("Kirjaudu");
 
-    private TextField tfAsiakkaanimi = new TextField();
-    private TextField tfAsiakasGmail = new TextField();
-    private TextField tfAsiakasPuh = new TextField();
-    private TextField tfAsiakasSynty = new TextField();
-    private TextField tfAsiakasID = new TextField();
+    public TextField tfAsiakkaanimi = new TextField();
+    public TextField tfAsiakasGmail = new TextField();
+    public TextField tfAsiakasPuh = new TextField();
+    public TextField tfAsiakasSynty = new TextField();
+    public TextField tfAsiakasID = new TextField();
 
-    private TextField varauksenAlku = new TextField();
-    private TextField varauksenLoppu = new TextField();
-    private ComboBox<String> cbMokkitaso = new ComboBox<>();
-    private Button Haebutton = new Button("Hae");
-    private TextField saatavuus = new TextField();
-    private TextField hinta = new TextField();
+    public TextField varauksenAlku = new TextField();
+    public TextField varauksenLoppu = new TextField();
+    public ComboBox<String> cbMokkitaso = new ComboBox<>();
+    public Button Haebutton = new Button("Hae");
+    public TextField saatavuus = new TextField();
+    public TextField hinta = new TextField();
 
 
-    private TextField laskuID = new TextField();
-    private TextField laskuPva = new TextField();
-    private TextField maksuntila = new TextField();
+    public TextField laskuID = new TextField();
+    public TextField laskuPva = new TextField();
+    public TextField maksuntila = new TextField();
 
-    private TableView taulukko = new TableView<>();
-    private TableView taulukkoMaksut = new TableView<>();
-    private DatePicker alkuDate = new DatePicker();
-    private DatePicker loppuDate = new DatePicker();
+    public TableView taulukko = new TableView<>();
+    public TableView taulukkoMaksut = new TableView<>();
+    public DatePicker alkuDate = new DatePicker();
+    public DatePicker loppuDate = new DatePicker();
 
     @Override
     public void start(Stage alkuikkuna) {

@@ -1,9 +1,9 @@
-/*package com.example.ohjt;
+package com.example.ohjt;
 
 import java.io.*;
 import java.util.Scanner;
 
-public class Tiedosto {
+public class Tiedosto extends Kayttoliittyma {
 
     public void tallennaTiedostoon (){
         try {
@@ -12,7 +12,7 @@ public class Tiedosto {
                 tiedosto.createNewFile();
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
-            kTiedosto.write();
+            kTiedosto.write(tfhenkilokuntaID.getText()
             kTiedosto.close();
             System.out.println("Tiedosto tallennettu");
         } catch (IOException e) {
@@ -31,4 +31,4 @@ public class Tiedosto {
             throw new RuntimeException(e);
         }
     }
-}*/
+}
