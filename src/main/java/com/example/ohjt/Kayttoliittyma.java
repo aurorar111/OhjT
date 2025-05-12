@@ -38,6 +38,8 @@ public class Kayttoliittyma extends Application {
     public TextField saatavuus = new TextField();
     public TextField hinta = new TextField();
 
+    //PÄIVITYS NAPPI:
+    private Button paivita = new Button("päivitä?");
 
     public TextField laskuID = new TextField();
     public TextField laskuPva = new TextField();
@@ -205,8 +207,9 @@ public class Kayttoliittyma extends Application {
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
             while(resultSet.next()){
-                System.out.println(resultSet.getString("username"));
-                System.out.println(resultSet.getString("password"));
+                System.out.println(resultSet.getString("henkilökunta_id"));
+                System.out.println(resultSet.getString("sähköposti"));
+                System.out.println(resultSet.getString("puhelinnumero"));
             }
         }catch(SQLException e){
             e.printStackTrace();
