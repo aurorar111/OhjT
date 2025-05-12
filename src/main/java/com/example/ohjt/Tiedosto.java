@@ -5,14 +5,17 @@ import java.util.Scanner;
 
 public class Tiedosto extends Kayttoliittyma {
 
+    private OlioLuokka olioLuokka = new OlioLuokka();
+
     public void tallennaTiedostoon (){
         try {
             File tiedosto = new File("tiedosto.txt");
             if (!tiedosto.exists()) {
                 tiedosto.createNewFile();
+                System.out.println("Ei tiedostoa)");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
-            kTiedosto.write(tfhenkilokuntaID.getText());
+            kTiedosto.write(olioLuokka.getHenkilokuntaID());
             kTiedosto.write("Moi");
 
             kTiedosto.close();

@@ -20,6 +20,9 @@ import java.sql.*;
 import java.util.Random;
 
 public class Kayttoliittyma extends Application {
+
+    OlioLuokka olio = new OlioLuokka();
+
     public TextField henkilokuntaG = new TextField("");
 
     public TextField tfhenkilokuntaID = new TextField();
@@ -39,7 +42,7 @@ public class Kayttoliittyma extends Application {
     public TextField hinta = new TextField();
 
     //PÄIVITYS NAPPI:
-    private Button paivita = new Button("päivitä?");
+    private Button paivita = new Button("päivitä????");
 
     public TextField laskuID = new TextField();
     public TextField laskuPva = new TextField();
