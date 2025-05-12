@@ -13,6 +13,8 @@ public class Tiedosto extends Kayttoliittyma {
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
             kTiedosto.write(tfhenkilokuntaID.getText());
+            kTiedosto.write("Moi");
+
             kTiedosto.close();
             System.out.println("Tiedosto tallennettu");
         } catch (IOException e) {
