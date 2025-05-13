@@ -13,7 +13,7 @@ public class Tiedosto {
             File tiedosto = new File("tiedosto.txt");
             if (!tiedosto.exists()) {
                 tiedosto.createNewFile();
-                System.out.println("Ei tiedostoa");
+                System.out.println("tiedot tallenettu");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
             kTiedosto.write(olioLuokka.getHenkilokuntaID());
@@ -21,7 +21,6 @@ public class Tiedosto {
             kTiedosto.write("Moi");
 
             kTiedosto.close();
-            System.out.println("Tiedosto tallennettu");
         } catch (IOException e) {
             e.printStackTrace();
             
