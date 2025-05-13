@@ -42,7 +42,7 @@ public class Kayttoliittyma extends Application {
     public TextField hinta = new TextField();
 
     //PÄIVITYS NAPPI:
-    private Button paivita = new Button("päivitä????");
+    private Button paivita = new Button("Tallenna varaus");
 
     public TextField laskuID = new TextField();
     public TextField laskuPva = new TextField();
@@ -91,7 +91,7 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasSynty, 1, 8);
         pane.add(cbMokkitaso, 0, 9);
         pane.add(Haebutton, 0, 10);
-        pane.add(paivita, 1, 10); //Paivita buttonnnn
+        pane.add(paivita, 2, 12); //Paivita buttonnnn
         pane.add(new Label("Saatavuus:"), 0, 11);
         pane.add(saatavuus, 1, 11);
         pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
@@ -131,21 +131,35 @@ public class Kayttoliittyma extends Application {
         cbMokkitaso.setDisable(true);
 
         button.setOnAction(e -> {
-
-            alkuDate.setDisable(false);
-            loppuDate.setDisable(false);
-            tfAsiakkaanimi.setDisable(false);
-            tfAsiakasGmail.setDisable(false);
-            tfAsiakasPuh.setDisable(false);
-            tfAsiakasSynty.setDisable(false);
-            saatavuus.setDisable(false);
-            tfAsiakasID.setDisable(false);
-            hinta.setDisable(false);
-            laskuID.setDisable(false);
-            laskuPva.setDisable(false);
-            maksuntila.setDisable(false);
-            cbMokkitaso.setDisable(false);
-
+            if(tfhenkilokuntaID.getText().isEmpty()|| tfhenkilokuntaID.getText().length()==4) {
+                alkuDate.setDisable(false);
+                loppuDate.setDisable(false);
+                tfAsiakkaanimi.setDisable(false);
+                tfAsiakasGmail.setDisable(false);
+                tfAsiakasPuh.setDisable(false);
+                tfAsiakasSynty.setDisable(false);
+                saatavuus.setDisable(false);
+                tfAsiakasID.setDisable(false);
+                hinta.setDisable(false);
+                laskuID.setDisable(false);
+                laskuPva.setDisable(false);
+                maksuntila.setDisable(false);
+                cbMokkitaso.setDisable(false);
+            }else {
+                alkuDate.setDisable(true);
+                loppuDate.setDisable(true);
+                tfAsiakkaanimi.setDisable(true);
+                tfAsiakasGmail.setDisable(true);
+                tfAsiakasPuh.setDisable(true);
+                tfAsiakasSynty.setDisable(true);
+                saatavuus.setDisable(true);
+                tfAsiakasID.setDisable(true);
+                hinta.setDisable(true);
+                laskuID.setDisable(true);
+                laskuPva.setDisable(true);
+                maksuntila.setDisable(true);
+                cbMokkitaso.setDisable(true);
+            }
         });
 
         Haebutton.setOnAction(e-> {
