@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -53,6 +54,7 @@ public class Kayttoliittyma extends Application {
     public DatePicker alkuDate = new DatePicker();
     public DatePicker loppuDate = new DatePicker();
 
+
     @Override
     public void start(Stage alkuikkuna) {
 
@@ -76,6 +78,9 @@ public class Kayttoliittyma extends Application {
         //Vasen
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
         pane.add(tfhenkilokuntaID, 1, 0);
+        Label varoitus = new Label("Kirjoita 4 merkkinen ID");
+        varoitus.setTextFill(Color.RED);
+        pane.add(varoitus, 2, 0);
         pane.add(button, 0, 1);
         pane.add(new Label("Varauksen alkupäivämäärä:"), 0, 3);
         pane.add(alkuDate, 1, 3);
@@ -129,6 +134,7 @@ public class Kayttoliittyma extends Application {
         laskuPva.setDisable(true);
         maksuntila.setDisable(true);
         cbMokkitaso.setDisable(true);
+        varoitus.setVisible(false);
 
         //Ei toimii jos on empty tai jos ei ole ainakin 4 merkkiä
         button.setOnAction(e -> {
@@ -146,6 +152,7 @@ public class Kayttoliittyma extends Application {
                 laskuPva.setDisable(false);
                 maksuntila.setDisable(false);
                 cbMokkitaso.setDisable(false);
+                varoitus.setVisible(false);
             }else {
                 alkuDate.setDisable(true);
                 loppuDate.setDisable(true);
@@ -160,6 +167,7 @@ public class Kayttoliittyma extends Application {
                 laskuPva.setDisable(true);
                 maksuntila.setDisable(true);
                 cbMokkitaso.setDisable(true);
+                varoitus.setVisible(true);
             }
         });
 
