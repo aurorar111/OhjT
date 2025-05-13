@@ -12,7 +12,7 @@ public class Tiedosto extends Kayttoliittyma {
             File tiedosto = new File("tiedosto.txt");
             if (!tiedosto.exists()) {
                 tiedosto.createNewFile();
-                System.out.println("Ei tiedostoa)");
+                System.out.println("Ei tiedostoa");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
             kTiedosto.write(olioLuokka.getHenkilokuntaID());
@@ -22,6 +22,7 @@ public class Tiedosto extends Kayttoliittyma {
             kTiedosto.close();
             System.out.println("Tiedosto tallennettu");
         } catch (IOException e) {
+            e.printStackTrace();
             
         }
     }
