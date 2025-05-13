@@ -22,7 +22,8 @@ import java.util.Random;
 
 public class Kayttoliittyma extends Application {
 
-    OlioLuokka olio = new OlioLuokka();
+    //OlioLuokka olio = new OlioLuokka();
+    Tiedosto tiedostoLuokka = new Tiedosto();
 
     public TextField henkilokuntaG = new TextField("");
 
@@ -103,6 +104,10 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasID, 1, 12);
 
         Haebutton.setPrefWidth(100);
+
+        paivita.setOnAction(actionEvent -> {
+            tiedostoLuokka.tallennaTiedostoon();
+        });
 
         //Oikea
         pane.add(new Label("Hinta:"), 5, 3);

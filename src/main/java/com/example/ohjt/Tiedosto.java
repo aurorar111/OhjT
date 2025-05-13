@@ -9,6 +9,7 @@ public class Tiedosto {
 
     public void tallennaTiedostoon (){
         try {
+            System.out.println("Nykyinen hakemisto: " + new File(".").getAbsolutePath());
             File tiedosto = new File("tiedosto.txt");
             if (!tiedosto.exists()) {
                 tiedosto.createNewFile();
@@ -26,6 +27,8 @@ public class Tiedosto {
             
         }
     }
+
+
     public void lueTiedosto (){
         try {
             File LTiedosto = new File("tiedosto.txt");
