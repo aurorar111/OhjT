@@ -2,6 +2,7 @@ package com.example.ohjt;
 
 import java.io.*;
 import java.util.Scanner;
+import java.sql.Date;
 
 public class Tiedosto {
 
@@ -18,7 +19,18 @@ public class Tiedosto {
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
             kTiedosto.write(olioLuokka.getHenkilokuntaID());
             kTiedosto.write(olioLuokka.getHenkilokuntaPuh());
+            kTiedosto.write(olioLuokka.getVarausID());
+            //kTiedosto.write(olioLuokka.getVarauksenAlkuPaiva());
+
+            kTiedosto.write(olioLuokka.getAsiakasNimi());
+            kTiedosto.write(olioLuokka.getAsiakasGmail());
+            kTiedosto.write(olioLuokka.getAsiakasPuh());
+            kTiedosto.write(olioLuokka.getAsiakasSyntymaAika());
+            kTiedosto.write(olioLuokka.getAsiakasID());
+
+
             kTiedosto.write("Moi");
+
             kTiedosto.close();
         } catch (IOException e) {
             e.printStackTrace();
