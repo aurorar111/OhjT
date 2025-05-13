@@ -2,38 +2,58 @@ package com.example.ohjt;
 
 import java.io.*;
 import java.util.Scanner;
+import java.sql.Date;
 
-public class Tiedosto extends Kayttoliittyma {
+public class Tiedosto {
 
-    private OlioLuokka olioLuokka = new OlioLuokka();
+    public OlioLuokka olioLuokka = new OlioLuokka();
 
     public void tallennaTiedostoon (){
         try {
+            System.out.println("Nykyinen hakemisto: " + new File(".").getAbsolutePath());
             File tiedosto = new File("tiedosto.txt");
             if (!tiedosto.exists()) {
                 tiedosto.createNewFile();
-                System.out.println("Ei tiedostoa)");
+                System.out.println("tiedot tallenettu");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
-            kTiedosto.write(olioLuokka.getHenkilokuntaID());
+            kTiedosto.write("JUU TESTI XDXD");
+            kTiedosto.write("MIKS ET TOIMI");
+            /*kTiedosto.write(olioLuokka.getHenkilokuntaID());
+            kTiedosto.write(olioLuokka.getHenkilokuntaPuh());
+            kTiedosto.write(olioLuokka.getVarausID());*/
+            //kTiedosto.write(olioLuokka.getVarauksenAlkuPaiva());
+
+            /*kTiedosto.write(olioLuokka.getAsiakasNimi());
+            kTiedosto.write(olioLuokka.getAsiakasGmail());
+            kTiedosto.write(olioLuokka.getAsiakasPuh());
+            kTiedosto.write(olioLuokka.getAsiakasSyntymaAika());
+            kTiedosto.write(olioLuokka.getAsiakasID());*/
+
             kTiedosto.write("Moi");
+            kTiedosto.write("NYT TESTI 123");
 
             kTiedosto.close();
-            System.out.println("Tiedosto tallennettu");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
-    public void lueTiedosto (){
+    public String lueTiedosto (){
+        StringBuilder tiedot= new StringBuilder();
         try {
             File LTiedosto = new File("tiedosto.txt");
             Scanner lukija = new Scanner(LTiedosto);
             while (lukija.hasNextLine()) {
-                String tiedot  = lukija.nextLine();
-                lukija.close();
-            }
+                String rivi = lukija.nextLine();
+                tiedot.append(rivi);
+            }lukija.close();
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-        }
+        }return tiedot.toString();
+    }
+    public static void main(String[] args) {
+        Tiedosto tiedosto = new Tiedosto();
+        tiedosto.tallennaTiedostoon();
+        System.out.println(tiedosto.lueTiedosto());
     }
 }
