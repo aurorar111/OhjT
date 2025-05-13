@@ -33,8 +33,7 @@ public class Tiedosto {
             Scanner lukija = new Scanner(LTiedosto);
             while (lukija.hasNextLine()) {
                 String tiedot  = lukija.nextLine();
-                lukija.close();
-            }
+            }lukija.close();
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
