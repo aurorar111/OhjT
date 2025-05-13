@@ -90,7 +90,7 @@ public class Kayttoliittyma extends Application {
         pane.add(new Label("Asiakkaan syntymäpäivä:"), 0, 8);
         pane.add(tfAsiakasSynty, 1, 8);
         pane.add(cbMokkitaso, 0, 9);
-        pane.add(Haebutton, 0, 10);
+        pane.add(Haebutton, 1, 9);
         pane.add(paivita, 2, 12); //Paivita buttonnnn
         pane.add(new Label("Saatavuus:"), 0, 11);
         pane.add(saatavuus, 1, 11);
