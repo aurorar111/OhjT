@@ -131,7 +131,7 @@ public class Kayttoliittyma extends Application {
         cbMokkitaso.setDisable(true);
 
         button.setOnAction(e -> {
-            if(tfhenkilokuntaID.getText().isEmpty()|| tfhenkilokuntaID.getText().length()==4) {
+            if(!tfhenkilokuntaID.getText().isEmpty()&& tfhenkilokuntaID.getText().length()==4) {
                 alkuDate.setDisable(false);
                 loppuDate.setDisable(false);
                 tfAsiakkaanimi.setDisable(false);
