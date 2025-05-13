@@ -36,20 +36,24 @@ public class Tiedosto {
             kTiedosto.close();
         } catch (IOException e) {
             e.printStackTrace();
-            
         }
     }
-
-
-    public void lueTiedosto (){
+    public String lueTiedosto (){
+        StringBuilder tiedot= new StringBuilder();
         try {
             File LTiedosto = new File("tiedosto.txt");
             Scanner lukija = new Scanner(LTiedosto);
             while (lukija.hasNextLine()) {
-                String tiedot  = lukija.nextLine();
+                String rivi = lukija.nextLine();
+                tiedot.append(rivi);
             }lukija.close();
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-        }
+        }return tiedot.toString();
+    }
+    public static void main(String[] args) {
+        Tiedosto tiedosto = new Tiedosto();
+        tiedosto.tallennaTiedostoon();
+        System.out.println(tiedosto.lueTiedosto());
     }
 }
