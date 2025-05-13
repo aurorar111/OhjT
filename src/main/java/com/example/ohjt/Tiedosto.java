@@ -16,6 +16,7 @@ public class Tiedosto {
                 System.out.println("tiedot tallenettu");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
+            kTiedosto.write(olioLuokka.getHenkilokuntaID());
             kTiedosto.write(olioLuokka.getHenkilokuntaPuh());
             kTiedosto.write("Moi");
             kTiedosto.close();

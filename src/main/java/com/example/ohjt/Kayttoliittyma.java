@@ -105,7 +105,7 @@ public class Kayttoliittyma extends Application {
 
         Haebutton.setPrefWidth(100);
 
-        // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
+        // TALLENNA NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
             tiedostoLuokka.tallennaTiedostoon();
         });
