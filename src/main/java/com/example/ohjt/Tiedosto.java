@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Tiedosto extends Kayttoliittyma {
 
-    private OlioLuokka olioLuokka = new OlioLuokka();
+    public OlioLuokka olioLuokka = new OlioLuokka();
 
     public void tallennaTiedostoon (){
         try {
