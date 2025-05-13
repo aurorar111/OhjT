@@ -17,19 +17,21 @@ public class Tiedosto {
                 System.out.println("tiedot tallenettu");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
-            kTiedosto.write(olioLuokka.getHenkilokuntaID());
+            kTiedosto.write("JUU TESTI XDXD");
+            kTiedosto.write("MIKS ET TOIMI");
+            /*kTiedosto.write(olioLuokka.getHenkilokuntaID());
             kTiedosto.write(olioLuokka.getHenkilokuntaPuh());
-            kTiedosto.write(olioLuokka.getVarausID());
+            kTiedosto.write(olioLuokka.getVarausID());*/
             //kTiedosto.write(olioLuokka.getVarauksenAlkuPaiva());
 
-            kTiedosto.write(olioLuokka.getAsiakasNimi());
+            /*kTiedosto.write(olioLuokka.getAsiakasNimi());
             kTiedosto.write(olioLuokka.getAsiakasGmail());
             kTiedosto.write(olioLuokka.getAsiakasPuh());
             kTiedosto.write(olioLuokka.getAsiakasSyntymaAika());
-            kTiedosto.write(olioLuokka.getAsiakasID());
-
+            kTiedosto.write(olioLuokka.getAsiakasID());*/
 
             kTiedosto.write("Moi");
+            kTiedosto.write("NYT TESTI 123");
 
             kTiedosto.close();
         } catch (IOException e) {
