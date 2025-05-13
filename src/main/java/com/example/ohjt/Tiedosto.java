@@ -19,7 +19,6 @@ public class Tiedosto {
             kTiedosto.write(olioLuokka.getHenkilokuntaID());
             kTiedosto.write(olioLuokka.getHenkilokuntaPuh());
             kTiedosto.write("Moi");
-
             kTiedosto.close();
         } catch (IOException e) {
             e.printStackTrace();
