@@ -130,6 +130,7 @@ public class Kayttoliittyma extends Application {
         maksuntila.setDisable(true);
         cbMokkitaso.setDisable(true);
 
+        //Ei toimii jos on empty tai jos ei ole ainakin 4 merkkiä
         button.setOnAction(e -> {
             if(!tfhenkilokuntaID.getText().isEmpty()&& tfhenkilokuntaID.getText().length()==4) {
                 alkuDate.setDisable(false);
