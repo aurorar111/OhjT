@@ -44,7 +44,7 @@ public class Kayttoliittyma extends Application {
     public TextField hinta = new TextField();
 
     //PÄIVITYS NAPPI:
-    private Button tallennaVarausBT = new Button("Tallenna varaus");
+    private Button paivita = new Button("Tallenna varaus");
 
     public TextField laskuID = new TextField();
     public TextField laskuPva = new TextField();
@@ -97,7 +97,7 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasSynty, 1, 8);
         pane.add(cbMokkitaso, 0, 9);
         pane.add(Haebutton, 1, 9);
-        pane.add(tallennaVarausBT, 2, 12); //Paivita buttonnnn
+        pane.add(paivita, 2, 12); //Paivita buttonnnn
         pane.add(new Label("Saatavuus:"), 0, 11);
         pane.add(saatavuus, 1, 11);
         pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
@@ -106,7 +106,7 @@ public class Kayttoliittyma extends Application {
         Haebutton.setPrefWidth(100);
 
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
-        tallennaVarausBT.setOnAction(actionEvent -> {
+        paivita.setOnAction(actionEvent -> {
             tiedostoLuokka.tallennaTiedostoon();
         });
 
@@ -183,7 +183,6 @@ public class Kayttoliittyma extends Application {
             tfAsiakasID.setEditable(false);
 
         });
-
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
