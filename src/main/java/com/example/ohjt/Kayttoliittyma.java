@@ -33,7 +33,7 @@ public class Kayttoliittyma extends Application {
     public TextField tfAsiakkaanimi = new TextField();
     public TextField tfAsiakasGmail = new TextField();
     public TextField tfAsiakasPuh = new TextField();
-    public TextField tfAsiakasSynty = new TextField();
+    public DatePicker tfAsiakasSynty = new DatePicker();
     public TextField tfAsiakasID = new TextField();
 
     public TextField varauksenAlku = new TextField();
@@ -105,6 +105,7 @@ public class Kayttoliittyma extends Application {
 
         Haebutton.setPrefWidth(100);
 
+        // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
             tiedostoLuokka.tallennaTiedostoon();
         });
@@ -182,8 +183,6 @@ public class Kayttoliittyma extends Application {
             tfAsiakasID.setEditable(false);
 
         });
-
-
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
@@ -219,19 +218,15 @@ public class Kayttoliittyma extends Application {
         iv1.setFitHeight(140);
         iv1.setFitWidth(140);
         pane.add(iv1, 6,0,1,1);
-
-
     }
     public static void main(String[] args) {
         launch(args);
-
         try{
             Connection conn = DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
             "root", // käyttäjänimi
             "salasana123" // salasana (lotan)
             );
-
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
             while(resultSet.next()){
@@ -242,7 +237,6 @@ public class Kayttoliittyma extends Application {
         }catch(SQLException e){
             e.printStackTrace();
         }
-
     }
 }
 

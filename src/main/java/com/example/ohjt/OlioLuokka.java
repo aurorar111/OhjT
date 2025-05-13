@@ -5,7 +5,7 @@ import java.sql.Date;
 public class OlioLuokka {
     private int henkilokuntaID;
     private String henkilokuntaGmail;
-    private int henkilokuntaPuh;
+    private int henkilokuntaPuh = 1234567890;
     private int varausID;
     //private String asiakaTiedot;
     private Date varauksenAlkuPaiva;
