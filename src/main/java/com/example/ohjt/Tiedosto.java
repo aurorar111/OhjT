@@ -3,7 +3,7 @@ package com.example.ohjt;
 import java.io.*;
 import java.util.Scanner;
 
-public class Tiedosto {
+public class Tiedosto extends Kayttoliittyma {
 
     public OlioLuokka olioLuokka = new OlioLuokka();
 
@@ -16,7 +16,7 @@ public class Tiedosto {
                 System.out.println("tiedot tallenettu");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
-            kTiedosto.write(olioLuokka.getHenkilokuntaID());
+            kTiedosto.write(tfAsiakasID.getText());
             kTiedosto.write(olioLuokka.getHenkilokuntaPuh());
             kTiedosto.write("Moi");
 
