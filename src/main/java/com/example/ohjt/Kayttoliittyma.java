@@ -16,6 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.collections.ObservableList;
+import static javafx.collections.FXCollections.observableArrayList;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -59,6 +61,7 @@ public class Kayttoliittyma extends Application {
 
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
+    private ObservableList <OlioLuokka> asiakasTiedot = observableArrayList();
     public static DatePicker alkuDate = new DatePicker();
     public static DatePicker loppuDate = new DatePicker();
 
@@ -250,18 +253,29 @@ public class Kayttoliittyma extends Application {
             int hintaYolta = hinta.get(cbMokkitaso);
             long varauksenHinta = varatutYot*hintaYolta;
 
+            String nimi = tfAsiakkaanimi.getText();
+            String kategoria = cbMokkitaso.getValue();
+            LocalDate paiva = alkuDate.getValue();
+
+            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
+                OlioLuokka uusiRivi = new OlioLuokka();
+                uusiRivi.setAsiakasNimi(nimi);
+                uusiRivi.setMokkiTaso(kategoria);
+                uusiRivi.setVarauksenAlkuPaiva(paiva);
+                asiakasTiedot.add(uusiRivi);
+            }
 
 
 
         });
         //Taulukko oikea
-        TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
-        summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
+        TableColumn<OlioLuokka, Double> asiakasColumn = new TableColumn<>("Asiakas");
+        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
         kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
-        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
+        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
 
         //Taulukko vasen
@@ -274,9 +288,8 @@ public class Kayttoliittyma extends Application {
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
-        taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
-       // taulukko.setItems(asiakasTiedot);
-        //taulukko.setItems(menoTiedot);
+        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
+        taulukko.setItems(asiakasTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#3a4a3d;");
