@@ -269,6 +269,7 @@ public class Kayttoliittyma extends Application {
         pane.add(iv1, 6,0,1,1);
     }
 
+    //iii
     public static void main(String[] args) {
         launch(args);
 
