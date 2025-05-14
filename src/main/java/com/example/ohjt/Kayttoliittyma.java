@@ -226,11 +226,11 @@ public class Kayttoliittyma extends Application {
             }
         });
 
-        Map<String, Integer> hinta = new HashMap<>();
-        hinta.put("Perusmökki",70);
-        hinta.put("Parempi",100);
-        hinta.put("Premium",140);
-        hinta.put("Top tier",200);
+        Map<String, Integer> mökinhinta = new HashMap<>();
+        mökinhinta.put("Perusmökki",70);
+        mökinhinta.put("Parempi",100);
+        mökinhinta.put("Premium",140);
+        mökinhinta.put("Top tier",200);
 
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
@@ -250,8 +250,9 @@ public class Kayttoliittyma extends Application {
             if (varatutYot == 0) varatutYot =1;
 
 
-            int hintaYolta = hinta.get(cbMokkitaso);
+            int hintaYolta = mökinhinta.get(cbMokkitaso);
             long varauksenHinta = varatutYot*hintaYolta;
+            hinta.setText(varauksenHinta + "€");
 
             String nimi = tfAsiakkaanimi.getText();
             String kategoria = cbMokkitaso.getValue();
@@ -264,7 +265,6 @@ public class Kayttoliittyma extends Application {
                 uusiRivi.setVarauksenAlkuPaiva(paiva);
                 asiakasTiedot.add(uusiRivi);
             }
-
 
 
         });
