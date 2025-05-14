@@ -1,6 +1,7 @@
 package com.example.ohjt;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 //Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
 
@@ -11,8 +12,8 @@ public class OlioLuokka {
     /*private int varausID = 1;
     private int jarjestelmaID = 2;*/
     //private String asiakaTiedot;
-    private Date varauksenAlkuPaiva;
-    private Date varauksenLoppuPaiva;
+    private LocalDate varauksenAlkuPaiva;
+    private LocalDate varauksenLoppuPaiva;
 
     public String asiakasNimi;
     private String asiakasGmail;
@@ -28,8 +29,17 @@ public class OlioLuokka {
     private boolean maksujenTila;
     private int maksunPaivamaara;
 
+    /*public OlioLuokka(String asiakasNimi, String mokkiTaso, LocalDate alkuPaiva) {
+        this.asiakasNimi = asiakasNimi;
+        this.mokkiTaso = mokkiTaso;
+        this.varauksenAlkuPaiva = alkuPaiva;
+    }*/
+
+
+
     /*public int getHenkilokuntaID() {
         return henkilokuntaID;
+
     }*/
     public void setHenkilokuntaID(int henkilokuntaID) {
         this.henkilokuntaID = henkilokuntaID;
@@ -59,13 +69,13 @@ public class OlioLuokka {
     /*public Date getVarauksenAlkuPaiva() {
         return varauksenAlkuPaiva;
     }*/
-    public void setVarauksenAlkuPaiva(Date varauksenAlkuPaiva) {
+    public void setVarauksenAlkuPaiva(LocalDate varauksenAlkuPaiva) {
         this.varauksenAlkuPaiva = varauksenAlkuPaiva;
     }
-    public Date getVarauksenLoppuPaiva() {
+    public LocalDate getVarauksenLoppuPaiva() {
         return varauksenLoppuPaiva;
     }
-    public void setVarauksenLoppuPaiva(Date varauksenLoppuPaiva) {
+    public void setVarauksenLoppuPaiva(LocalDate varauksenLoppuPaiva) {
         this.varauksenLoppuPaiva = varauksenLoppuPaiva;
     }
 
@@ -98,5 +108,27 @@ public class OlioLuokka {
     }
     public int getAsiakasSyntymaAika() {
         return asiakasSyntymaAika;
+    }
+    public double getMokkiHinta() {
+        return mokkiHinta;
+    }
+    public void setMokkiHinta(double mokkiHinta) {
+        this.mokkiHinta = mokkiHinta;
+    }
+    public boolean isMokkiSaatavuus() {
+        return mokkiSaatavuus;
+    }
+
+    public void setMokkiTaso(String mokkiTaso) {
+        this.mokkiTaso = mokkiTaso;
+    }
+    public String getMokkiTaso() {
+        return mokkiTaso;
+    }
+    public void setMokkiID(int mokkiID) {
+        this.mokkiID = mokkiID;
+    }
+    public int getMokkiID() {
+        return mokkiID;
     }
 }
