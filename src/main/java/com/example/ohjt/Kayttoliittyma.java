@@ -218,6 +218,7 @@ public class Kayttoliittyma extends Application {
             laskuID.setEditable(false);
             laskuID.setText("L" + satunnainenLaskunID);
 
+
         });
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
