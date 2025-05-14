@@ -107,7 +107,13 @@ public class Kayttoliittyma extends Application {
 
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
-            tiedostoLuokka.tallennaTiedostoon();
+            tiedostoLuokka.tallennaTiedostoon(); //tallenna-nappia painaessa tallennaTiedostoon-metodia kutsutaan
+            String nimi = tfAsiakkaanimi.getText();
+            String sapo = tfAsiakasGmail.getText();
+            String puh = tfAsiakasPuh.getText();
+            String syntyma = tfAsiakasSynty.getValue().toString();
+            String asiakasid = tfAsiakasID.getText();
+            Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
         });
 
         //Oikea
@@ -219,24 +225,10 @@ public class Kayttoliittyma extends Application {
         iv1.setFitWidth(140);
         pane.add(iv1, 6,0,1,1);
     }
+
     public static void main(String[] args) {
         launch(args);
-        try{
-            Connection conn = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
-            "root", // käyttäjänimi
-            "salasana123" // salasana (lotan)
-            );
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
-            while(resultSet.next()){
-                System.out.println("henkilökunta ID: " + resultSet.getString("henkilökunta_id"));
-                System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
-                System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
+
     }
 }
 

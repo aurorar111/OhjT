@@ -12,7 +12,8 @@ public class OlioLuokka {
     //private String asiakaTiedot;
     private Date varauksenAlkuPaiva;
     private Date varauksenLoppuPaiva;
-    private String asiakasNimi;
+
+    public String asiakasNimi;
     private String asiakasGmail;
     private int asiakasPuh;
     private int asiakasID;
