@@ -1,6 +1,7 @@
 package com.example.ohjt;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 //Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
 
@@ -11,8 +12,8 @@ public class OlioLuokka {
     /*private int varausID = 1;
     private int jarjestelmaID = 2;*/
     //private String asiakaTiedot;
-    private Date varauksenAlkuPaiva;
-    private Date varauksenLoppuPaiva;
+    private LocalDate varauksenAlkuPaiva;
+    private LocalDate varauksenLoppuPaiva;
 
     public String asiakasNimi;
     private String asiakasGmail;
@@ -48,24 +49,24 @@ public class OlioLuokka {
     }
     /*public int getVarausID() {
         return varausID;
-    }*/
-    /*public void setVarausID(int varausID) {
+    }
+    public void setVarausID(int varausID) {
         this.varausID = varausID;
-    }*/
-    /*public int getJarjestelmaID() {
+    }
+    public int getJarjestelmaID() {
         return jarjestelmaID;
-    }*/
+    }
 
-    /*public Date getVarauksenAlkuPaiva() {
+    public Date getVarauksenAlkuPaiva() {
         return varauksenAlkuPaiva;
     }*/
-    public void setVarauksenAlkuPaiva(Date varauksenAlkuPaiva) {
+    public void setVarauksenAlkuPaiva(LocalDate varauksenAlkuPaiva) {
         this.varauksenAlkuPaiva = varauksenAlkuPaiva;
     }
-    public Date getVarauksenLoppuPaiva() {
+    public LocalDate getVarauksenLoppuPaiva() {
         return varauksenLoppuPaiva;
     }
-    public void setVarauksenLoppuPaiva(Date varauksenLoppuPaiva) {
+    public void setVarauksenLoppuPaiva(LocalDate varauksenLoppuPaiva) {
         this.varauksenLoppuPaiva = varauksenLoppuPaiva;
     }
 
@@ -98,5 +99,12 @@ public class OlioLuokka {
     }
     public int getAsiakasSyntymaAika() {
         return asiakasSyntymaAika;
+    }
+
+    public void setMokkiTaso(String mokkiTaso) {
+        this.mokkiTaso = mokkiTaso;
+    }
+    public String getMokkiTaso(){
+        return mokkiTaso;
     }
 }
