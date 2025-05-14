@@ -47,6 +47,7 @@ public class Tietokanta {
             e.printStackTrace();
         }
     }
+    //k
 
     /*try{
         Connection conn = DriverManager.getConnection(
