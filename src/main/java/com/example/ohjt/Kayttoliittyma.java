@@ -16,6 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.collections.ObservableList;
+import static javafx.collections.FXCollections.observableArrayList;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -56,6 +58,7 @@ public class Kayttoliittyma extends Application {
 
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
+    private ObservableList <OlioLuokka> asiakasTiedot = observableArrayList();
     public static DatePicker alkuDate = new DatePicker();
     public static DatePicker loppuDate = new DatePicker();
 
@@ -90,6 +93,8 @@ public class Kayttoliittyma extends Application {
     public static int getJarjestelmaID() {
         return jarjestelmaID;
     }
+
+
 
     @Override
     public void start(Stage alkuikkuna) {
@@ -220,18 +225,7 @@ public class Kayttoliittyma extends Application {
             }
         });
 
-        Haebutton.setOnAction(e-> {
-            int satunnainenID = new Random().nextInt(30000)+1;
-            tfAsiakasID.setText(String.valueOf(satunnainenID));
-            tfAsiakasID.setEditable(false);
 
-            int satunnainenLaskunID = new Random().nextInt(30000)+2000;
-            laskuID.setText(String.valueOf(satunnainenLaskunID));
-            laskuID.setEditable(false);
-            laskuID.setText("L" + satunnainenLaskunID);
-
-
-        });
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
         summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
@@ -249,6 +243,31 @@ public class Kayttoliittyma extends Application {
         erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
         pane.add(taulukkoMaksut, 5,20,2,1);
+
+        Haebutton.setOnAction(e-> {
+            int satunnainenID = new Random().nextInt(30000)+1;
+            tfAsiakasID.setText(String.valueOf(satunnainenID));
+            tfAsiakasID.setEditable(false);
+
+            int satunnainenLaskunID = new Random().nextInt(30000)+2000;
+            laskuID.setText(String.valueOf(satunnainenLaskunID));
+            laskuID.setEditable(false);
+            laskuID.setText("L" + satunnainenLaskunID);
+
+            String nimi = tfAsiakkaanimi.getText();
+            String kategoria = cbMokkitaso.getValue();
+            LocalDate paiva = alkuDate.getValue();
+
+            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
+                OlioLuokka uusiRivi = new OlioLuokka();
+                uusiRivi.setAsiakasNimi(nimi);
+                uusiRivi.setMokkiTaso(kategoria);
+                uusiRivi.setVarauksenAlkuPaiva(paiva);
+                asiakasTiedot.add(uusiRivi);
+            }
+
+
+        });
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
