@@ -19,6 +19,9 @@ import javafx.scene.image.ImageView;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Kayttoliittyma extends Application {
@@ -220,6 +223,12 @@ public class Kayttoliittyma extends Application {
             }
         });
 
+        Map<String, Integer> hinta = new HashMap<>();
+        hinta.put("Perusmökki",70);
+        hinta.put("Parempi",100);
+        hinta.put("Premium",140);
+        hinta.put("Top tier",200);
+
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
             tfAsiakasID.setText(String.valueOf(satunnainenID));
@@ -229,6 +238,19 @@ public class Kayttoliittyma extends Application {
             laskuID.setText(String.valueOf(satunnainenLaskunID));
             laskuID.setEditable(false);
             laskuID.setText("L" + satunnainenLaskunID);
+
+            LocalDate alku = alkuDate.getValue();
+            LocalDate loppu = loppuDate.getValue();
+
+            if (alku != null && loppu != null && !loppu.isBefore(alku));
+            long varatutYot = ChronoUnit.DAYS.between(alku,loppu);
+            if (varatutYot == 0) varatutYot =1;
+
+
+            int hintaYolta = hinta.get(cbMokkitaso);
+            long varauksenHinta = varatutYot*hintaYolta;
+
+
 
 
         });
@@ -253,7 +275,7 @@ public class Kayttoliittyma extends Application {
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
-        taulukko.setItems(asiakasTiedot);
+       // taulukko.setItems(asiakasTiedot);
         //taulukko.setItems(menoTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
