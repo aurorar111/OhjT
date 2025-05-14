@@ -272,6 +272,7 @@ public class Kayttoliittyma extends Application {
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
+        taulukko.setItems(asiakasTiedot);
         //taulukko.setItems(menoTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
