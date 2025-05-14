@@ -251,14 +251,17 @@ public class Kayttoliittyma extends Application {
             long varatutYot = ChronoUnit.DAYS.between(alku,loppu);
             if (varatutYot == 0) varatutYot =1;
 
-            String valittuMökki =cbMokkitaso.getValue();
+
+            String valittuMökki = cbMokkitaso.getValue();
             int hintaYolta = mökinhinta.get(valittuMökki);
-            long varauksenHinta = varatutYot*hintaYolta;
+            long varauksenHinta = varatutYot * hintaYolta;
             hinta.setText(varauksenHinta + "€");
+
 
             String nimi = tfAsiakkaanimi.getText();
             String kategoria = cbMokkitaso.getValue();
             LocalDate paiva = alkuDate.getValue();
+
 
             if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
                 OlioLuokka uusiRivi = new OlioLuokka();
@@ -268,9 +271,10 @@ public class Kayttoliittyma extends Application {
                 asiakasTiedot.add(uusiRivi);
             }
 
-//kk
-            //kk
+
+
         });
+
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> asiakasColumn = new TableColumn<>("Asiakas");
         asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
