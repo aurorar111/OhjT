@@ -8,7 +8,7 @@ public class OlioLuokka {
     private int henkilokuntaID;
     private String henkilokuntaGmail;
     private int henkilokuntaPuh = 1234567890;
-    private int varausID;
+    private int varausID = 1;
     //private String asiakaTiedot;
     private Date varauksenAlkuPaiva;
     private Date varauksenLoppuPaiva;
@@ -27,9 +27,9 @@ public class OlioLuokka {
     private boolean maksujenTila;
     private int maksunPaivamaara;
 
-    public int getHenkilokuntaID() {
+    /*public int getHenkilokuntaID() {
         return henkilokuntaID;
-    }
+    }*/
     public void setHenkilokuntaID(int henkilokuntaID) {
         this.henkilokuntaID = henkilokuntaID;
     }
@@ -51,9 +51,9 @@ public class OlioLuokka {
     public void setVarausID(int varausID) {
         this.varausID = varausID;
     }
-    public Date getVarauksenAlkuPaiva() {
+    /*public Date getVarauksenAlkuPaiva() {
         return varauksenAlkuPaiva;
-    }
+    }*/
     public void setVarauksenAlkuPaiva(Date varauksenAlkuPaiva) {
         this.varauksenAlkuPaiva = varauksenAlkuPaiva;
     }
@@ -67,9 +67,9 @@ public class OlioLuokka {
     public void setAsiakasNimi(String asiakasNimi) {
         this.asiakasNimi = asiakasNimi;
     }
-    public String getAsiakasNimi() {
+    /*public String getAsiakasNimi() {
         return asiakasNimi;
-    }
+    }*/
     public void setAsiakasGmail(String asiakasGmail) {
         this.asiakasGmail = asiakasGmail;
     }

@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Random;
 
 public class Kayttoliittyma extends Application {
@@ -27,14 +28,14 @@ public class Kayttoliittyma extends Application {
 
     public TextField henkilokuntaG = new TextField("");
 
-    public TextField tfhenkilokuntaID = new TextField();
+    public static TextField tfhenkilokuntaID = new TextField();
     public Button button = new Button("Kirjaudu");
 
-    public TextField tfAsiakkaanimi = new TextField();
-    public TextField tfAsiakasGmail = new TextField();
-    public TextField tfAsiakasPuh = new TextField();
-    public DatePicker tfAsiakasSynty = new DatePicker();
-    public TextField tfAsiakasID = new TextField();
+    public static TextField tfAsiakkaanimi = new TextField();
+    public static TextField tfAsiakasGmail = new TextField();
+    public static TextField tfAsiakasPuh = new TextField();
+    public static DatePicker tfAsiakasSynty = new DatePicker();
+    public static TextField tfAsiakasID = new TextField();
 
     public TextField varauksenAlku = new TextField();
     public TextField varauksenLoppu = new TextField();
@@ -52,9 +53,31 @@ public class Kayttoliittyma extends Application {
 
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
-    public DatePicker alkuDate = new DatePicker();
-    public DatePicker loppuDate = new DatePicker();
+    public static DatePicker alkuDate = new DatePicker();
+    public static DatePicker loppuDate = new DatePicker();
 
+    //getterit
+    public static int getHenkilokuntaID() {
+        return Integer.parseInt(tfhenkilokuntaID.getText());
+    }
+    public static LocalDate getVarauksenAlku() {
+        return alkuDate.getValue();
+    }
+    public static String getAsiakasNimi() {
+        return tfAsiakkaanimi.getText();
+    }
+    public static String getAsiakasGmail() {
+        return tfAsiakasGmail.getText();
+    }
+    public static String getAsiakasPuhelinnumero() {
+        return tfAsiakasPuh.getText();
+    }
+    public static LocalDate getAsiakasSynty() {
+        return tfAsiakasSynty.getValue();
+    }
+    public static String getAsiakasID() {
+        return tfAsiakasID.getText();
+    }
 
     @Override
     public void start(Stage alkuikkuna) {
