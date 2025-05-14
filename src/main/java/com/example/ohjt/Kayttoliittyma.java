@@ -26,6 +26,9 @@ public class Kayttoliittyma extends Application {
     //OlioLuokka olio = new OlioLuokka();
     Tiedosto tiedostoLuokka = new Tiedosto();
 
+    private static int varausID = 1;
+    private static int jarjestelmaID = 2;
+
     public TextField henkilokuntaG = new TextField("");
 
     public static TextField tfhenkilokuntaID = new TextField();
@@ -63,6 +66,9 @@ public class Kayttoliittyma extends Application {
     public static LocalDate getVarauksenAlku() {
         return alkuDate.getValue();
     }
+    public static LocalDate getVarauksenLoppu() {
+        return loppuDate.getValue();
+    }
     public static String getAsiakasNimi() {
         return tfAsiakkaanimi.getText();
     }
@@ -77,6 +83,12 @@ public class Kayttoliittyma extends Application {
     }
     public static String getAsiakasID() {
         return tfAsiakasID.getText();
+    }
+    public static int getVarausID() {
+        return varausID;
+    }
+    public static int getJarjestelmaID() {
+        return jarjestelmaID;
     }
 
     @Override
