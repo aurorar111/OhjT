@@ -240,22 +240,23 @@ public class Kayttoliittyma extends Application {
 
             Map<String, Integer> mökinhinta = new HashMap<>();
             mökinhinta.put("Perusmökki",70);
-            mökinhinta.put("Parempi",100);
-            mökinhinta.put("Premium",140);
-            mökinhinta.put("Top tier",200);
+            mökinhinta.put("Paremman puoleinen",100);
+            mökinhinta.put("Melkein kartano",140);
+            mökinhinta.put("TOP tier",200);
 
             LocalDate alku = alkuDate.getValue();
             LocalDate loppu = loppuDate.getValue();
 
-            if (alku != null && loppu != null && !loppu.isBefore(alku));
-            long varatutYot = ChronoUnit.DAYS.between(alku,loppu);
-            if (varatutYot == 0) varatutYot =1;
+            if (alku != null && loppu != null && !loppu.isBefore(alku)) {
+                long varatutYot = ChronoUnit.DAYS.between(alku, loppu);
+                if (varatutYot == 0) varatutYot = 1;
 
 
-            String valittuMökki = cbMokkitaso.getValue();
-            int hintaYolta = mökinhinta.get(valittuMökki);
-            long varauksenHinta = varatutYot * hintaYolta;
-            hinta.setText(varauksenHinta + "€");
+                String valittuMökki = cbMokkitaso.getValue();
+                int hintaYolta = mökinhinta.get(valittuMökki);
+                long varauksenHinta = varatutYot * hintaYolta;
+                hinta.setText(varauksenHinta + "€");
+            }
 
 
             String nimi = tfAsiakkaanimi.getText();
