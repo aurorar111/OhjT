@@ -21,6 +21,7 @@ public class Tietokanta {
     //metodi asiakkaan tietojen lisäykseen
     public static void lisaaVarausTietokantaan(String asiakasNimi, String asiakasGmail, String asiakasPuh, String asiakasSyntyma, String asiakasID) {
         String sql = "INSERT INTO asiakas(nimi, sähköposti, puhelinnumero, syntymäaika, asiakas_id) VALUES (?,?,?,?,?)";
+        String sql2 = "INSERT INTO varaus(asiakas_id, varaus_alku, varaus_loppu, varaus_id, järjestelmä_id) VALUES (?,?,?,?,?)";
 
         try (Connection conn = connect();
              PreparedStatement statement = conn.prepareStatement(sql)) {
@@ -29,7 +30,18 @@ public class Tietokanta {
             statement.setString(3, asiakasPuh);
             statement.setString(4, asiakasSyntyma);
             statement.setString(5, asiakasID);
+
+            PreparedStatement statement2 = conn.prepareStatement(sql2);
+            statement2.setString(1, asiakasID);
+            statement2.setString(2, Kayttoliittyma.getVarauksenAlku().toString());
+            statement2.setString(3, Kayttoliittyma.getVarauksenLoppu().toString());
+            statement2.setString(4, String.valueOf(Kayttoliittyma.getVarausID()));
+            statement2.setString(5, String.valueOf(Kayttoliittyma.getJarjestelmaID()));
+
+            // PÄIVITÄ VIELÄ MAKSUT, lasku_id, maksujen_tila, järjestelmä_id)
+
             statement.executeUpdate();
+            statement2.executeUpdate();
             System.out.println("Varaus tallennettu tietokantaan");
         }catch (SQLException e) {
             e.printStackTrace();

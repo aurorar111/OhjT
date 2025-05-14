@@ -17,12 +17,12 @@ public class Tiedosto {
                 System.out.println("tiedot tallenettu");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
-            kTiedosto.write("\n\nTESTI 1");
-            kTiedosto.write("\nTESTI 2");
+            kTiedosto.write("\n\nUUSI ASIAKAS:\n");
             kTiedosto.write(Kayttoliittyma.getHenkilokuntaID() + "\n");
             kTiedosto.write(olioLuokka.getHenkilokuntaPuh() + "\n");
-            kTiedosto.write(olioLuokka.getVarausID() + "\n");
+            kTiedosto.write(Kayttoliittyma.getVarausID() + "\n");
             kTiedosto.write(Kayttoliittyma.getVarauksenAlku().toString() + "\n");
+            kTiedosto.write(Kayttoliittyma.getVarauksenLoppu().toString() + "\n");
 
             kTiedosto.write(Kayttoliittyma.getAsiakasNimi() + "\n");
             kTiedosto.write(Kayttoliittyma.getAsiakasGmail() + "\n");
