@@ -99,5 +99,4 @@ public class OlioLuokka {
     public int getAsiakasSyntymaAika() {
         return asiakasSyntymaAika;
     }
-
 }
