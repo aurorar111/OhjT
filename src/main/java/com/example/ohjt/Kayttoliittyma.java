@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Random;
 
 public class Kayttoliittyma extends Application {
@@ -27,14 +28,14 @@ public class Kayttoliittyma extends Application {
 
     public TextField henkilokuntaG = new TextField("");
 
-    public TextField tfhenkilokuntaID = new TextField();
+    public static TextField tfhenkilokuntaID = new TextField();
     public Button button = new Button("Kirjaudu");
 
-    public TextField tfAsiakkaanimi = new TextField();
-    public TextField tfAsiakasGmail = new TextField();
-    public TextField tfAsiakasPuh = new TextField();
-    public DatePicker tfAsiakasSynty = new DatePicker();
-    public TextField tfAsiakasID = new TextField();
+    public static TextField tfAsiakkaanimi = new TextField();
+    public static TextField tfAsiakasGmail = new TextField();
+    public static TextField tfAsiakasPuh = new TextField();
+    public static DatePicker tfAsiakasSynty = new DatePicker();
+    public static TextField tfAsiakasID = new TextField();
 
     public TextField varauksenAlku = new TextField();
     public TextField varauksenLoppu = new TextField();
@@ -52,9 +53,31 @@ public class Kayttoliittyma extends Application {
 
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
-    public DatePicker alkuDate = new DatePicker();
-    public DatePicker loppuDate = new DatePicker();
+    public static DatePicker alkuDate = new DatePicker();
+    public static DatePicker loppuDate = new DatePicker();
 
+    //getterit
+    public static int getHenkilokuntaID() {
+        return Integer.parseInt(tfhenkilokuntaID.getText());
+    }
+    public static LocalDate getVarauksenAlku() {
+        return alkuDate.getValue();
+    }
+    public static String getAsiakasNimi() {
+        return tfAsiakkaanimi.getText();
+    }
+    public static String getAsiakasGmail() {
+        return tfAsiakasGmail.getText();
+    }
+    public static String getAsiakasPuhelinnumero() {
+        return tfAsiakasPuh.getText();
+    }
+    public static LocalDate getAsiakasSynty() {
+        return tfAsiakasSynty.getValue();
+    }
+    public static String getAsiakasID() {
+        return tfAsiakasID.getText();
+    }
 
     @Override
     public void start(Stage alkuikkuna) {
@@ -109,7 +132,13 @@ public class Kayttoliittyma extends Application {
 
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
-            tiedostoLuokka.tallennaTiedostoon();
+            tiedostoLuokka.tallennaTiedostoon(); //tallenna-nappia painaessa tallennaTiedostoon-metodia kutsutaan
+            String nimi = tfAsiakkaanimi.getText();
+            String sapo = tfAsiakasGmail.getText();
+            String puh = tfAsiakasPuh.getText();
+            String syntyma = tfAsiakasSynty.getValue().toString();
+            String asiakasid = tfAsiakasID.getText();
+            Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
         });
 
         //Oikea
@@ -226,24 +255,10 @@ public class Kayttoliittyma extends Application {
         iv1.setFitWidth(140);
         pane.add(iv1, 6,0,1,1);
     }
+
     public static void main(String[] args) {
         launch(args);
-        try{
-            Connection conn = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
-            "root", // käyttäjänimi
-            "salasana123" // salasana (lotan)
-            );
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
-            while(resultSet.next()){
-                System.out.println("henkilökunta ID: " + resultSet.getString("henkilökunta_id"));
-                System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
-                System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
+
     }
 }
 

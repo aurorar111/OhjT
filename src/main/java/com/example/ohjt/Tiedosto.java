@@ -17,21 +17,21 @@ public class Tiedosto {
                 System.out.println("tiedot tallenettu");
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
-            kTiedosto.write("JUU TESTI XDXD");
-            kTiedosto.write("MIKS ET TOIMI");
-            /*kTiedosto.write(olioLuokka.getHenkilokuntaID());
-            kTiedosto.write(olioLuokka.getHenkilokuntaPuh());
-            kTiedosto.write(olioLuokka.getVarausID());*/
-            //kTiedosto.write(olioLuokka.getVarauksenAlkuPaiva());
+            kTiedosto.write("\n\nTESTI 1");
+            kTiedosto.write("\nTESTI 2");
+            kTiedosto.write(Kayttoliittyma.getHenkilokuntaID() + "\n");
+            kTiedosto.write(olioLuokka.getHenkilokuntaPuh() + "\n");
+            kTiedosto.write(olioLuokka.getVarausID() + "\n");
+            kTiedosto.write(Kayttoliittyma.getVarauksenAlku().toString() + "\n");
 
-            /*kTiedosto.write(olioLuokka.getAsiakasNimi());
-            kTiedosto.write(olioLuokka.getAsiakasGmail());
-            kTiedosto.write(olioLuokka.getAsiakasPuh());
-            kTiedosto.write(olioLuokka.getAsiakasSyntymaAika());
-            kTiedosto.write(olioLuokka.getAsiakasID());*/
+            kTiedosto.write(Kayttoliittyma.getAsiakasNimi() + "\n");
+            kTiedosto.write(Kayttoliittyma.getAsiakasGmail() + "\n");
+            kTiedosto.write(Kayttoliittyma.getAsiakasPuhelinnumero() + "\n");
+            kTiedosto.write(Kayttoliittyma.getAsiakasSynty().toString() + "\n");
+            kTiedosto.write(Kayttoliittyma.getAsiakasID() + "\n");
 
-            kTiedosto.write("Moi");
-            kTiedosto.write("NYT TESTI 123");
+            /*kTiedosto.write("Moi");
+            kTiedosto.write("NYT TESTI 123");*/
 
             kTiedosto.close();
         } catch (IOException e) {
