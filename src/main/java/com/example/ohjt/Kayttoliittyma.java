@@ -268,7 +268,7 @@ public class Kayttoliittyma extends Application {
                 asiakasTiedot.add(uusiRivi);
             }
 
-
+//kk
         });
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> asiakasColumn = new TableColumn<>("Asiakas");
