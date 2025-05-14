@@ -245,7 +245,7 @@ public class Kayttoliittyma extends Application {
             LocalDate alku = alkuDate.getValue();
             LocalDate loppu = loppuDate.getValue();
 
-            if (alku != null && loppu != null && !loppu.isBefore(alku));
+            if (alku != null && loppu != null && !loppu.isBefore(alku)){
             long varatutYot = ChronoUnit.DAYS.between(alku,loppu);
             if (varatutYot == 0) varatutYot =1;
 
@@ -267,14 +267,14 @@ public class Kayttoliittyma extends Application {
             }
 
 
-        });
+        }});
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> asiakasColumn = new TableColumn<>("Asiakas");
-        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
+        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
-        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
         taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
 
@@ -288,7 +288,7 @@ public class Kayttoliittyma extends Application {
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
-        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
+        //taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
         taulukko.setItems(asiakasTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
