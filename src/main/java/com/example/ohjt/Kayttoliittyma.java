@@ -230,6 +230,12 @@ public class Kayttoliittyma extends Application {
             laskuID.setEditable(false);
             laskuID.setText("L" + satunnainenLaskunID);
 
+            LocalDate alku = alkuDate.getValue();
+            LocalDate loppu = loppuDate.getValue();
+
+
+
+
 
         });
         //Taulukko oikea
@@ -267,6 +273,8 @@ public class Kayttoliittyma extends Application {
         iv1.setFitHeight(140);
         iv1.setFitWidth(140);
         pane.add(iv1, 6,0,1,1);
+
+
     }
 
     public static void main(String[] args) {
