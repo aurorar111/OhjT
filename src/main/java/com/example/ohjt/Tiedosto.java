@@ -30,8 +30,10 @@ public class Tiedosto {
             kTiedosto.write(Kayttoliittyma.getAsiakasSynty().toString() + "\n");
             kTiedosto.write(Kayttoliittyma.getAsiakasID() + "\n");
 
-            /*kTiedosto.write("Moi");
-            kTiedosto.write("NYT TESTI 123");*/
+            kTiedosto.write(Kayttoliittyma.getVarauksenHinta() + "\n");
+            kTiedosto.write(Kayttoliittyma.getLaskuID() + "\n");
+            //kTiedosto.write(Kayttoliittyma.getLaskunErapaiva() + "\n");
+            //kTiedosto.write(Kayttoliittyma.getMaksunTila() + "\n");
 
             kTiedosto.close();
         } catch (IOException e) {

@@ -28,11 +28,10 @@ import java.util.Random;
 
 public class Kayttoliittyma extends Application {
 
-    //OlioLuokka olio = new OlioLuokka();
     Tiedosto tiedostoLuokka = new Tiedosto();
 
-    private static int varausID = 1;
-    private static int jarjestelmaID = 2;
+    private static int varausID = 78;
+    private static int jarjestelmaID = 182;
 
     public TextField henkilokuntaG = new TextField("");
 
@@ -50,14 +49,14 @@ public class Kayttoliittyma extends Application {
     public ComboBox<String> cbMokkitaso = new ComboBox<>();
     public Button Haebutton = new Button("Hae");
     public TextField saatavuus = new TextField();
-    public TextField hinta = new TextField();
+    public static TextField hinta = new TextField();
 
     //PÄIVITYS NAPPI:
     private Button paivita = new Button("Tallenna varaus");
 
-    public TextField laskuID = new TextField();
-    public TextField laskuPva = new TextField();
-    public TextField maksuntila = new TextField();
+    public static TextField laskuID = new TextField();
+    public static TextField laskuPva = new TextField();
+    public static TextField maksuntila = new TextField();
 
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
@@ -65,7 +64,7 @@ public class Kayttoliittyma extends Application {
     public static DatePicker alkuDate = new DatePicker();
     public static DatePicker loppuDate = new DatePicker();
 
-    //getterit
+    // getterit
     public static int getHenkilokuntaID() {
         return Integer.parseInt(tfhenkilokuntaID.getText());
     }
@@ -96,6 +95,19 @@ public class Kayttoliittyma extends Application {
     public static int getJarjestelmaID() {
         return jarjestelmaID;
     }
+    public static String getVarauksenHinta() {
+        return hinta.getText();
+    }
+    public static String getLaskuID() {
+        return laskuID.getText();
+    }
+    public static String getLaskunErapaiva() {
+        return laskuPva.getText();
+    }
+    public static String getMaksunTila() {
+        return maksuntila.getText();
+    }
+
 
     @Override
     public void start(Stage alkuikkuna) {
