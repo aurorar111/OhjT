@@ -1,5 +1,5 @@
 package com.example.ohjt;
-
+/*
 import java.io.*;
 import java.util.Scanner;
 import java.sql.Date;
@@ -32,7 +32,7 @@ public class Tiedosto {
 
             /*kTiedosto.write("Moi");
             kTiedosto.write("NYT TESTI 123");*/
-
+/*
             kTiedosto.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,4 +56,4 @@ public class Tiedosto {
         tiedosto.tallennaTiedostoon();
         System.out.println(tiedosto.lueTiedosto());
     }
-}
+}*/
