@@ -1,6 +1,7 @@
 package com.example.ohjt;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -20,6 +21,8 @@ import javafx.scene.image.ImageView;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Random;
+
+import static javafx.collections.FXCollections.observableArrayList;
 
 public class Kayttoliittyma extends Application {
 
@@ -52,6 +55,7 @@ public class Kayttoliittyma extends Application {
     public TextField maksuntila = new TextField();
 
     public TableView taulukko = new TableView<>();
+    private ObservableList <OlioLuokka> asiakasTiedot = observableArrayList();
     public TableView taulukkoMaksut = new TableView<>();
     public static DatePicker alkuDate = new DatePicker();
     public static DatePicker loppuDate = new DatePicker();
@@ -60,21 +64,27 @@ public class Kayttoliittyma extends Application {
     public static int getHenkilokuntaID() {
         return Integer.parseInt(tfhenkilokuntaID.getText());
     }
+
     public static LocalDate getVarauksenAlku() {
         return alkuDate.getValue();
     }
+
     public static String getAsiakasNimi() {
         return tfAsiakkaanimi.getText();
     }
+
     public static String getAsiakasGmail() {
         return tfAsiakasGmail.getText();
     }
+
     public static String getAsiakasPuhelinnumero() {
         return tfAsiakasPuh.getText();
     }
+
     public static LocalDate getAsiakasSynty() {
         return tfAsiakasSynty.getValue();
     }
+
     public static String getAsiakasID() {
         return tfAsiakasID.getText();
     }
@@ -175,7 +185,7 @@ public class Kayttoliittyma extends Application {
 
         //Ei toimii jos on empty tai jos ei ole ainakin 4 merkkiä
         button.setOnAction(e -> {
-            if(!tfhenkilokuntaID.getText().isEmpty()&& tfhenkilokuntaID.getText().length()==4) {
+            if (!tfhenkilokuntaID.getText().isEmpty() && tfhenkilokuntaID.getText().length() == 4) {
                 alkuDate.setDisable(false);
                 loppuDate.setDisable(false);
                 tfAsiakkaanimi.setDisable(false);
@@ -190,7 +200,7 @@ public class Kayttoliittyma extends Application {
                 maksuntila.setDisable(false);
                 cbMokkitaso.setDisable(false);
                 varoitus.setVisible(false);
-            }else {
+            } else {
                 alkuDate.setDisable(true);
                 loppuDate.setDisable(true);
                 tfAsiakkaanimi.setDisable(true);
@@ -208,58 +218,79 @@ public class Kayttoliittyma extends Application {
             }
         });
 
-        Haebutton.setOnAction(e-> {
-            int satunnainenID = new Random().nextInt(30000)+1;
-            tfAsiakasID.setText(String.valueOf(satunnainenID));
-            tfAsiakasID.setEditable(false);
 
-            int satunnainenLaskunID = new Random().nextInt(30000)+2000;
-            laskuID.setText(String.valueOf(satunnainenLaskunID));
-            laskuID.setEditable(false);
-            laskuID.setText("L" + satunnainenLaskunID);
-
-
-        });
         //Taulukko oikea
         TableColumn<OlioLuokka, Double> summaColumn = new TableColumn<>("Asiakas");
-        summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
+        summaColumn.setCellValueFactory(new PropertyValueFactory<>("summa"));
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
         kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
         TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
-        pane.add(taulukko, 0,20,2,1);
+        pane.add(taulukko, 0, 20, 2, 1);
+
 
         //Taulukko vasen
-        TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Lasku");
+        TableColumn<OlioLuokka, String> laskuColumn = new TableColumn<>("Lasku");
         laskuColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
         erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
-        pane.add(taulukkoMaksut, 5,20,2,1);
+        pane.add(taulukkoMaksut, 5, 20, 2, 1);
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
         taulukko.getColumns().addAll(summaColumn, kategoriaColumn, paivaColumn);
-        //taulukko.setItems(menoTiedot);
+        taulukko.setItems(asiakasTiedot);
         taulukko.setPrefHeight(250);
         taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#3a4a3d;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
         taulukkoMaksut.setStyle("-fx-background-color:#3a4a3d;");
-        taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
+        taulukkoMaksut.setPlaceholder(new Label("Ei vielä tietoja"));
+
 
         //toimiikoo nyt
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
         iv1.setFitHeight(140);
         iv1.setFitWidth(140);
-        pane.add(iv1, 6,0,1,1);
+        pane.add(iv1, 6, 0, 1, 1);
+
+        Haebutton.setOnAction(e -> {
+            int satunnainenID = new Random().nextInt(30000) + 1;
+            tfAsiakasID.setText(String.valueOf(satunnainenID));
+            tfAsiakasID.setEditable(false);
+
+            int satunnainenLaskunID = new Random().nextInt(30000) + 2000;
+            laskuID.setText(String.valueOf(satunnainenLaskunID));
+            laskuID.setEditable(false);
+            laskuID.setText("L" + satunnainenLaskunID);
+
+            String nimi = tfAsiakkaanimi.getText();
+            String kategoria = cbMokkitaso.getValue();
+            LocalDate paiva = alkuDate.getValue();
+
+            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
+                OlioLuokka uusiRivi = new OlioLuokka();
+                uusiRivi.setAsiakasNimi(nimi);
+                uusiRivi.setMokkiTaso(kategoria);
+                uusiRivi.setVarauksenAlkuPaiva(paiva);
+                asiakasTiedot.add(uusiRivi);
+            }
+
+
+        });
     }
 
-    public static void main(String[] args) {
-        launch(args);
 
+
+
+
+        public static void main (String[]args){
+            launch(args);
+
+        }
     }
-}
+
 
