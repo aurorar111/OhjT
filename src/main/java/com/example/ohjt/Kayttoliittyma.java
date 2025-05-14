@@ -251,8 +251,8 @@ public class Kayttoliittyma extends Application {
             long varatutYot = ChronoUnit.DAYS.between(alku,loppu);
             if (varatutYot == 0) varatutYot =1;
 
-
-            int hintaYolta = mökinhinta.get(cbMokkitaso);
+            String valittuMökki =cbMokkitaso.getValue();
+            int hintaYolta = mökinhinta.get(valittuMökki);
             long varauksenHinta = varatutYot*hintaYolta;
             hinta.setText(varauksenHinta + "€");
 
