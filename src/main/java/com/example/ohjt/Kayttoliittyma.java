@@ -233,6 +233,8 @@ public class Kayttoliittyma extends Application {
             LocalDate alku = alkuDate.getValue();
             LocalDate loppu = loppuDate.getValue();
 
+           // if alku != null &&
+
 
 
 
