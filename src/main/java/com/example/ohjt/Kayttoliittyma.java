@@ -317,7 +317,7 @@ public class Kayttoliittyma extends Application {
                     "salasana123" // salasana (lotan)
             );
             Statement statement = conn.createStatement();
-            String sql = "SELECT * FROM asiakas" + "SELECT * FROM mökit" + "SELECT * FROM varaus";
+            String sql = "SELECT asiakas.nimi, mökit.mökkitaso, varaus.varaus_alku FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id";
             ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
                 String nimi = resultSet.getString("nimi");
