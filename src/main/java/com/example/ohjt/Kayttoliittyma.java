@@ -29,12 +29,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Kayttoliittyma extends Application {
 
+    public Kayttoliittyma() {
+        // tyhjä konstruktori FXML:ää varten
+    }
     Tiedosto tiedostoLuokka = new Tiedosto();
 
 //TextField, Combobox, DatePicker, Label, Button.....
     private static int varausID;
     private static int jarjestelmaID = 182;
-    private static String mokkiID = "15c";
 
     public TextField henkilokuntaG = new TextField("");
 
@@ -118,9 +120,6 @@ public class Kayttoliittyma extends Application {
     public static String getMokkiTaso() {
         return cbMokkitaso.getValue();
     }
-    public static String getMokkiID() {
-        return mokkiID;
-    }
 
     @Override
     public void start(Stage alkuikkuna) {
@@ -181,12 +180,12 @@ public class Kayttoliittyma extends Application {
         pane.add(laskuPva, 6, 5);
         pane.add(new Label("Maksun tila:"), 5, 6);
         pane.add(maksuntila, 6, 6);
+
         pohja.getChildren().add(pane);
+
 
         //SET ON ACTION BUTTONIT
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
-
-        //Päivitä button
         paivita.setOnAction(actionEvent -> {
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
@@ -214,9 +213,10 @@ public class Kayttoliittyma extends Application {
             String puh = tfAsiakasPuh.getText();
             String syntyma = tfAsiakasSynty.getValue().toString();
             String asiakasid = tfAsiakasID.getText();
+
+
             Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
         });
-        //Hae Button
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
             tfAsiakasID.setText(String.valueOf(satunnainenID));
@@ -227,11 +227,11 @@ public class Kayttoliittyma extends Application {
             laskuID.setEditable(false);
             laskuID.setText("L" + satunnainenLaskunID);
 
-            Map<String, Integer> mokinhinta = new HashMap<>();
-            mokinhinta.put("Perusmökki",70);
-            mokinhinta.put("Paremman puoleinen",100);
-            mokinhinta.put("Melkein kartano",140);
-            mokinhinta.put("TOP tier",200);
+            Map<String, Integer> mökinhinta = new HashMap<>();
+            mökinhinta.put("Perusmökki",70);
+            mökinhinta.put("Paremman puoleinen",100);
+            mökinhinta.put("Melkein kartano",140);
+            mökinhinta.put("TOP tier",200);
 
             LocalDate alku = alkuDate.getValue();
             LocalDate loppu = loppuDate.getValue();
@@ -240,8 +240,9 @@ public class Kayttoliittyma extends Application {
                 long varatutYot = ChronoUnit.DAYS.between(alku, loppu);
                 if (varatutYot == 0) varatutYot = 1;
 
-                String valittuMokki = cbMokkitaso.getValue();
-                int hintaYolta = mokinhinta.get(valittuMokki);
+
+                String valittuMökki = cbMokkitaso.getValue();
+                int hintaYolta = mökinhinta.get(valittuMökki);
                 long varauksenHinta = varatutYot * hintaYolta;
                 hinta.setText(varauksenHinta + "€");
             }
@@ -259,7 +260,6 @@ public class Kayttoliittyma extends Application {
             }
         });
 
-        //ComboBox tiedot
         cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
@@ -361,29 +361,19 @@ public class Kayttoliittyma extends Application {
                     "root", // käyttäjänimi
                     "salasana123" // salasana (lotan)
             );
-            Statement statement1 = conn.createStatement();
+            Statement statement = conn.createStatement();
             String sql = "SELECT asiakas.nimi, mökit.mökkitaso, varaus.varaus_alku FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id";
-
-            ResultSet resultSet = statement1.executeQuery(sql);
+            ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
                 String nimi = resultSet.getString("nimi");
                 String taso = resultSet.getString("mökkitaso");
                 String paiva = resultSet.getString("varaus_alku");
                 asiakasTiedot.add(new OlioLuokka(nimi, taso, paiva));
             }
-            Statement statement2 = conn.createStatement();
-            String sql2 = "SELECT asiaks.nimi, mökit.hinta, maksut.erapaiva FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id JOIN maksut ON varaus.lasku_id = maksut.lasku_id";
-            ResultSet resultSet2 = statement2.executeQuery(sql2);
-            while(resultSet2.next()){
-                String nimi = resultSet2.getString("nimi");
-                String hinta = resultSet2.getString("hinta");
-                String erapaiva = resultSet2.getString("erapaiva");
-                maksutiedot.add(new OlioLuokka(nimi, hinta, erapaiva));
-            }
-
         }catch(SQLException e){
             e.printStackTrace();
         }
+
         //KUVA
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
