@@ -34,6 +34,7 @@ public class Kayttoliittyma extends Application {
     }
     Tiedosto tiedostoLuokka = new Tiedosto();
 
+//TextField, Combobox, DatePicker, Label, Button.....
     private static int varausID;
     private static int jarjestelmaID = 182;
 
@@ -59,7 +60,6 @@ public class Kayttoliittyma extends Application {
     public static Label asiakasVaroitus = new Label();
 
     public static ComboBox<String> cbMokkitaso = new ComboBox<>();
-
 
     public Button Haebutton = new Button("Hae");
     //PÄIVITYS NAPPI:
@@ -125,6 +125,7 @@ public class Kayttoliittyma extends Application {
     @Override
     public void start(Stage alkuikkuna) {
 
+        //Pohja
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 1000, 900);
         alkuikkuna.setTitle("The Cozy Spot – henkilökunnan varausjärjestelmä");
@@ -134,6 +135,7 @@ public class Kayttoliittyma extends Application {
 
         alkuikkuna.show();
 
+        // pane johon lisätään ja asetetaan elementit oikeille paikoille
         GridPane pane = new GridPane();
         pane.setHgap(5);
         pane.setVgap(5);
@@ -169,6 +171,7 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasID, 1, 12);
         pane.add(asiakasVaroitus,0,13);
         asiakasVaroitus.setTextFill(Color.RED);
+
         //Oikea
         pane.add(new Label("Hinta:"), 5, 3);
         pane.add(hinta, 6, 3);
@@ -182,6 +185,7 @@ public class Kayttoliittyma extends Application {
         pohja.getChildren().add(pane);
 
 
+        //SET ON ACTION BUTTONIT
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
             String nimi2 = tfAsiakkaanimi.getText();
@@ -216,6 +220,50 @@ public class Kayttoliittyma extends Application {
 
             Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
         });
+        Haebutton.setOnAction(e-> {
+            int satunnainenID = new Random().nextInt(30000)+1;
+            tfAsiakasID.setText(String.valueOf(satunnainenID));
+            tfAsiakasID.setEditable(false);
+
+            int satunnainenLaskunID = new Random().nextInt(30000)+2000;
+            laskuID.setText(String.valueOf(satunnainenLaskunID));
+            laskuID.setEditable(false);
+            laskuID.setText("L" + satunnainenLaskunID);
+
+            Map<String, Integer> mökinhinta = new HashMap<>();
+            mökinhinta.put("Perusmökki",70);
+            mökinhinta.put("Paremman puoleinen",100);
+            mökinhinta.put("Melkein kartano",140);
+            mökinhinta.put("TOP tier",200);
+
+            LocalDate alku = alkuDate.getValue();
+            LocalDate loppu = loppuDate.getValue();
+
+            if (alku != null && loppu != null && !loppu.isBefore(alku)) {
+                long varatutYot = ChronoUnit.DAYS.between(alku, loppu);
+                if (varatutYot == 0) varatutYot = 1;
+
+
+                String valittuMökki = cbMokkitaso.getValue();
+                int hintaYolta = mökinhinta.get(valittuMökki);
+                long varauksenHinta = varatutYot * hintaYolta;
+                hinta.setText(varauksenHinta + "€");
+            }
+
+
+            String nimi = tfAsiakkaanimi.getText();
+            String kategoria = cbMokkitaso.getValue();
+            LocalDate paiva = alkuDate.getValue();
+
+            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
+                OlioLuokka uusiRivi = new OlioLuokka();
+                uusiRivi.setAsiakasNimi(nimi);
+                uusiRivi.setMokkiTaso(kategoria);
+                uusiRivi.setVarauksenAlkuPaiva(paiva);
+                asiakasTiedot.add(uusiRivi);
+            }
+        });
+
         cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
@@ -269,6 +317,7 @@ public class Kayttoliittyma extends Application {
                 varoitus.setVisible(true);
             }
         });
+
         //Taulukko oikea
         TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
         asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
@@ -283,68 +332,6 @@ public class Kayttoliittyma extends Application {
         taulukko.setItems(asiakasTiedot);
         pane.add(taulukko, 0,20,2,1);
 
-        Haebutton.setOnAction(e-> {
-            int satunnainenID = new Random().nextInt(30000)+1;
-            tfAsiakasID.setText(String.valueOf(satunnainenID));
-            tfAsiakasID.setEditable(false);
-
-            int satunnainenLaskunID = new Random().nextInt(30000)+2000;
-            laskuID.setText(String.valueOf(satunnainenLaskunID));
-            laskuID.setEditable(false);
-            laskuID.setText("L" + satunnainenLaskunID);
-
-            Map<String, Integer> mökinhinta = new HashMap<>();
-            mökinhinta.put("Perusmökki",70);
-            mökinhinta.put("Paremman puoleinen",100);
-            mökinhinta.put("Melkein kartano",140);
-            mökinhinta.put("TOP tier",200);
-
-            LocalDate alku = alkuDate.getValue();
-            LocalDate loppu = loppuDate.getValue();
-
-            if (alku != null && loppu != null && !loppu.isBefore(alku)) {
-                long varatutYot = ChronoUnit.DAYS.between(alku, loppu);
-                if (varatutYot == 0) varatutYot = 1;
-
-
-                String valittuMökki = cbMokkitaso.getValue();
-                int hintaYolta = mökinhinta.get(valittuMökki);
-                long varauksenHinta = varatutYot * hintaYolta;
-                hinta.setText(varauksenHinta + "€");
-            }
-
-
-            String nimi = tfAsiakkaanimi.getText();
-            String kategoria = cbMokkitaso.getValue();
-            LocalDate paiva = alkuDate.getValue();
-
-            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
-                OlioLuokka uusiRivi = new OlioLuokka();
-                uusiRivi.setAsiakasNimi(nimi);
-                uusiRivi.setMokkiTaso(kategoria);
-                uusiRivi.setVarauksenAlkuPaiva(paiva);
-                asiakasTiedot.add(uusiRivi);
-            }
-        });
-        //yhteys tietokantaan sekä haku tietokannasta SELECT komennolla
-        try{
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
-                    "root", // käyttäjänimi
-                    "salasana123" // salasana (lotan)
-            );
-            Statement statement = conn.createStatement();
-            String sql = "SELECT asiakas.nimi, mökit.mökkitaso, varaus.varaus_alku FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id";
-            ResultSet resultSet = statement.executeQuery(sql);
-            while(resultSet.next()){
-                String nimi = resultSet.getString("nimi");
-                String taso = resultSet.getString("mökkitaso");
-                String paiva = resultSet.getString("varaus_alku");
-                asiakasTiedot.add(new OlioLuokka(nimi, taso, paiva));
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
         //Taulukko vasen
         TableColumn<OlioLuokka, String> nimiColumn= new TableColumn<>("Asiakas");
         nimiColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi "));
@@ -367,6 +354,27 @@ public class Kayttoliittyma extends Application {
         taulukkoMaksut.setPrefWidth(250);
         taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
         taulukkoMaksut.setItems(maksutiedot);
+
+
+        //yhteys tietokantaan sekä haku tietokannasta SELECT komennolla
+        try{
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
+                    "root", // käyttäjänimi
+                    "salasana123" // salasana (lotan)
+            );
+            Statement statement = conn.createStatement();
+            String sql = "SELECT asiakas.nimi, mökit.mökkitaso, varaus.varaus_alku FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id";
+            ResultSet resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                String nimi = resultSet.getString("nimi");
+                String taso = resultSet.getString("mökkitaso");
+                String paiva = resultSet.getString("varaus_alku");
+                asiakasTiedot.add(new OlioLuokka(nimi, taso, paiva));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
 
         //toimiikoo nyt
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
