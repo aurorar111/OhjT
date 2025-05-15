@@ -65,6 +65,7 @@ public class Kayttoliittyma extends Application {
     public static DatePicker loppuDate = new DatePicker();
 
     // getterit
+
     public static int getHenkilokuntaID() {
         return Integer.parseInt(tfhenkilokuntaID.getText());
     }
@@ -282,6 +283,7 @@ public class Kayttoliittyma extends Application {
                 uusiRivi.setMokkiTaso(kategoria);
                 uusiRivi.setVarauksenAlkuPaiva(paiva);
                 asiakasTiedot.add(uusiRivi);
+
             }
 
 
@@ -289,12 +291,15 @@ public class Kayttoliittyma extends Application {
         });
 
         //Taulukko oikea
-        TableColumn<OlioLuokka, Double> asiakasColumn = new TableColumn<>("Asiakas");
-        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("summa" ));
-        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Kategoria");
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
-        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Päivämäärä");
-        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+        TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
+        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
+        asiakasColumn.setPrefWidth(150);
+        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
+        kategoriaColumn.setPrefWidth(125);
+        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alku päivä");
+        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
+        paivaColumn.setPrefWidth(100);
         taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
         pane.add(taulukko, 0,20,2,1);
 
@@ -311,7 +316,7 @@ public class Kayttoliittyma extends Application {
         taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
         taulukko.setItems(asiakasTiedot);
         taulukko.setPrefHeight(250);
-        taulukko.setPrefWidth(250);
+        //taulukko.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#3a4a3d;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
         taulukkoMaksut.setStyle("-fx-background-color:#3a4a3d;");
