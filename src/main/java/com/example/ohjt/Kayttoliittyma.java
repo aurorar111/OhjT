@@ -374,13 +374,14 @@ public class Kayttoliittyma extends Application {
         taulukko.getColumns().clear();
         taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
         taulukko.setItems(asiakasTiedot);
-        taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
         taulukko.setPrefHeight(250);
-        taulukkoMaksut.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#3a4a3d;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
         taulukkoMaksut.setStyle("-fx-background-color:#3a4a3d;");
         taulukkoMaksut.setPlaceholder(new Label ("Ei vielä tietoja"));
+        taulukkoMaksut.setPrefWidth(250);
+        taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
+        taulukkoMaksut.setItems(maksutiedot);
 
         //toimiikoo nyt
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
