@@ -181,6 +181,13 @@ public class Kayttoliittyma extends Application {
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
             LocalDate alku = alkuDate.getValue();
+            if (nimi2 != null && !nimi2.isEmpty() && alku != null) {
+                OlioLuokka uusiRivi2 = new OlioLuokka();
+                uusiRivi2.setAsiakasNimi(nimi2);
+                uusiRivi2.setMokkiHinta(mokinHinta);
+                uusiRivi2.setVarauksenAlkuPaiva(alku);
+                asiakasTiedot.add(uusiRivi2);
+            }
 
             asiakasVaroitus.setText("");
 
@@ -314,6 +321,7 @@ public class Kayttoliittyma extends Application {
                 hinta.setText(varauksenHinta + "€");
             }
 
+
             String nimi = tfAsiakkaanimi.getText();
             String kategoria = cbMokkitaso.getValue();
             LocalDate paiva = alkuDate.getValue();
@@ -358,7 +366,7 @@ public class Kayttoliittyma extends Application {
         TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Summa €");
         laskuColumn.setCellValueFactory(new PropertyValueFactory<>("mokinHinta "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
-        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("MaksunPaivamaara"));
         taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
         pane.add(taulukkoMaksut, 5,20,2,1);
 
