@@ -39,7 +39,7 @@ public class Tietokanta {
             statement2.setString(4, String.valueOf(Kayttoliittyma.getVarausID()));
             statement2.setString(5, String.valueOf(Kayttoliittyma.getJarjestelmaID()));
             statement2.setString(6, String.valueOf(Kayttoliittyma.getMokkiID()));
-            statement2.setString(6, String.valueOf(Kayttoliittyma.getLaskuID()));
+            statement2.setString(7, String.valueOf(Kayttoliittyma.getLaskuID()));
 
             PreparedStatement statement3 = conn.prepareStatement(sql3);
             statement3.setString(1, Kayttoliittyma.getVarauksenHinta());
