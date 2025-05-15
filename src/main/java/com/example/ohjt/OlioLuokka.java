@@ -185,6 +185,4 @@ public class OlioLuokka {
     public void setMaksunPaivamaara(LocalDate maksunPaivamaara) {
         this.maksunPaivamaara = maksunPaivamaara;
     }
-
-
 }

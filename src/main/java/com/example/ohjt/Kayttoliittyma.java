@@ -186,12 +186,13 @@ public class Kayttoliittyma extends Application {
         pane.add(laskuPva, 6, 5);
         pane.add(new Label("Maksun tila:"), 5, 6);
         pane.add(maksuntila, 6, 6);
-
         pohja.getChildren().add(pane);
 
 
         //SET ON ACTION BUTTONIT
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
+
+        //Päivitä button
         paivita.setOnAction(actionEvent -> {
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
@@ -219,10 +220,9 @@ public class Kayttoliittyma extends Application {
             String puh = tfAsiakasPuh.getText();
             String syntyma = tfAsiakasSynty.getValue().toString();
             String asiakasid = tfAsiakasID.getText();
-
-
             Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
         });
+        //Hae Button
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
             tfAsiakasID.setText(String.valueOf(satunnainenID));
@@ -266,6 +266,7 @@ public class Kayttoliittyma extends Application {
             }
         });
 
+        //ComboBox tiedot
         cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
         cbMokkitaso.setValue("Valitse");
 
