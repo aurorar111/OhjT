@@ -298,11 +298,11 @@ public class Kayttoliittyma extends Application {
                     "salasana123" // salasana (lotan)
             );
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
+            ResultSet resultSet = statement.executeQuery("SELECT nimi FROM asiakas");
             while(resultSet.next()){
-                System.out.println("henkilökunta ID: " + resultSet.getString("henkilökunta_id"));
-                System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
-                System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
+                System.out.println("henkilökunta ID: " + resultSet.getString("nimi"));
+                //System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
+                //System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
             }
         }catch(SQLException e){
             e.printStackTrace();
