@@ -276,11 +276,9 @@ public class Kayttoliittyma extends Application {
                 hinta.setText(varauksenHinta + "€");
             }
 
-
             String nimi = tfAsiakkaanimi.getText();
             String kategoria = cbMokkitaso.getValue();
             LocalDate paiva = alkuDate.getValue();
-
 
             if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
                 OlioLuokka uusiRivi = new OlioLuokka();
@@ -288,12 +286,28 @@ public class Kayttoliittyma extends Application {
                 uusiRivi.setMokkiTaso(kategoria);
                 uusiRivi.setVarauksenAlkuPaiva(paiva);
                 asiakasTiedot.add(uusiRivi);
-
             }
-
-
-
         });
+
+
+        //yhteys tietokantaan sekä haku tietokannasta SELECT komennolla
+        try{
+            Connection conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
+                    "root", // käyttäjänimi
+                    "salasana123" // salasana (lotan)
+            );
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
+            while(resultSet.next()){
+                System.out.println("henkilökunta ID: " + resultSet.getString("henkilökunta_id"));
+                System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
+                System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
 
         //Taulukko oikea
         TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");

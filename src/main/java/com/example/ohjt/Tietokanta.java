@@ -8,9 +8,9 @@ public class Tietokanta {
     public static Connection connect() {
         try {
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
-                    "root",                           // käyttäjänimi
-                    "salasana123"                     // salasana
+                    "jdbc:mysql://localhost:3306/ot",
+                    "root",
+                    "salasana123"
             );
         } catch (SQLException e) {
             e.printStackTrace();
@@ -24,12 +24,12 @@ public class Tietokanta {
         String sql2 = "INSERT INTO varaus(asiakas_id, varaus_alku, varaus_loppu, varaus_id, järjestelmä_id) VALUES (?,?,?,?,?)";
 
         try (Connection conn = connect();
-             PreparedStatement statement = conn.prepareStatement(sql)) {
-            statement.setString(1, asiakasNimi);
-            statement.setString(2, asiakasGmail);
-            statement.setString(3, asiakasPuh);
-            statement.setString(4, asiakasSyntyma);
-            statement.setString(5, asiakasID);
+             PreparedStatement statement1 = conn.prepareStatement(sql)) {
+            statement1.setString(1, asiakasNimi);
+            statement1.setString(2, asiakasGmail);
+            statement1.setString(3, asiakasPuh);
+            statement1.setString(4, asiakasSyntyma);
+            statement1.setString(5, asiakasID);
 
             PreparedStatement statement2 = conn.prepareStatement(sql2);
             statement2.setString(1, asiakasID);
@@ -40,7 +40,7 @@ public class Tietokanta {
 
             // PÄIVITÄ VIELÄ MAKSUT, lasku_id, maksujen_tila, järjestelmä_id)
 
-            statement.executeUpdate();
+            statement1.executeUpdate();
             statement2.executeUpdate();
             System.out.println("Varaus tallennettu tietokantaan");
         }catch (SQLException e) {
