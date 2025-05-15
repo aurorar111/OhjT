@@ -243,8 +243,19 @@ public class Kayttoliittyma extends Application {
                 varoitus.setVisible(true);
             }
         });
-
-
+        //Taulukko oikea
+        TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
+        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
+        asiakasColumn.setPrefWidth(150);
+        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
+        kategoriaColumn.setPrefWidth(125);
+        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alku päivä");
+        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
+        paivaColumn.setPrefWidth(100);
+        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
+        taulukko.setItems(asiakasTiedot);
+        pane.add(taulukko, 0,20,2,1);
 
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
@@ -286,8 +297,11 @@ public class Kayttoliittyma extends Application {
                 uusiRivi.setMokkiTaso(kategoria);
                 uusiRivi.setVarauksenAlkuPaiva(paiva);
                 asiakasTiedot.add(uusiRivi);
+
+
             }
         });
+
 
 
         //yhteys tietokantaan sekä haku tietokannasta SELECT komennolla
@@ -309,18 +323,7 @@ public class Kayttoliittyma extends Application {
         }
 
 
-        //Taulukko oikea
-        TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
-        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
-        asiakasColumn.setPrefWidth(150);
-        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
-        kategoriaColumn.setPrefWidth(125);
-        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alku päivä");
-        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
-        paivaColumn.setPrefWidth(100);
-        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
-        pane.add(taulukko, 0,20,2,1);
+        //Tässä oli
 
         //Taulukko vasen
         TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Lasku");
