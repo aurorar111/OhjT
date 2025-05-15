@@ -39,8 +39,6 @@ public class Kayttoliittyma extends Application {
 
     static boolean saatavuus1 = true;
 
-    public TextField henkilokuntaG = new TextField("");
-
     public static TextField tfhenkilokuntaID = new TextField();
     public Button button = new Button("Kirjaudu");
     public static TextField tfAsiakkaanimi = new TextField();
@@ -48,8 +46,6 @@ public class Kayttoliittyma extends Application {
     public static TextField tfAsiakasPuh = new TextField();
     public static DatePicker tfAsiakasSynty = new DatePicker();
     public static TextField tfAsiakasID = new TextField();
-    public TextField varauksenAlku = new TextField();
-    public TextField varauksenLoppu = new TextField();
     public static TextField laskuID = new TextField();
     public static TextField laskuPva = new TextField();
     public static TextField maksuntila = new TextField();

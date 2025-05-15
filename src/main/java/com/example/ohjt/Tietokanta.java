@@ -51,6 +51,7 @@ public class Tietokanta {
             statement3.executeUpdate();
             statement2.executeUpdate();
             System.out.println("Varaus tallennettu tietokantaan");
+
         }catch (SQLException e) {
             e.printStackTrace();
         }
