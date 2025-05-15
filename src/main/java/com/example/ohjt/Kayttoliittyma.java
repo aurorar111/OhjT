@@ -21,6 +21,7 @@ import static javafx.collections.FXCollections.observableArrayList;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
@@ -189,9 +190,6 @@ public class Kayttoliittyma extends Application {
 
         pohja.getChildren().add(pane);
 
-
-        //SET ON ACTION BUTTONIT
-        // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
@@ -222,7 +220,45 @@ public class Kayttoliittyma extends Application {
 
 
             Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
+
         });
+
+
+        button.setOnAction(e -> {
+            if (!tfhenkilokuntaID.getText().isEmpty() && tfhenkilokuntaID.getText().length() == 4) {
+                alkuDate.setDisable(false);
+                loppuDate.setDisable(false);
+                tfAsiakkaanimi.setDisable(false);
+                tfAsiakasGmail.setDisable(false);
+                tfAsiakasPuh.setDisable(false);
+                tfAsiakasSynty.setDisable(false);
+                saatavuus.setDisable(false);
+                tfAsiakasID.setDisable(false);
+                hinta.setDisable(false);
+                laskuID.setDisable(false);
+                laskuPva.setDisable(false);
+                maksuntila.setDisable(false);
+                cbMokkitaso.setDisable(false);
+                varoitus.setVisible(false);
+            } else {
+                alkuDate.setDisable(true);
+                loppuDate.setDisable(true);
+                tfAsiakkaanimi.setDisable(true);
+                tfAsiakasGmail.setDisable(true);
+                tfAsiakasPuh.setDisable(true);
+                tfAsiakasSynty.setDisable(true);
+                saatavuus.setDisable(true);
+                tfAsiakasID.setDisable(true);
+                hinta.setDisable(true);
+                laskuID.setDisable(true);
+                laskuPva.setDisable(true);
+                maksuntila.setDisable(true);
+                cbMokkitaso.setDisable(true);
+                varoitus.setVisible(true);
+            }
+
+        });
+
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
             tfAsiakasID.setText(String.valueOf(satunnainenID));
@@ -251,20 +287,36 @@ public class Kayttoliittyma extends Application {
                 int hintaYolta = mökinhinta.get(valittuMökki);
                 long varauksenHinta = varatutYot * hintaYolta;
                 hinta.setText(varauksenHinta + "€");
-            }
 
-            String nimi = tfAsiakkaanimi.getText();
-            String kategoria = cbMokkitaso.getValue();
-            LocalDate paiva = alkuDate.getValue();
+                String nimi = tfAsiakkaanimi.getText();
+                String kategoria = cbMokkitaso.getValue();
+                LocalDate paiva = alkuDate.getValue();
 
-            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
-                OlioLuokka uusiRivi = new OlioLuokka();
-                uusiRivi.setAsiakasNimi(nimi);
-                uusiRivi.setMokkiTaso(kategoria);
-                uusiRivi.setVarauksenAlkuPaiva(paiva);
-                asiakasTiedot.add(uusiRivi);
+                if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null) {
+                    OlioLuokka uusiRivi = new OlioLuokka();
+                    uusiRivi.setAsiakasNimi(nimi);
+                    uusiRivi.setMokkiTaso(kategoria);
+                    uusiRivi.setVarauksenAlkuPaiva(paiva);
+                    asiakasTiedot.add(uusiRivi);
+
+                    LocalDate loppumisAjankohta = loppuDate.getValue();
+                    if (loppumisAjankohta != null) {
+                        LocalDate eraPaiva = loppumisAjankohta.plusDays(30);
+                        DateTimeFormatter naytaPaivina = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                        laskuPva.setText(naytaPaivina.format(eraPaiva));
+                    }
+
+                }
             }
         });
+
+
+
+
+
+        //SET ON ACTION BUTTONIT
+        // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
+
 
         cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
         cbMokkitaso.setValue("Valitse");
@@ -286,39 +338,9 @@ public class Kayttoliittyma extends Application {
         varoitus.setVisible(false);
 
         //Ei toimii jos on empty tai jos ei ole ainakin 4 merkkiä
-        button.setOnAction(e -> {
-            if(!tfhenkilokuntaID.getText().isEmpty()&& tfhenkilokuntaID.getText().length()==4) {
-                alkuDate.setDisable(false);
-                loppuDate.setDisable(false);
-                tfAsiakkaanimi.setDisable(false);
-                tfAsiakasGmail.setDisable(false);
-                tfAsiakasPuh.setDisable(false);
-                tfAsiakasSynty.setDisable(false);
-                saatavuus.setDisable(false);
-                tfAsiakasID.setDisable(false);
-                hinta.setDisable(false);
-                laskuID.setDisable(false);
-                laskuPva.setDisable(false);
-                maksuntila.setDisable(false);
-                cbMokkitaso.setDisable(false);
-                varoitus.setVisible(false);
-            }else {
-                alkuDate.setDisable(true);
-                loppuDate.setDisable(true);
-                tfAsiakkaanimi.setDisable(true);
-                tfAsiakasGmail.setDisable(true);
-                tfAsiakasPuh.setDisable(true);
-                tfAsiakasSynty.setDisable(true);
-                saatavuus.setDisable(true);
-                tfAsiakasID.setDisable(true);
-                hinta.setDisable(true);
-                laskuID.setDisable(true);
-                laskuPva.setDisable(true);
-                maksuntila.setDisable(true);
-                cbMokkitaso.setDisable(true);
-                varoitus.setVisible(true);
-            }
-        });
+
+
+
 
         //TAULUKKO
         //Taulukko oikea
