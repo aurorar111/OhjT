@@ -29,14 +29,15 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Kayttoliittyma extends Application {
 
-    public Kayttoliittyma() {
+    /*public Kayttoliittyma() {
         // tyhjä konstruktori FXML:ää varten
-    }
+    }*/
     Tiedosto tiedostoLuokka = new Tiedosto();
 
 //TextField, Combobox, DatePicker, Label, Button.....
     private static int varausID;
     private static int jarjestelmaID = 182;
+    private static String mokkiID = "15c";
 
     public TextField henkilokuntaG = new TextField("");
 
@@ -119,6 +120,9 @@ public class Kayttoliittyma extends Application {
     }
     public static String getMokkiTaso() {
         return cbMokkitaso.getValue();
+    }
+    public static String getMokkiID() {
+        return mokkiID;
     }
 
 
@@ -363,15 +367,26 @@ public class Kayttoliittyma extends Application {
                     "root", // käyttäjänimi
                     "salasana123" // salasana (lotan)
             );
-            Statement statement = conn.createStatement();
+            Statement statement1 = conn.createStatement();
             String sql = "SELECT asiakas.nimi, mökit.mökkitaso, varaus.varaus_alku FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id";
-            ResultSet resultSet = statement.executeQuery(sql);
+
+            ResultSet resultSet = statement1.executeQuery(sql);
             while(resultSet.next()){
                 String nimi = resultSet.getString("nimi");
                 String taso = resultSet.getString("mökkitaso");
                 String paiva = resultSet.getString("varaus_alku");
                 asiakasTiedot.add(new OlioLuokka(nimi, taso, paiva));
             }
+            Statement statement2 = conn.createStatement();
+            String sql2 = "SELECT asiaks.nimi, mökit.hinta, maksut.erapaiva FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id JOIN maksut ON varaus.lasku_id = maksut.lasku_id";
+            ResultSet resultSet2 = statement2.executeQuery(sql2);
+            while(resultSet2.next()){
+                String nimi = resultSet2.getString("nimi");
+                String hinta = resultSet2.getString("hinta");
+                String erapaiva = resultSet2.getString("erapaiva");
+                maksutiedot.add(new OlioLuokka(nimi, hinta, erapaiva));
+            }
+
         }catch(SQLException e){
             e.printStackTrace();
         }

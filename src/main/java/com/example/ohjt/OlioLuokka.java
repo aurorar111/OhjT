@@ -38,7 +38,7 @@ public class OlioLuokka {
     private double mokkiHinta;
     private boolean mokkiSaatavuus;
     private String mokkiTaso;
-    private int mokkiID;
+    private String mokkiID = "15c";
     private int laskuID;
     private boolean maksujenTila;
     private LocalDate maksunPaivamaara;
@@ -154,11 +154,11 @@ public class OlioLuokka {
         this.mokkiTaso = mokkiTaso;
     }
 
-    public int getMokkiID() {
+    public String getMokkiID() {
         return mokkiID;
     }
 
-    public void setMokkiID(int mokkiID) {
+    public void setMokkiID(String mokkiID) {
         this.mokkiID = mokkiID;
     }
 
