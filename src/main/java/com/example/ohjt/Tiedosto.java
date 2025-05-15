@@ -8,6 +8,7 @@ public class Tiedosto {
 
     public OlioLuokka olioLuokka = new OlioLuokka();
 
+    //Tallennetaan tiedostoon
     public void tallennaTiedostoon () {
         try {
             System.out.println("Nykyinen hakemisto: " + new File(".").getAbsolutePath());
@@ -39,6 +40,8 @@ public class Tiedosto {
             e.printStackTrace();
         }
     }
+
+    //Lue tiedostoo
     public String lueTiedosto (){
         StringBuilder tiedot= new StringBuilder();
         try {

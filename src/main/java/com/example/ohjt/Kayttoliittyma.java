@@ -30,9 +30,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Kayttoliittyma extends Application {
 
-    /*public Kayttoliittyma() {
-        // tyhjä konstruktori FXML:ää varten
-    }*/
     Tiedosto tiedostoLuokka = new Tiedosto();
 
 //TextField, Combobox, DatePicker, Label, Button.....
@@ -226,9 +223,7 @@ public class Kayttoliittyma extends Application {
 
 
             Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
-
         });
-
 
         button.setOnAction(e -> {
             if (!tfhenkilokuntaID.getText().isEmpty() && tfhenkilokuntaID.getText().length() == 4) {
@@ -262,7 +257,6 @@ public class Kayttoliittyma extends Application {
                 cbMokkitaso.setDisable(true);
                 varoitus.setVisible(true);
             }
-
         });
 
         Haebutton.setOnAction(e-> {
@@ -275,11 +269,11 @@ public class Kayttoliittyma extends Application {
             laskuID.setEditable(false);
             laskuID.setText("" + satunnainenLaskunID);
 
-            Map<String, Integer> mökinhinta = new HashMap<>();
-            mökinhinta.put("Perusmökki",70);
-            mökinhinta.put("Paremman puoleinen",100);
-            mökinhinta.put("Melkein kartano",140);
-            mökinhinta.put("TOP tier",200);
+            Map<String, Integer> mokinhinta = new HashMap<>();
+            mokinhinta.put("Perusmökki",70);
+            mokinhinta.put("Paremman puoleinen",100);
+            mokinhinta.put("Melkein kartano",140);
+            mokinhinta.put("TOP tier",200);
 
             LocalDate alku = alkuDate.getValue();
             LocalDate loppu = loppuDate.getValue();
@@ -288,9 +282,8 @@ public class Kayttoliittyma extends Application {
                 long varatutYot = ChronoUnit.DAYS.between(alku, loppu);
                 if (varatutYot == 0) varatutYot = 1;
 
-
                 String valittuMökki = cbMokkitaso.getValue();
-                int hintaYolta = mökinhinta.get(valittuMökki);
+                int hintaYolta = mokinhinta.get(valittuMökki);
                 long varauksenHinta = varatutYot * hintaYolta;
                 hinta.setText(varauksenHinta + "€");
 
@@ -311,15 +304,9 @@ public class Kayttoliittyma extends Application {
                         DateTimeFormatter naytaPaivina = DateTimeFormatter.ofPattern("dd.MM.yyyy");
                         laskuPva.setText(naytaPaivina.format(eraPaiva));
                     }
-
                 }
             }
         });
-
-
-
-
-
 
         cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
         cbMokkitaso.setValue("Valitse");
@@ -341,9 +328,6 @@ public class Kayttoliittyma extends Application {
         varoitus.setVisible(false);
 
         //Ei toimii jos on empty tai jos ei ole ainakin 4 merkkiä
-
-
-
 
         //TAULUKKO
         //Taulukko oikea
