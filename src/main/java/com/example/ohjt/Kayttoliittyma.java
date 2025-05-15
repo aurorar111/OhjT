@@ -63,7 +63,6 @@ public class Kayttoliittyma extends Application {
     public static ComboBox<String> cbMokkitaso = new ComboBox<>();
 
     public Button Haebutton = new Button("Hae");
-    //PÄIVITYS NAPPI:
     private Button paivita = new Button("Tallenna varaus");
 
     public TableView taulukko = new TableView<>();
@@ -131,7 +130,7 @@ public class Kayttoliittyma extends Application {
     @Override
     public void start(Stage alkuikkuna) {
 
-        //Pohja
+        // Pohja
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 1000, 900);
         alkuikkuna.setTitle("The Cozy Spot – henkilökunnan varausjärjestelmä");
@@ -147,7 +146,7 @@ public class Kayttoliittyma extends Application {
         pane.setVgap(5);
         pane.setPadding(new javafx.geometry.Insets(20));
 
-        //Vasen
+        // Vasen
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
         pane.add(tfhenkilokuntaID, 1, 0);
         tfhenkilokuntaID.setPromptText("syötä ID");
@@ -179,7 +178,7 @@ public class Kayttoliittyma extends Application {
         asiakasVaroitus.setText("");
         asiakasVaroitus.setTextFill(Color.RED);
 
-        //Oikea
+        // Oikea
         pane.add(new Label("Hinta:"), 5, 3);
         pane.add(hinta, 6, 3);
         pane.add(new Label("Laskun ID:"), 5, 4);
@@ -191,7 +190,7 @@ public class Kayttoliittyma extends Application {
 
         pohja.getChildren().add(pane);
 
-        //SET ON ACTION BUTTONIT
+        // SET ON ACTION BUTTONIT
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
             String nimi2 = tfAsiakkaanimi.getText();
@@ -372,9 +371,9 @@ public class Kayttoliittyma extends Application {
         //yhteys tietokantaan sekä haku tietokannasta SELECT komennolla
         try{
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
+                    "jdbc:mysql://localhost:3306/ot",
                     "root", // käyttäjänimi
-                    "salasana123" // salasana (lotan)
+                    "salasana123"
             );
             Statement statement1 = conn.createStatement();
             String sql = "SELECT asiakas.nimi, mökit.mökkitaso, varaus.varaus_alku FROM asiakas JOIN varaus ON asiakas.asiakas_id = varaus.asiakas_id JOIN mökit ON varaus.mökki_id = mökit.mökki_id";

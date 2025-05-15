@@ -23,7 +23,6 @@ public class Tietokanta {
         String sql = "INSERT INTO asiakas(nimi, sähköposti, puhelinnumero, syntymäaika, asiakas_id) VALUES (?,?,?,?,?)";
         String sql2 = "INSERT INTO varaus(asiakas_id, varaus_alku, varaus_loppu, varaus_id, järjestelmä_id, mökki_id, lasku_id) VALUES (?,?,?,?,?,?,?)";
         String sql3 = "INSERT INTO mökit (hinta, saatavuus, mökkitaso, mökki_id, järjestelmä_id) VALUES (?,?,?,?,?)";
-        //saatavuus
         try (Connection conn = connect();
              PreparedStatement statement1 = conn.prepareStatement(sql)) {
             statement1.setString(1, asiakasNimi);
@@ -48,8 +47,6 @@ public class Tietokanta {
             statement3.setString(4, String.valueOf(Kayttoliittyma.getMokkiID()));
             statement3.setString(5, String.valueOf(Kayttoliittyma.getJarjestelmaID()));
 
-            // PÄIVITÄ VIELÄ MAKSUT, lasku_id, maksujen_tila, järjestelmä_id)
-
             statement1.executeUpdate();
             statement3.executeUpdate();
             statement2.executeUpdate();
@@ -58,24 +55,4 @@ public class Tietokanta {
             e.printStackTrace();
         }
     }
-    //k
-    //k
-
-    /*try{
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/ot", // tietokannan nimi
-                "root", // käyttäjänimi
-                "salasana123" // salasana (lotan)
-        );
-        Statement statement = conn.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM henkilökunta");
-        while(resultSet.next()){
-            System.out.println("henkilökunta ID: " + resultSet.getString("henkilökunta_id"));
-            System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
-            System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
-        }
-    }catch(SQLException e){
-        e.printStackTrace();
-    }*/
-
 }
