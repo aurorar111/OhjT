@@ -136,3 +136,35 @@ asiakasID: 7651
 TOP tier
 600€
 laskuID: L16355
+
+
+UUSI ASIAKAS:
+hlökunta id: 1234
+hlökunta puh: 1234567890
+varausID: 79
+alkupv: 2025-05-15
+loppu pv: 2025-05-17
+dyrftugbhujn
+vgjhbkjn
+1235678798
+2025-05-21
+asiakasID: 29772
+Perusmökki
+140€
+laskuID: L3489
+
+
+UUSI ASIAKAS:
+hlökunta id: 1234
+hlökunta puh: 1234567890
+varausID: 19
+alkupv: 2025-05-15
+loppu pv: 2025-05-17
+JOU
+JOU@gmail.com
+4567890+
+2025-05-15
+asiakasID: 18489
+Perusmökki
+140€
+laskuID: L2996

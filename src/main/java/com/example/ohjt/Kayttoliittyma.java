@@ -29,6 +29,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Kayttoliittyma extends Application {
 
+    public Kayttoliittyma() {
+        // tyhjä konstruktori FXML:ää varten
+    }
+
     Tiedosto tiedostoLuokka = new Tiedosto();
 
     private static int varausID;
@@ -174,6 +178,8 @@ public class Kayttoliittyma extends Application {
             String puh = tfAsiakasPuh.getText();
             String syntyma = tfAsiakasSynty.getValue().toString();
             String asiakasid = tfAsiakasID.getText();
+
+
             Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
         });
 
@@ -298,7 +304,6 @@ public class Kayttoliittyma extends Application {
                 uusiRivi.setVarauksenAlkuPaiva(paiva);
                 asiakasTiedot.add(uusiRivi);
 
-
             }
         });
 
@@ -312,16 +317,17 @@ public class Kayttoliittyma extends Application {
                     "salasana123" // salasana (lotan)
             );
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT nimi FROM asiakas");
+            String sql = "SELECT * FROM asiakas" + "SELECT * FROM mökit" + "SELECT * FROM varaus";
+            ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
-                System.out.println("henkilökunta ID: " + resultSet.getString("nimi"));
-                //System.out.println("hlökunta sähköposti: " + resultSet.getString("sähköposti"));
-                //System.out.println("hlökunta puhnro: " + resultSet.getString("puhelinnumero") + "\n");
+                String nimi = resultSet.getString("nimi");
+                String taso = resultSet.getString("mökkitaso");
+                String paiva = resultSet.getString("varaus_alku");
+                asiakasTiedot.add(new OlioLuokka(nimi, taso, paiva));
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
-
 
         //Tässä oli
 

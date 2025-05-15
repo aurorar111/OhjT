@@ -6,6 +6,14 @@ import java.time.LocalDate;
 //Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
 
 public class OlioLuokka {
+
+    public OlioLuokka(String asiakasNimi, String mokkiTaso, String varauksenAlkuPaiva) {
+        this.asiakasNimi = asiakasNimi;
+        this.mokkiTaso = mokkiTaso;
+        this.varauksenAlkuPaiva = LocalDate.parse(varauksenAlkuPaiva);
+    }
+
+
     private int henkilokuntaID;
     private String henkilokuntaGmail;
     private int henkilokuntaPuh = 1234567890;
@@ -28,6 +36,10 @@ public class OlioLuokka {
     private int laskuID;
     private boolean maksujenTila;
     private int maksunPaivamaara;
+
+    public OlioLuokka() {
+
+    }
 
 
     // Getterit ja setterit
