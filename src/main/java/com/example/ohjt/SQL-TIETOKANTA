@@ -1,0 +1,110 @@
+DROP DATABASE IF EXISTS ot;
+CREATE DATABASE ot CHARACTER SET utf8mb4;
+USE ot;
+
+CREATE TABLE `järjestelmä`(
+  `järjestelmä_id` INT NOT NULL,
+  PRIMARY KEY (järjestelmä_id)
+);
+
+CREATE TABLE `henkilökunta`
+(
+  `henkilökunta_id` INT NOT NULL,
+  `sähköposti` VARCHAR(255) NOT NULL,
+  `Puhelinnumero` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (henkilökunta_id)
+);
+
+CREATE TABLE `asiakas`
+(
+  `sähköposti` VARCHAR(255) NOT NULL,
+  `puhelinnumero` VARCHAR(255) NOT NULL,
+  `nimi` VARCHAR(100) NOT NULL,
+  `syntymäaika` DATE NOT NULL,
+  `asiakas_id` INT NOT NULL,
+  PRIMARY KEY (asiakas_id)
+);
+
+CREATE TABLE `varaus`
+(
+  `varaus_id` INT NOT NULL,
+  `asiakas_id` INT NOT NULL,
+  `järjestelmä_id` INT NOT NULL,
+  `varaus_alku` DATE NOT NULL,
+  `varaus_loppu` DATE NOT NULL,
+  `mökki_id` VARCHAR(50) NOT NULL,
+  `lasku_id` INT NOT NULL,
+  PRIMARY KEY (varaus_id),
+  FOREIGN KEY (asiakas_id) REFERENCES asiakas(asiakas_id),
+  FOREIGN KEY (järjestelmä_id) REFERENCES järjestelmä(järjestelmä_id)
+);
+
+CREATE TABLE `mökit`
+(
+  `hinta` VARCHAR(20) NOT NULL,
+  `saatavuus` VARCHAR(50) NOT NULL,
+  `mökkitaso` VARCHAR(50) NOT NULL,
+  `mökki_id` VARCHAR(50) NOT NULL,
+  `järjestelmä_id` INT NOT NULL,
+  PRIMARY KEY (mökki_id),
+  FOREIGN KEY (järjestelmä_id) REFERENCES järjestelmä(järjestelmä_id)
+);
+
+CREATE TABLE `maksut`
+(
+  `lasku_id` INT NOT NULL,
+  `maksujen_tila` VARCHAR(50) NOT NULL,
+  `järjestelmä_id` INT NOT NULL,
+  `erapaiva` DATE NOT NULL,
+  PRIMARY KEY (lasku_id),
+  FOREIGN KEY (järjestelmä_id) REFERENCES järjestelmä(järjestelmä_id)
+);
+
+ALTER TABLE `asiakas` ADD UNIQUE (`sähköposti`);
+ALTER TABLE `henkilökunta` ADD UNIQUE (`sähköposti`);
+
+ALTER TABLE `varaus`
+  ADD CONSTRAINT `varaus_asiakas` FOREIGN KEY (`asiakas_id`) REFERENCES `asiakas`(`asiakas_id`),
+  ADD CONSTRAINT `varaus_järjestelmä` FOREIGN KEY (`järjestelmä_id`) REFERENCES `järjestelmä`(`järjestelmä_id`);
+ALTER TABLE varaus
+ADD CONSTRAINT varaus_mökki FOREIGN KEY (mökki_id) REFERENCES mökit(mökki_id);
+ALTER TABLE varaus ADD CONSTRAINT fk_varaus_maksu FOREIGN KEY (lasku_id) REFERENCES maksut(lasku_id);
+
+
+ALTER TABLE `mökit`
+  ADD CONSTRAINT `mökit_järjestelmä` FOREIGN KEY (`järjestelmä_id`) REFERENCES `järjestelmä`(`järjestelmä_id`);
+
+ALTER TABLE `maksut`
+  ADD CONSTRAINT `maksut_järjestelmä` FOREIGN KEY (`järjestelmä_id`) REFERENCES `järjestelmä`(`järjestelmä_id`);
+
+INSERT INTO järjestelmä (järjestelmä_id) VALUES
+(182);
+
+INSERT INTO henkilökunta (henkilökunta_id, sähköposti, puhelinnumero) VALUES
+(12, "malli.henkilökunta.1@gmail.com", "0408765952"),
+(13, "malli.henkilökunta.2@gmail.com", "0509247483"),
+(14, "malli.henkilökunta.3@gmail.com", "0509384929");
+
+INSERT INTO asiakas (sähköposti, puhelinnumero, nimi, syntymäaika, asiakas_id) VALUES
+("Heikki.heikkinen@gmail.com", "050896868", "Heikki Heikkinen", "1969-09-12", 45),
+("Maarit.marjanen@gmail.com", "050959586", "Maarit Marjanen", "1998-03-17", 43),
+("Laura.lautananen@gmail.com", "050483921", "Laura Lautanen", "2002-01-01", 44);
+
+INSERT INTO mökit (Hinta, saatavuus, mökkitaso, mökki_id, järjestelmä_id) VALUES
+("300€/yö", "saatavilla", "Perusmökki", "12b", 182),
+("1200€/yö", "ei saatavilla", "Paremman puoleinen", "13a", 182),
+("150€/yö", "saatavilla", "Melkein kartano", "14c", 182);
+
+INSERT INTO maksut (lasku_id, maksujen_tila, järjestelmä_id, erapaiva) VALUES
+(144, "maksettu", 182, "2025-06-12"),
+(145, "maksamaton", 182, "2025-07-23"),
+(146, "maksettu", 182, "2025-08-06");
+
+INSERT INTO varaus (varaus_id, asiakas_id, järjestelmä_id, varaus_alku, varaus_loppu, mökki_id, lasku_id) VALUES
+(67, 45, 182, "2025-06-13", "2025-06-14", "12b", 144),
+(88, 43, 182, "2025-06-19", "2025-06-22", "13a", 145),
+(89, 44, 182, "2025-06-25", "2025-06-27", "14c", 146);
+
+
+
+
