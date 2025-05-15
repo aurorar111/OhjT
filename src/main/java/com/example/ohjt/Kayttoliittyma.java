@@ -170,6 +170,7 @@ public class Kayttoliittyma extends Application {
         pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
         pane.add(tfAsiakasID, 1, 12);
         pane.add(asiakasVaroitus,0,13);
+        asiakasVaroitus.setText("");
         asiakasVaroitus.setTextFill(Color.RED);
 
         //Oikea
@@ -198,8 +199,6 @@ public class Kayttoliittyma extends Application {
                 uusiRivi2.setVarauksenAlkuPaiva(alku);
                 asiakasTiedot.add(uusiRivi2);
             }
-
-            asiakasVaroitus.setText("");
 
             if (tfAsiakkaanimi.getText().isEmpty() ||
                     tfAsiakasGmail.getText().isEmpty() ||
@@ -249,7 +248,6 @@ public class Kayttoliittyma extends Application {
                 long varauksenHinta = varatutYot * hintaYolta;
                 hinta.setText(varauksenHinta + "€");
             }
-
 
             String nimi = tfAsiakkaanimi.getText();
             String kategoria = cbMokkitaso.getValue();
@@ -318,6 +316,8 @@ public class Kayttoliittyma extends Application {
             }
         });
 
+        //TAULUKKO
+
         //Taulukko oikea
         TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
         asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
@@ -356,6 +356,7 @@ public class Kayttoliittyma extends Application {
         taulukkoMaksut.setItems(maksutiedot);
 
 
+        //TIETOKANTA
         //yhteys tietokantaan sekä haku tietokannasta SELECT komennolla
         try{
             Connection conn = DriverManager.getConnection(
@@ -376,7 +377,7 @@ public class Kayttoliittyma extends Application {
             e.printStackTrace();
         }
 
-        //toimiikoo nyt
+        //KUVA
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
         iv1.setFitHeight(140);
