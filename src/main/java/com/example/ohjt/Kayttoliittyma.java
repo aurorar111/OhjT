@@ -29,9 +29,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Kayttoliittyma extends Application {
 
-    /*public Kayttoliittyma() {
-        // tyhjä konstruktori FXML:ää varten
-    }*/
     Tiedosto tiedostoLuokka = new Tiedosto();
 
 //TextField, Combobox, DatePicker, Label, Button.....
@@ -188,7 +185,6 @@ public class Kayttoliittyma extends Application {
         pane.add(maksuntila, 6, 6);
         pohja.getChildren().add(pane);
 
-
         //SET ON ACTION BUTTONIT
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
 
@@ -233,11 +229,11 @@ public class Kayttoliittyma extends Application {
             laskuID.setEditable(false);
             laskuID.setText("L" + satunnainenLaskunID);
 
-            Map<String, Integer> mökinhinta = new HashMap<>();
-            mökinhinta.put("Perusmökki",70);
-            mökinhinta.put("Paremman puoleinen",100);
-            mökinhinta.put("Melkein kartano",140);
-            mökinhinta.put("TOP tier",200);
+            Map<String, Integer> mokinhinta = new HashMap<>();
+            mokinhinta.put("Perusmökki",70);
+            mokinhinta.put("Paremman puoleinen",100);
+            mokinhinta.put("Melkein kartano",140);
+            mokinhinta.put("TOP tier",200);
 
             LocalDate alku = alkuDate.getValue();
             LocalDate loppu = loppuDate.getValue();
@@ -246,9 +242,8 @@ public class Kayttoliittyma extends Application {
                 long varatutYot = ChronoUnit.DAYS.between(alku, loppu);
                 if (varatutYot == 0) varatutYot = 1;
 
-
-                String valittuMökki = cbMokkitaso.getValue();
-                int hintaYolta = mökinhinta.get(valittuMökki);
+                String valittuMokki = cbMokkitaso.getValue();
+                int hintaYolta = mokinhinta.get(valittuMokki);
                 long varauksenHinta = varatutYot * hintaYolta;
                 hinta.setText(varauksenHinta + "€");
             }
@@ -391,7 +386,6 @@ public class Kayttoliittyma extends Application {
         }catch(SQLException e){
             e.printStackTrace();
         }
-
         //KUVA
         Image kuva1 = new Image(getClass().getResource("/cozy_spot_logo.png").toExternalForm());
         ImageView iv1 = new ImageView(kuva1);
