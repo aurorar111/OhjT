@@ -65,14 +65,12 @@ public class Kayttoliittyma extends Application {
     //PÄIVITYS NAPPI:
     private Button paivita = new Button("Tallenna varaus");
 
-
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
     private ObservableList <OlioLuokka> asiakasTiedot = observableArrayList();
     private ObservableList <OlioLuokka> maksutiedot = observableArrayList();
 
     // getterit
-
     public static int getHenkilokuntaID() {
         return Integer.parseInt(tfhenkilokuntaID.getText());
     }
@@ -127,9 +125,6 @@ public class Kayttoliittyma extends Application {
     @Override
     public void start(Stage alkuikkuna) {
 
-        tfhenkilokuntaID.setPromptText("syötä ID");
-
-
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 1000, 900);
         alkuikkuna.setTitle("The Cozy Spot – henkilökunnan varausjärjestelmä");
@@ -143,9 +138,11 @@ public class Kayttoliittyma extends Application {
         pane.setHgap(5);
         pane.setVgap(5);
         pane.setPadding(new javafx.geometry.Insets(20));
+
         //Vasen
         pane.add(new Label("Henkilökunta ID:"), 0, 0);
         pane.add(tfhenkilokuntaID, 1, 0);
+        tfhenkilokuntaID.setPromptText("syötä ID");
         Label varoitus = new Label("Kirjoita 4 merkkinen ID");
         varoitus.setTextFill(Color.RED);
         pane.add(varoitus, 2, 0);
@@ -164,6 +161,7 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasSynty, 1, 8);
         pane.add(cbMokkitaso, 0, 9);
         pane.add(Haebutton, 1, 9);
+        Haebutton.setPrefWidth(100);
         pane.add(paivita, 2, 12); //Paivita buttonnnn
         pane.add(new Label("Saatavuus:"), 0, 11);
         pane.add(saatavuus, 1, 11);
@@ -171,13 +169,21 @@ public class Kayttoliittyma extends Application {
         pane.add(tfAsiakasID, 1, 12);
         pane.add(asiakasVaroitus,0,13);
         asiakasVaroitus.setTextFill(Color.RED);
+        //Oikea
+        pane.add(new Label("Hinta:"), 5, 3);
+        pane.add(hinta, 6, 3);
+        pane.add(new Label("Laskun ID:"), 5, 4);
+        pane.add(laskuID, 6, 4);
+        pane.add(new Label("Laskun eräpäivä:"), 5, 5);
+        pane.add(laskuPva, 6, 5);
+        pane.add(new Label("Maksun tila:"), 5, 6);
+        pane.add(maksuntila, 6, 6);
 
-        Haebutton.setPrefWidth(100);
+        pohja.getChildren().add(pane);
 
 
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
-
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
             LocalDate alku = alkuDate.getValue();
@@ -210,22 +216,8 @@ public class Kayttoliittyma extends Application {
 
             Tietokanta.lisaaVarausTietokantaan(nimi, sapo, puh, syntyma, asiakasid);
         });
-
-        //Oikea
-        pane.add(new Label("Hinta:"), 5, 3);
-        pane.add(hinta, 6, 3);
-        pane.add(new Label("Laskun ID:"), 5, 4);
-        pane.add(laskuID, 6, 4);
-        pane.add(new Label("Laskun eräpäivä:"), 5, 5);
-        pane.add(laskuPva, 6, 5);
-        pane.add(new Label("Maksun tila:"), 5, 6);
-        pane.add(maksuntila, 6, 6);
-
-        pohja.getChildren().add(pane);
-
         cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
         cbMokkitaso.setValue("Valitse");
-
 
         // ei voi muokata tietoja ennen henkilökunta ID
         alkuDate.setDisable(true);
