@@ -66,6 +66,7 @@ public class Kayttoliittyma extends Application {
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
     private ObservableList <OlioLuokka> asiakasTiedot = observableArrayList();
+    private ObservableList <OlioLuokka> maksutiedot = observableArrayList();
     public static DatePicker alkuDate = new DatePicker();
     public static DatePicker loppuDate = new DatePicker();
     public static Label asiakasVaroitus = new Label();
@@ -176,6 +177,11 @@ public class Kayttoliittyma extends Application {
 
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
+
+            String nimi2 = tfAsiakkaanimi.getText();
+            int mokinHinta = 0;
+            LocalDate alku = alkuDate.getValue();
+
             asiakasVaroitus.setText("");
 
             if (tfAsiakkaanimi.getText().isEmpty() ||
@@ -271,7 +277,7 @@ public class Kayttoliittyma extends Application {
         TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
         kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
         kategoriaColumn.setPrefWidth(125);
-        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alku päivä");
+        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alkupäivä");
         paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
         paivaColumn.setPrefWidth(100);
         taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
@@ -347,19 +353,22 @@ public class Kayttoliittyma extends Application {
         //Tässä oli
 
         //Taulukko vasen
-        TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Lasku");
-        laskuColumn.setCellValueFactory(new PropertyValueFactory<>("Lasku "));
+        TableColumn<OlioLuokka, String> nimiColumn= new TableColumn<>("Asiakas");
+        nimiColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi "));
+        TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Summa €");
+        laskuColumn.setCellValueFactory(new PropertyValueFactory<>("mokinHinta "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
         erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
-        taulukkoMaksut.getColumns().addAll(laskuColumn, erapaivaColumn);
+        taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
         pane.add(taulukkoMaksut, 5,20,2,1);
 
         // päivitetän taulukkoon tietoja ja värit
         taulukko.getColumns().clear();
         taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
         taulukko.setItems(asiakasTiedot);
+        taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
         taulukko.setPrefHeight(250);
-        //taulukko.setPrefWidth(250);
+        taulukkoMaksut.setPrefWidth(250);
         taulukko.setStyle("-fx-background-color:#3a4a3d;");
         taulukko.setPlaceholder(new Label("Ei vielä tietoja"));
         taulukkoMaksut.setStyle("-fx-background-color:#3a4a3d;");

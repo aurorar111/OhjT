@@ -13,6 +13,12 @@ public class OlioLuokka {
         this.varauksenAlkuPaiva = LocalDate.parse(varauksenAlkuPaiva);
     }
 
+    public OlioLuokka (String asiakasNimi, int mokkiHinta, LocalDate maksunPaivamaara){
+        this.asiakasNimi = asiakasNimi;
+        this.mokkiHinta = mokkiHinta;
+        this.maksunPaivamaara = maksunPaivamaara;
+    }
+
 
     private int henkilokuntaID;
     private String henkilokuntaGmail;
@@ -35,7 +41,7 @@ public class OlioLuokka {
     private int mokkiID;
     private int laskuID;
     private boolean maksujenTila;
-    private int maksunPaivamaara;
+    private LocalDate maksunPaivamaara;
 
     public OlioLuokka() {
 
@@ -172,11 +178,11 @@ public class OlioLuokka {
         this.maksujenTila = maksujenTila;
     }
 
-    public int getMaksunPaivamaara() {
+    public LocalDate getMaksunPaivamaara() {
         return maksunPaivamaara;
     }
 
-    public void setMaksunPaivamaara(int maksunPaivamaara) {
+    public void setMaksunPaivamaara(LocalDate maksunPaivamaara) {
         this.maksunPaivamaara = maksunPaivamaara;
     }
 
