@@ -139,6 +139,70 @@ laskuID: L16355
 
 
 UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 87
+alkupv: 2025-05-08
+loppu pv: 2025-05-09
+kissa
+miumau
+444
+2025-05-01
+asiakasID: 14123
+TOP tier
+200€
+laskuID: L30425
+
+
+UUSI ASIAKAS:
+hlökunta id: 6666
+hlökunta puh: 1234567890
+varausID: 85
+alkupv: 2025-05-02
+loppu pv: 2025-05-04
+ee
+ee
+ee
+2025-05-02
+asiakasID: 22342
+Melkein kartano
+280€
+laskuID: L10393
+
+
+UUSI ASIAKAS:
+hlökunta id: 2222
+hlökunta puh: 1234567890
+varausID: 75
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+2
+2
+2
+2025-05-01
+asiakasID: 19714
+Paremman puoleinen
+100€
+laskuID: L15329
+
+
+UUSI ASIAKAS:
+hlökunta id: 2222
+hlökunta puh: 1234567890
+varausID: 65
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+2
+2
+2
+2025-05-01
+asiakasID: 19714
+Paremman puoleinen
+100€
+laskuID: L15329
+
+
+UUSI ASIAKAS:
 hlökunta id: 1234
 hlökunta puh: 1234567890
 varausID: 79
@@ -168,3 +232,387 @@ asiakasID: 18489
 Perusmökki
 140€
 laskuID: L2996
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 53
+alkupv: 2025-05-01
+loppu pv: 2025-05-08
+KK
+kkk
+888
+2025-04-28
+asiakasID: 21122
+Paremman puoleinen
+700€
+laskuID: L19087
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 44
+alkupv: 2025-05-01
+loppu pv: 2025-05-08
+KK
+kkk
+888
+2025-04-28
+asiakasID: 21122
+Paremman puoleinen
+700€
+laskuID: L19087
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 8
+alkupv: 2025-05-01
+loppu pv: 2025-05-08
+KK
+kkk
+888
+2025-04-28
+asiakasID: 21122
+Paremman puoleinen
+700€
+laskuID: L19087
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 18
+alkupv: 2025-05-01
+loppu pv: 2025-05-08
+KK
+kkk
+888
+2025-04-28
+asiakasID: 21122
+Paremman puoleinen
+700€
+laskuID: L19087
+
+
+UUSI ASIAKAS:
+hlökunta id: 5555
+hlökunta puh: 1234567890
+varausID: 47
+alkupv: 2025-05-01
+loppu pv: 2025-05-03
+hh
+kk
+777
+2025-04-28
+asiakasID: 3606
+Melkein kartano
+280€
+laskuID: L26138
+
+
+UUSI ASIAKAS:
+hlökunta id: 5555
+hlökunta puh: 1234567890
+varausID: 32
+alkupv: 2025-05-01
+loppu pv: 2025-05-03
+hh
+kk
+777
+2025-04-28
+asiakasID: 3606
+Melkein kartano
+280€
+laskuID: L26138
+
+
+UUSI ASIAKAS:
+hlökunta id: 5555
+hlökunta puh: 1234567890
+varausID: 16
+alkupv: 2025-05-01
+loppu pv: 2025-05-03
+hh
+kk
+777
+2025-04-28
+asiakasID: 3606
+Melkein kartano
+280€
+laskuID: L26138
+
+
+UUSI ASIAKAS:
+hlökunta id: 5555
+hlökunta puh: 1234567890
+varausID: 45
+alkupv: 2025-05-01
+loppu pv: 2025-05-03
+hh
+kk
+777
+2025-04-28
+asiakasID: 15361
+Melkein kartano
+280€
+laskuID: L31701
+
+
+UUSI ASIAKAS:
+hlökunta id: 5555
+hlökunta puh: 1234567890
+varausID: 47
+alkupv: 2025-05-01
+loppu pv: 2025-05-03
+hh
+kk
+777
+2025-04-28
+asiakasID: 15361
+Melkein kartano
+280€
+laskuID: L31701
+
+
+UUSI ASIAKAS:
+hlökunta id: 5555
+hlökunta puh: 1234567890
+varausID: 39
+alkupv: 2025-05-01
+loppu pv: 2025-05-03
+hh
+kk
+777
+2025-04-28
+asiakasID: 15361
+Melkein kartano
+280€
+laskuID: L31701
+
+
+UUSI ASIAKAS:
+hlökunta id: 5555
+hlökunta puh: 1234567890
+varausID: 31
+alkupv: 2025-05-01
+loppu pv: 2025-05-03
+hh
+kk
+777
+2025-04-28
+asiakasID: 15361
+Melkein kartano
+280€
+laskuID: L31701
+
+
+UUSI ASIAKAS:
+hlökunta id: 6666
+hlökunta puh: 1234567890
+varausID: 13
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+jj
+jj
+88
+2025-04-30
+asiakasID: 26606
+Paremman puoleinen
+100€
+laskuID: L21471
+
+
+UUSI ASIAKAS:
+hlökunta id: 6666
+hlökunta puh: 1234567890
+varausID: 75
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+jj
+jj
+88
+2025-04-30
+asiakasID: 26606
+Paremman puoleinen
+100€
+laskuID: L21471
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 89
+alkupv: 2025-04-30
+loppu pv: 2025-05-02
+kk
+ss
+111
+2025-04-29
+asiakasID: 9381
+Perusmökki
+140€
+laskuID: L18759
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 53
+alkupv: 2025-04-30
+loppu pv: 2025-05-02
+kk
+ss
+111
+2025-04-29
+asiakasID: 9381
+Perusmökki
+140€
+laskuID: L18759
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 75
+alkupv: 2025-04-30
+loppu pv: 2025-05-02
+kk
+ss
+111
+2025-04-29
+asiakasID: 9381
+Perusmökki
+140€
+laskuID: L18759
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 83
+alkupv: 2025-04-30
+loppu pv: 2025-05-02
+kk
+ss
+111
+2025-04-29
+asiakasID: 9381
+Perusmökki
+140€
+laskuID: L18759
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 24
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+11
+11
+qq
+2025-04-29
+asiakasID: 9475
+Paremman puoleinen
+100€
+laskuID: L29440
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 23
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+11
+11
+qq
+2025-04-29
+asiakasID: 9475
+Paremman puoleinen
+100€
+laskuID: L29440
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 4
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+11
+11
+qq
+2025-04-29
+asiakasID: 9475
+Paremman puoleinen
+100€
+laskuID: L29440
+
+
+UUSI ASIAKAS:
+hlökunta id: 3333
+hlökunta puh: 1234567890
+varausID: 16
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+kk
+ii
+77
+2025-04-28
+asiakasID: 27814
+Perusmökki
+70€
+laskuID: L29799
+
+
+UUSI ASIAKAS:
+hlökunta id: 3333
+hlökunta puh: 1234567890
+varausID: 48
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+kk
+ii
+77
+2025-04-28
+asiakasID: 27814
+Perusmökki
+70€
+laskuID: L29799
+
+
+UUSI ASIAKAS:
+hlökunta id: 3333
+hlökunta puh: 1234567890
+varausID: 30
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+kk
+ii
+77
+2025-04-28
+asiakasID: 27814
+Perusmökki
+70€
+laskuID: L29799
+
+
+UUSI ASIAKAS:
+hlökunta id: 1111
+hlökunta puh: 1234567890
+varausID: 84
+alkupv: 2025-05-01
+loppu pv: 2025-05-02
+aa
+aa
+33
+2025-04-28
+asiakasID: 5012
+Perusmökki
+70€
+laskuID: L28636

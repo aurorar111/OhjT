@@ -21,6 +21,7 @@ import static javafx.collections.FXCollections.observableArrayList;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
@@ -181,13 +182,6 @@ public class Kayttoliittyma extends Application {
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
             LocalDate alku = alkuDate.getValue();
-            if (nimi2 != null && !nimi2.isEmpty() && alku != null) {
-                OlioLuokka uusiRivi2 = new OlioLuokka();
-                uusiRivi2.setAsiakasNimi(nimi2);
-                uusiRivi2.setMokkiHinta(mokinHinta);
-                uusiRivi2.setVarauksenAlkuPaiva(alku);
-                asiakasTiedot.add(uusiRivi2);
-            }
 
             asiakasVaroitus.setText("");
 
@@ -277,19 +271,7 @@ public class Kayttoliittyma extends Application {
                 varoitus.setVisible(true);
             }
         });
-        //Taulukko oikea
-        TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
-        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
-        asiakasColumn.setPrefWidth(150);
-        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
-        kategoriaColumn.setPrefWidth(125);
-        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alkupäivä");
-        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
-        paivaColumn.setPrefWidth(100);
-        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
-        taulukko.setItems(asiakasTiedot);
-        pane.add(taulukko, 0,20,2,1);
+
 
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
@@ -321,20 +303,48 @@ public class Kayttoliittyma extends Application {
                 hinta.setText(varauksenHinta + "€");
             }
 
-
             String nimi = tfAsiakkaanimi.getText();
             String kategoria = cbMokkitaso.getValue();
             LocalDate paiva = alkuDate.getValue();
 
-            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
+            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null) {
                 OlioLuokka uusiRivi = new OlioLuokka();
                 uusiRivi.setAsiakasNimi(nimi);
                 uusiRivi.setMokkiTaso(kategoria);
                 uusiRivi.setVarauksenAlkuPaiva(paiva);
                 asiakasTiedot.add(uusiRivi);
 
+                LocalDate loppumisAjankohta = loppuDate.getValue();
+                if (loppumisAjankohta != null) {
+                    LocalDate eraPaiva = loppumisAjankohta.plusDays(30);
+                    DateTimeFormatter naytaPaivina = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                    String eraPaivanajankohta = eraPaiva.format(naytaPaivina);
+                    laskuPva.setText(eraPaivanajankohta);
+
+
+                }
             }
-        });
+            });
+
+
+            //Ei toimii jos on empty tai jos ei ole ainakin 4 merkkiä
+
+        //Taulukko oikea
+        TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
+        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
+        asiakasColumn.setPrefWidth(150);
+        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
+        kategoriaColumn.setPrefWidth(125);
+        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alkupäivä");
+        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
+        paivaColumn.setPrefWidth(100);
+        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
+        taulukko.setItems(asiakasTiedot);
+        pane.add(taulukko, 0,20,2,1);
+
+
+
 
 
 
@@ -366,7 +376,7 @@ public class Kayttoliittyma extends Application {
         TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Summa €");
         laskuColumn.setCellValueFactory(new PropertyValueFactory<>("mokinHinta "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
-        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("MaksunPaivamaara"));
+        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
         taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
         pane.add(taulukkoMaksut, 5,20,2,1);
 
@@ -396,4 +406,5 @@ public class Kayttoliittyma extends Application {
 
     }
 }
+
 
