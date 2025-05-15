@@ -19,20 +19,20 @@ public class Tiedosto {
             }
             FileWriter kTiedosto = new FileWriter("tiedosto.txt", true);
             kTiedosto.write("\n\nUUSI ASIAKAS:\n");
-            kTiedosto.write("hlökunta id: " + Kayttoliittyma.getHenkilokuntaID() + "\n");
-            kTiedosto.write("hlökunta puh: " + olioLuokka.getHenkilokuntaPuh() + "\n");
+            kTiedosto.write("henkilökuntaID: " + Kayttoliittyma.getHenkilokuntaID() + "\n");
+            kTiedosto.write("henkilökunta puh: " + olioLuokka.getHenkilokuntaPuh() + "\n");
             kTiedosto.write("varausID: " + Kayttoliittyma.getVarausID() + "\n");
-            kTiedosto.write("alkupv: " + Kayttoliittyma.getVarauksenAlku().toString() + "\n");
-            kTiedosto.write("loppu pv: " + Kayttoliittyma.getVarauksenLoppu().toString() + "\n");
+            kTiedosto.write("alkupäivä: " + Kayttoliittyma.getVarauksenAlku().toString() + "\n");
+            kTiedosto.write("loppupäivä: " + Kayttoliittyma.getVarauksenLoppu().toString() + "\n");
 
-            kTiedosto.write(Kayttoliittyma.getAsiakasNimi() + "\n");
-            kTiedosto.write(Kayttoliittyma.getAsiakasGmail() + "\n");
-            kTiedosto.write(Kayttoliittyma.getAsiakasPuhelinnumero() + "\n");
-            kTiedosto.write(Kayttoliittyma.getAsiakasSynty().toString() + "\n");
+            kTiedosto.write("asiakkaan nimi: " + Kayttoliittyma.getAsiakasNimi() + "\n");
+            kTiedosto.write("asiakkaan säpo: " + Kayttoliittyma.getAsiakasGmail() + "\n");
+            kTiedosto.write("asiakkaan puh.nro: " + Kayttoliittyma.getAsiakasPuhelinnumero() + "\n");
+            kTiedosto.write("asiakkaan syntymäaika: " + Kayttoliittyma.getAsiakasSynty().toString() + "\n");
             kTiedosto.write("asiakasID: " + Kayttoliittyma.getAsiakasID() + "\n");
 
-            kTiedosto.write(Kayttoliittyma.getMokkiTaso() + "\n");
-            kTiedosto.write(Kayttoliittyma.getVarauksenHinta() + "\n");
+            kTiedosto.write("mökin taso: " + Kayttoliittyma.getMokkiTaso() + "\n");
+            kTiedosto.write("hinta: " + Kayttoliittyma.getVarauksenHinta() + "\n");
             kTiedosto.write("laskuID: " + Kayttoliittyma.getLaskuID() + "\n");
 
             kTiedosto.close();
