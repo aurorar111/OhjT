@@ -58,3 +58,81 @@ testi1@gmail.com
 28795
 210€
 L31021
+
+
+UUSI ASIAKAS:
+1234
+1234567890
+78
+2025-05-15
+2025-05-17
+Jou XD
+joo.xd@gmail.com
+1238763456
+2025-05-28
+14369
+400€
+L20402
+
+
+UUSI ASIAKAS:
+1234
+1234567890
+78
+2025-05-05
+2025-05-08
+JOO
+testietsti@gmail.com
+0982365934
+2019-05-21
+4895
+300€
+L16714
+
+
+UUSI ASIAKAS:
+hlökunta id: 1234
+hlökunta puh: 1234567890
+varausID: 78
+alkupv: 2025-05-15
+loppu pv: 2025-05-18
+Jarmo Kinnunen
+jarmo.kinnunen@outlook.com
+0457893487
+1983-05-03
+asiakasID: 22549
+Perusmökki
+210€
+laskuID: L5030
+
+
+UUSI ASIAKAS:
+hlökunta id: 2345
+hlökunta puh: 1234567890
+varausID: 0
+alkupv: 2025-05-20
+loppu pv: 2025-05-23
+Joona Tamminen
+jt@gmail.com
+3458763456
+2004-05-14
+asiakasID: 28136
+Melkein kartano
+420€
+laskuID: L3988
+
+
+UUSI ASIAKAS:
+hlökunta id: 6789
+hlökunta puh: 1234567890
+varausID: 38
+alkupv: 2025-05-27
+loppu pv: 2025-05-30
+juuuuu
+joooooo
+4567890456
+2025-05-19
+asiakasID: 7651
+TOP tier
+600€
+laskuID: L16355

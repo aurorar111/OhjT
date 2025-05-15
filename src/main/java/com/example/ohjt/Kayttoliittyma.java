@@ -25,12 +25,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Kayttoliittyma extends Application {
 
     Tiedosto tiedostoLuokka = new Tiedosto();
 
-    private static int varausID = 78;
+    private static int varausID;
     private static int jarjestelmaID = 182;
 
     public TextField henkilokuntaG = new TextField("");
@@ -46,7 +47,7 @@ public class Kayttoliittyma extends Application {
 
     public TextField varauksenAlku = new TextField();
     public TextField varauksenLoppu = new TextField();
-    public ComboBox<String> cbMokkitaso = new ComboBox<>();
+    public static ComboBox<String> cbMokkitaso = new ComboBox<>();
     public Button Haebutton = new Button("Hae");
     public TextField saatavuus = new TextField();
     public static TextField hinta = new TextField();
@@ -90,7 +91,11 @@ public class Kayttoliittyma extends Application {
     public static String getAsiakasID() {
         return tfAsiakasID.getText();
     }
+    public static void setVarausID() {
+        varausID = ThreadLocalRandom.current().nextInt(1, 100);
+    }
     public static int getVarausID() {
+        setVarausID();
         return varausID;
     }
     public static int getJarjestelmaID() {
@@ -108,20 +113,20 @@ public class Kayttoliittyma extends Application {
     public static String getMaksunTila() {
         return maksuntila.getText();
     }
+    public static String getMokkiTaso() {
+        return cbMokkitaso.getValue();
+    }
 
 
     @Override
     public void start(Stage alkuikkuna) {
 
         tfhenkilokuntaID.setPromptText("syötä ID");
-        /*tfhenkilokuntaID.textProperty().addListener((observable, oldValue, newValue) -> {
-            button.setDisable(newValue.trim().isEmpty());
-        });
-        button.setDisable(tfhenkilokuntaID.getText().trim().isEmpty());*/
+
 
         Pane pohja = new Pane();
         Scene kehys = new Scene(pohja, 1000, 900);
-        alkuikkuna.setTitle("Varausjärjestelmä");
+        alkuikkuna.setTitle("The Cozy Spot – henkilökunnan varausjärjestelmä");
         alkuikkuna.setScene(kehys);
         pohja.setStyle("-fx-background-color:#faf5f1;");
         button.setStyle("-fx-background-color:#ef6a9d;");
