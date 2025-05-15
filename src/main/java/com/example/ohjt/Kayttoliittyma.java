@@ -190,6 +190,8 @@ public class Kayttoliittyma extends Application {
 
         pohja.getChildren().add(pane);
 
+        //SET ON ACTION BUTTONIT
+        // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
@@ -313,9 +315,6 @@ public class Kayttoliittyma extends Application {
 
 
 
-
-        //SET ON ACTION BUTTONIT
-        // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
 
 
         cbMokkitaso.getItems().addAll("Perusmökki", "Paremman puoleinen", "Melkein kartano", "TOP tier");
