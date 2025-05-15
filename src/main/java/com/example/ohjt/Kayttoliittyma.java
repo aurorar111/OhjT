@@ -122,7 +122,6 @@ public class Kayttoliittyma extends Application {
         return mokkiID;
     }
 
-
     @Override
     public void start(Stage alkuikkuna) {
 
@@ -133,7 +132,6 @@ public class Kayttoliittyma extends Application {
         alkuikkuna.setScene(kehys);
         pohja.setStyle("-fx-background-color:#faf5f1;");
         button.setStyle("-fx-background-color:#ef6a9d;");
-
         alkuikkuna.show();
 
         // pane johon lisätään ja asetetaan elementit oikeille paikoille
