@@ -68,6 +68,7 @@ public class Kayttoliittyma extends Application {
     private ObservableList <OlioLuokka> asiakasTiedot = observableArrayList();
     public static DatePicker alkuDate = new DatePicker();
     public static DatePicker loppuDate = new DatePicker();
+    public static Label asiakasVaroitus = new Label();
 
     // getterit
 
@@ -167,11 +168,25 @@ public class Kayttoliittyma extends Application {
         pane.add(saatavuus, 1, 11);
         pane.add(new Label("Generoitu asiakas ID:"), 0, 12);
         pane.add(tfAsiakasID, 1, 12);
+        pane.add(asiakasVaroitus,0,13);
+        asiakasVaroitus.setTextFill(Color.RED);
 
         Haebutton.setPrefWidth(100);
 
+
         // PÄIVITÄ NAPIN TIEDOSTOON TALLENNUS
         paivita.setOnAction(actionEvent -> {
+            asiakasVaroitus.setText("");
+
+            if (tfAsiakkaanimi.getText().isEmpty() ||
+                    tfAsiakasGmail.getText().isEmpty() ||
+                    tfAsiakasPuh.getText().isEmpty() ||
+                    tfAsiakasSynty.getValue() == null ||
+                    tfAsiakasID.getText().isEmpty()) {
+
+                asiakasVaroitus.setText("Täytä kaikki asiakastiedot ennen tallennusta!");
+                return;
+            }
             tiedostoLuokka.tallennaTiedostoon(); //tallenna-nappia painaessa tallennaTiedostoon-metodia kutsutaan
             String nimi = tfAsiakkaanimi.getText();
             String sapo = tfAsiakasGmail.getText();

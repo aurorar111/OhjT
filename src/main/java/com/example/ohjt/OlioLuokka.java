@@ -27,7 +27,7 @@ public class OlioLuokka {
     private String asiakasGmail;
     private int asiakasPuh;
     private int asiakasID;
-    private int asiakasSyntymaAika;
+    private LocalDate asiakasSyntymaAika;
 
     private double mokkiHinta;
     private boolean mokkiSaatavuus;
@@ -116,11 +116,11 @@ public class OlioLuokka {
         this.asiakasID = asiakasID;
     }
 
-    public int getAsiakasSyntymaAika() {
+    public LocalDate getAsiakasSyntymaAika() {
         return asiakasSyntymaAika;
     }
 
-    public void setAsiakasSyntymaAika(int asiakasSyntymaAika) {
+    public void setAsiakasSyntymaAika(LocalDate asiakasSyntymaAika) {
         this.asiakasSyntymaAika = asiakasSyntymaAika;
     }
 
