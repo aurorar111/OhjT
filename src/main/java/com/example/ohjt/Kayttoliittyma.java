@@ -40,6 +40,8 @@ public class Kayttoliittyma extends Application {
     private static int jarjestelmaID = 182;
     private static String mokkiID = "15c";
 
+    static boolean saatavuus1 = true;
+
     public TextField henkilokuntaG = new TextField("");
 
     public static TextField tfhenkilokuntaID = new TextField();
@@ -125,7 +127,9 @@ public class Kayttoliittyma extends Application {
     public static String getMokkiID() {
         return mokkiID;
     }
-
+    public static boolean getSaatavuus() {
+        return saatavuus1;
+    }
 
     @Override
     public void start(Stage alkuikkuna) {
