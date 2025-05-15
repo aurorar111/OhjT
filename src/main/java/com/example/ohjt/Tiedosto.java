@@ -8,7 +8,7 @@ public class Tiedosto {
 
     public OlioLuokka olioLuokka = new OlioLuokka();
 
-    public void tallennaTiedostoon (){
+    public void tallennaTiedostoon () {
         try {
             System.out.println("Nykyinen hakemisto: " + new File(".").getAbsolutePath());
             File tiedosto = new File("tiedosto.txt");
@@ -33,8 +33,6 @@ public class Tiedosto {
             kTiedosto.write(Kayttoliittyma.getMokkiTaso() + "\n");
             kTiedosto.write(Kayttoliittyma.getVarauksenHinta() + "\n");
             kTiedosto.write("laskuID: " + Kayttoliittyma.getLaskuID() + "\n");
-            //kTiedosto.write(Kayttoliittyma.getLaskunErapaiva() + "\n");
-            //kTiedosto.write(Kayttoliittyma.getMaksunTila() + "\n");
 
             kTiedosto.close();
         } catch (IOException e) {
@@ -48,7 +46,7 @@ public class Tiedosto {
             Scanner lukija = new Scanner(LTiedosto);
             while (lukija.hasNextLine()) {
                 String rivi = lukija.nextLine();
-                tiedot.append(rivi);
+                tiedot.append(rivi).append("\n");
             }lukija.close();
         }catch (FileNotFoundException e) {
             throw new RuntimeException(e);

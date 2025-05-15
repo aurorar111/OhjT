@@ -21,7 +21,6 @@ import static javafx.collections.FXCollections.observableArrayList;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +32,6 @@ public class Kayttoliittyma extends Application {
     public Kayttoliittyma() {
         // tyhjä konstruktori FXML:ää varten
     }
-
     Tiedosto tiedostoLuokka = new Tiedosto();
 
     private static int varausID;
@@ -43,34 +41,35 @@ public class Kayttoliittyma extends Application {
 
     public static TextField tfhenkilokuntaID = new TextField();
     public Button button = new Button("Kirjaudu");
-
     public static TextField tfAsiakkaanimi = new TextField();
     public static TextField tfAsiakasGmail = new TextField();
     public static TextField tfAsiakasPuh = new TextField();
     public static DatePicker tfAsiakasSynty = new DatePicker();
     public static TextField tfAsiakasID = new TextField();
-
     public TextField varauksenAlku = new TextField();
     public TextField varauksenLoppu = new TextField();
-    public static ComboBox<String> cbMokkitaso = new ComboBox<>();
-    public Button Haebutton = new Button("Hae");
-    public TextField saatavuus = new TextField();
-    public static TextField hinta = new TextField();
-
-    //PÄIVITYS NAPPI:
-    private Button paivita = new Button("Tallenna varaus");
-
     public static TextField laskuID = new TextField();
     public static TextField laskuPva = new TextField();
     public static TextField maksuntila = new TextField();
+    public TextField saatavuus = new TextField();
+    public static TextField hinta = new TextField();
+
+    public static DatePicker alkuDate = new DatePicker();
+    public static DatePicker loppuDate = new DatePicker();
+    public static Label asiakasVaroitus = new Label();
+
+    public static ComboBox<String> cbMokkitaso = new ComboBox<>();
+
+
+    public Button Haebutton = new Button("Hae");
+    //PÄIVITYS NAPPI:
+    private Button paivita = new Button("Tallenna varaus");
+
 
     public TableView taulukko = new TableView<>();
     public TableView taulukkoMaksut = new TableView<>();
     private ObservableList <OlioLuokka> asiakasTiedot = observableArrayList();
     private ObservableList <OlioLuokka> maksutiedot = observableArrayList();
-    public static DatePicker alkuDate = new DatePicker();
-    public static DatePicker loppuDate = new DatePicker();
-    public static Label asiakasVaroitus = new Label();
 
     // getterit
 
@@ -182,6 +181,13 @@ public class Kayttoliittyma extends Application {
             String nimi2 = tfAsiakkaanimi.getText();
             int mokinHinta = 0;
             LocalDate alku = alkuDate.getValue();
+            if (nimi2 != null && !nimi2.isEmpty() && alku != null) {
+                OlioLuokka uusiRivi2 = new OlioLuokka();
+                uusiRivi2.setAsiakasNimi(nimi2);
+                uusiRivi2.setMokkiHinta(mokinHinta);
+                uusiRivi2.setVarauksenAlkuPaiva(alku);
+                asiakasTiedot.add(uusiRivi2);
+            }
 
             asiakasVaroitus.setText("");
 
@@ -271,7 +277,19 @@ public class Kayttoliittyma extends Application {
                 varoitus.setVisible(true);
             }
         });
-
+        //Taulukko oikea
+        TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
+        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
+        asiakasColumn.setPrefWidth(150);
+        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
+        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
+        kategoriaColumn.setPrefWidth(125);
+        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alkupäivä");
+        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
+        paivaColumn.setPrefWidth(100);
+        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
+        taulukko.setItems(asiakasTiedot);
+        pane.add(taulukko, 0,20,2,1);
 
         Haebutton.setOnAction(e-> {
             int satunnainenID = new Random().nextInt(30000)+1;
@@ -303,51 +321,19 @@ public class Kayttoliittyma extends Application {
                 hinta.setText(varauksenHinta + "€");
             }
 
+
             String nimi = tfAsiakkaanimi.getText();
             String kategoria = cbMokkitaso.getValue();
             LocalDate paiva = alkuDate.getValue();
 
-            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null) {
+            if (nimi!= null && !nimi.isEmpty()&& kategoria != null && paiva !=null){
                 OlioLuokka uusiRivi = new OlioLuokka();
                 uusiRivi.setAsiakasNimi(nimi);
                 uusiRivi.setMokkiTaso(kategoria);
                 uusiRivi.setVarauksenAlkuPaiva(paiva);
                 asiakasTiedot.add(uusiRivi);
-
-                LocalDate loppumisAjankohta = loppuDate.getValue();
-                if (loppumisAjankohta != null) {
-                    LocalDate eraPaiva = loppumisAjankohta.plusDays(30);
-                    DateTimeFormatter naytaPaivina = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-                    String eraPaivanajankohta = eraPaiva.format(naytaPaivina);
-                    laskuPva.setText(eraPaivanajankohta);
-
-
-                }
             }
-            });
-
-
-            //Ei toimii jos on empty tai jos ei ole ainakin 4 merkkiä
-
-        //Taulukko oikea
-        TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
-        asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
-        asiakasColumn.setPrefWidth(150);
-        TableColumn<OlioLuokka, String> kategoriaColumn = new TableColumn<>("Mökin taso");
-        kategoriaColumn.setCellValueFactory(new PropertyValueFactory<>("mokkiTaso"));
-        kategoriaColumn.setPrefWidth(125);
-        TableColumn<OlioLuokka, String> paivaColumn = new TableColumn<>("Alkupäivä");
-        paivaColumn.setCellValueFactory(new PropertyValueFactory<>("varauksenAlkuPaiva"));
-        paivaColumn.setPrefWidth(100);
-        taulukko.getColumns().addAll(asiakasColumn, kategoriaColumn, paivaColumn);
-        taulukko.setItems(asiakasTiedot);
-        pane.add(taulukko, 0,20,2,1);
-
-
-
-
-
-
+        });
         //yhteys tietokantaan sekä haku tietokannasta SELECT komennolla
         try{
             Connection conn = DriverManager.getConnection(
@@ -367,16 +353,13 @@ public class Kayttoliittyma extends Application {
         }catch(SQLException e){
             e.printStackTrace();
         }
-
-        //Tässä oli
-
         //Taulukko vasen
         TableColumn<OlioLuokka, String> nimiColumn= new TableColumn<>("Asiakas");
         nimiColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi "));
         TableColumn<OlioLuokka, String> laskuColumn= new TableColumn<>("Summa €");
         laskuColumn.setCellValueFactory(new PropertyValueFactory<>("mokinHinta "));
         TableColumn<OlioLuokka, String> erapaivaColumn = new TableColumn<>("Eräpäivä");
-        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("paiva"));
+        erapaivaColumn.setCellValueFactory(new PropertyValueFactory<>("MaksunPaivamaara"));
         taulukkoMaksut.getColumns().addAll(nimiColumn,laskuColumn, erapaivaColumn);
         pane.add(taulukkoMaksut, 5,20,2,1);
 
@@ -400,11 +383,8 @@ public class Kayttoliittyma extends Application {
         iv1.setFitWidth(140);
         pane.add(iv1, 6,0,1,1);
     }
-
     public static void main(String[] args) {
         launch(args);
-
     }
 }
-
 

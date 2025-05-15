@@ -33,7 +33,7 @@ public class OlioLuokka {
     private String asiakasGmail;
     private int asiakasPuh;
     private int asiakasID;
-    private LocalDate asiakasSyntymaAika;
+    private int asiakasSyntymaAika;
 
     private double mokkiHinta;
     private boolean mokkiSaatavuus;
@@ -122,11 +122,11 @@ public class OlioLuokka {
         this.asiakasID = asiakasID;
     }
 
-    public LocalDate getAsiakasSyntymaAika() {
+    public int getAsiakasSyntymaAika() {
         return asiakasSyntymaAika;
     }
 
-    public void setAsiakasSyntymaAika(LocalDate asiakasSyntymaAika) {
+    public void setAsiakasSyntymaAika(int asiakasSyntymaAika) {
         this.asiakasSyntymaAika = asiakasSyntymaAika;
     }
 
