@@ -317,7 +317,6 @@ public class Kayttoliittyma extends Application {
         });
 
         //TAULUKKO
-
         //Taulukko oikea
         TableColumn<OlioLuokka, String> asiakasColumn = new TableColumn<>("Asiakas");
         asiakasColumn.setCellValueFactory(new PropertyValueFactory<>("asiakasNimi" ));
